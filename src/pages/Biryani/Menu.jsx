@@ -38,7 +38,7 @@ const menuCategories = {
         marathi: "व्हेज नूडल्स",
         price: "₹80 / ₹140",
         size: "Half / Full",
-        image: "/biryani/chicken.jpe",
+        image: "/biryani/noodles.png",
       },
       {
         id: "veg-4",
@@ -46,7 +46,7 @@ const menuCategories = {
         marathi: "व्हेज ट्रिपल राईस",
         price: "₹130 / ₹230",
         size: "Half / Full",
-        image: "/biryani/hyderabadi.jpe",
+        image: "/biryani/triple_rice.png",
       },
       {
         id: "veg-5",
@@ -54,7 +54,7 @@ const menuCategories = {
         marathi: "व्हेज ट्रिपल नूडल्स",
         price: "₹130 / ₹230",
         size: "Half / Full",
-        image: "/biryani/hyderabadi.jpe",
+        image: "/biryani/triple_noodles.png",
       },
       {
         id: "veg-6",
@@ -62,7 +62,7 @@ const menuCategories = {
         marathi: "व्हेज सूप",
         price: "₹70",
         size: "Full",
-        image: "/biryani/chicken.jpe",
+        image: "/biryani/soup.png",
       },
       {
         id: "veg-7",
@@ -70,7 +70,7 @@ const menuCategories = {
         marathi: "व्हेज मंचुरियन",
         price: "₹100 / ₹180",
         size: "Half / Full",
-        image: "/biryani/chicken.jpe",
+        image: "/biryani/munchuriyan.png",
       },
       {
         id: "veg-8",
@@ -78,7 +78,7 @@ const menuCategories = {
         marathi: "सोयाबीन चिली",
         price: "₹100 / ₹180",
         size: "Half / Full",
-        image: "/biryani/chicken.jpe",
+        image: "/biryani/soyabean_chili.png",
       },
       {
         id: "veg-9",
@@ -86,16 +86,9 @@ const menuCategories = {
         marathi: "पनीर चिली",
         price: "₹120 / ₹220",
         size: "Half / Full",
-        image: "/biryani/hyderabadi.jpe",
+        image: "/biryani/paneer_chilli.png",
       },
-      {
-        id: "veg-10",
-        name: "Pani Bottle",
-        marathi: "पाणी बॉटल",
-        price: "₹20",
-        size: "Bottle",
-        image: "/biryani/chicken.jpe",
-      },
+      
     ],
   },
 
@@ -111,7 +104,7 @@ const menuCategories = {
         marathi: "चिकन दम बिर्याणी",
         price: "₹130",
         size: "Full",
-        image: "/biryani/chicken.jpe",
+        image: "/biryani/chicken.png",
         featured: true,
       },
       {
@@ -120,7 +113,7 @@ const menuCategories = {
         marathi: "चिकन राईस",
         price: "₹80 / ₹140",
         size: "Half / Full",
-        image: "/biryani/chicken.jpe",
+        image: "/biryani/chicken.png",
       },
       {
         id: "nonveg-3",
@@ -128,7 +121,7 @@ const menuCategories = {
         marathi: "चिकन नूडल्स",
         price: "₹80 / ₹140",
         size: "Half / Full",
-        image: "/biryani/chicken.jpe",
+        image: "/biryani/chicken_noodles.png",
       },
       {
         id: "nonveg-4",
@@ -136,7 +129,7 @@ const menuCategories = {
         marathi: "चिकन सूप",
         price: "₹80",
         size: "Full",
-        image: "/biryani/chicken.jpe",
+        image: "/biryani/chicken_soup.png",
       },
       {
         id: "nonveg-5",
@@ -144,7 +137,7 @@ const menuCategories = {
         marathi: "चिकन ट्रिपल राईस",
         price: "₹130 / ₹230",
         size: "Half / Full",
-        image: "/biryani/chicken.jpe",
+        image: "/biryani/chicken_triple_rice.png",
       },
       {
         id: "nonveg-6",
@@ -152,7 +145,7 @@ const menuCategories = {
         marathi: "चिकन ट्रिपल नूडल्स",
         price: "₹130 / ₹230",
         size: "Half / Full",
-        image: "/biryani/chicken.jpe",
+        image: "/biryani/chicken_triple_noodles.png",
       },
       {
         id: "nonveg-7",
@@ -160,7 +153,7 @@ const menuCategories = {
         marathi: "चिकन लॉलीपॉप",
         price: "₹100 / ₹180",
         size: "Half / Full",
-        image: "/biryani/chicken.jpe",
+        image: "/biryani/lollipop.png",
       },
       {
         id: "nonveg-8",
@@ -168,7 +161,7 @@ const menuCategories = {
         marathi: "चिकन मसाला लॉलीपॉप",
         price: "₹130 / ₹230",
         size: "Half / Full",
-        image: "/biryani/chicken.jpe",
+        image: "/biryani/masala_lollipop.png",
       },
       {
         id: "nonveg-9",
@@ -176,7 +169,7 @@ const menuCategories = {
         marathi: "चिकन चिली",
         price: "₹130 / ₹230",
         size: "Half / Full",
-        image: "/biryani/chicken.jpe",
+        image: "/biryani/chicken_chilli.png",
       },
       {
         id: "nonveg-10",
@@ -184,7 +177,7 @@ const menuCategories = {
         marathi: "चिकन 65",
         price: "₹100 / ₹180",
         size: "Half / Full",
-        image: "/biryani/chicken.jpe",
+        image: "/biryani/chicken65.png",
       },
       {
         id: "nonveg-11",
@@ -192,7 +185,7 @@ const menuCategories = {
         marathi: "BB फ्राईड चिकन",
         price: "₹100 / ₹180",
         size: "Half / Full",
-        image: "/biryani/chicken.jpe",
+        image: "/biryani/fried_chicken.png",
         featured: true,
       },
     ],

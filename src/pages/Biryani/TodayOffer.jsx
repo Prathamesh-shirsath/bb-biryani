@@ -265,7 +265,7 @@ export default function TodayOffer() {
                 />
 
                 <motion.img
-                  src="/biryani/chicken.jpe"
+                  src="/biryani/chicken.png"
                   alt="BB Chicken Biryani"
                   loading="lazy"
                   className="
@@ -451,7 +451,7 @@ export default function TodayOffer() {
                         sm:text-4xl
                       "
                     >
-                      ₹199
+                      ₹130
                     </p>
                   </div>
 

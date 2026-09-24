@@ -491,11 +491,12 @@ export default function AboutOwner() {
                     lg:text-5xl
                   "
                 >
-                  [Owner Name]
+                  Akshay Rangnath Barahate
+                  (Bantisheth)
                 </h3>
 
                 <p className="mt-2 text-xs font-medium text-[#D6A84F] sm:text-sm">
-                  Founder • BB Biryani
+                  Founder • BB Group of Business
                 </p>
 
                 {/* Decorative line */}
@@ -628,7 +629,7 @@ export default function AboutOwner() {
 
                 {/* CTA */}
 
-                <a
+                {/*<a
                   href="#franchise"
                   className="
                     group
@@ -673,7 +674,7 @@ export default function AboutOwner() {
                       group-hover:-translate-y-1
                     "
                   />
-                </a>
+                </a>*/}
               </div>
             </div>
           </div>

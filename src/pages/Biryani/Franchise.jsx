@@ -13,7 +13,7 @@ const franchiseLocations = [
   {
     id: "01",
     name: "Main Branch",
-    location: "Maharashtra, India",
+    location: "Supa,Maharashtra, India",
     status: "Flagship",
     description:
       "The heart of the BB Biryani experience — authentic flavours and premium hospitality.",
@@ -21,7 +21,7 @@ const franchiseLocations = [
   {
     id: "02",
     name: "Branch 02",
-    location: "Coming Soon",
+    location: "Rahuri, Maharashtra, India",
     status: "Expanding",
     description:
       "A new BB destination bringing our signature taste closer to more customers.",
@@ -29,7 +29,7 @@ const franchiseLocations = [
   {
     id: "03",
     name: "Branch 03",
-    location: "Coming Soon",
+    location: "Ahilyanagar, Maharashtra, India",
     status: "Expanding",
     description:
       "Another chapter in the BB journey, built around taste, quality and trust.",
