@@ -434,8 +434,9 @@ export default function Hero() {
               />
             </a>
 
-            {/* Order */}
-            <a
+           
+           {/* Order */}
+           {/* <a
               href="#enquiry"
               className="
                 group
@@ -465,7 +466,7 @@ export default function Hero() {
                 sm:hover:bg-white/[0.06]
               "
             >
-              <span className="flex items-center gap-2">
+            {/* <span className="flex items-center gap-2">
                 ORDER NOW
 
                 <ArrowRight
@@ -478,7 +479,7 @@ export default function Hero() {
                   "
                 />
               </span>
-            </a>
+            </a>*/}
           </motion.div>
 
           {/* Location */}

@@ -2,29 +2,33 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import {
   ArrowRight,
+  Droplets,
   Menu,
   X,
-  Utensils,
-  Droplets,
+  Waves,
 } from "lucide-react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const navItems = [
   {
     label: "Home",
-    id: "home",
-  },
-  {
-    label: "Menu",
-    id: "menu",
+    id: "aqua-home",
   },
   {
     label: "About",
-    id: "owner",
+    id: "about",
   },
   {
-    label: "Franchise",
-    id: "franchise",
+    label: "Products",
+    id: "products",
+  },
+  {
+    label: "Custom Bottles",
+    id: "custom-bottles",
+  },
+  {
+    label: "Process",
+    id: "process",
   },
   {
     label: "Gallery",
@@ -32,24 +36,13 @@ const navItems = [
   },
 ];
 
-export default function Navbar() {
+export default function AquaNavbar() {
   const [isOpen, setIsOpen] = useState(false);
 
-  const location = useLocation();
   const navigate = useNavigate();
 
-  const isBiryaniPage = location.pathname === "/biryani";
-
   /* =========================================================
-     CLOSE MOBILE MENU WHEN ROUTE CHANGES
-  ========================================================= */
-
-  useEffect(() => {
-    setIsOpen(false);
-  }, [location.pathname]);
-
-  /* =========================================================
-     PREVENT BODY SCROLL WHEN MOBILE MENU IS OPEN
+     BODY SCROLL LOCK
   ========================================================= */
 
   useEffect(() => {
@@ -69,6 +62,8 @@ export default function Navbar() {
   ========================================================= */
 
   const scrollToSection = (id) => {
+    setIsOpen(false);
+
     const element = document.getElementById(id);
 
     if (!element) return;
@@ -80,32 +75,31 @@ export default function Navbar() {
   };
 
   /* =========================================================
-     NAVIGATION
+     GO TO BOTTLE ENQUIRY
   ========================================================= */
 
-  const handleNavigation = (id) => {
+  const handleCustomBottle = () => {
     setIsOpen(false);
 
-    if (!isBiryaniPage) {
-      navigate("/biryani");
+    const element = document.getElementById(
+      "enquiry"
+    );
 
-      setTimeout(() => {
-        scrollToSection(id);
-      }, 350);
+    if (!element) return;
 
-      return;
-    }
-
-    scrollToSection(id);
+    element.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
   };
 
   /* =========================================================
-     GO TO AQUA WEBSITE
+     GO TO BIRYANI
   ========================================================= */
 
-  const handleAqua = () => {
+  const handleBiryani = () => {
     setIsOpen(false);
-    navigate("/aqua");
+    navigate("/biryani");
   };
 
   return (
@@ -135,25 +129,25 @@ export default function Navbar() {
       >
         <nav
           className="
+            relative
             mx-auto
             flex
-            h-[58px]
+            h-[60px]
             w-full
             max-w-7xl
             items-center
             justify-between
             rounded-2xl
             border
-            border-white/[0.08]
-            bg-[#080604]/75
+            border-sky-900/10
+            bg-white/80
             px-3
-            shadow-[0_10px_40px_rgba(0,0,0,0.25)]
+            shadow-[0_12px_45px_rgba(7,89,133,0.10)]
             backdrop-blur-2xl
 
             min-[360px]:px-3.5
 
             sm:h-16
-            sm:rounded-2xl
             sm:px-4
 
             lg:h-[70px]
@@ -162,13 +156,17 @@ export default function Navbar() {
           "
         >
           {/* =================================================
-              LOGO + BRAND
+              LOGO
           ================================================== */}
 
           <motion.button
             type="button"
-            onClick={() => handleNavigation("home")}
-            whileTap={{ scale: 0.95 }}
+            onClick={() =>
+              scrollToSection("aqua-home")
+            }
+            whileTap={{
+              scale: 0.95,
+            }}
             className="
               group
               flex
@@ -180,12 +178,12 @@ export default function Navbar() {
               sm:gap-2.5
             "
           >
-            {/* Logo */}
+            {/* Aqua Logo */}
 
             <motion.div
               whileHover={{
                 scale: 1.06,
-                rotate: 1,
+                rotate: -2,
               }}
               transition={{
                 type: "spring",
@@ -195,71 +193,67 @@ export default function Navbar() {
               className="
                 relative
                 flex
-                h-9
-                min-w-[42px]
-                max-w-[105px]
+                h-10
+                w-10
                 shrink-0
                 items-center
                 justify-center
                 overflow-hidden
                 rounded-xl
                 border
-                border-[#D6A84F]/25
-                bg-black/25
-                px-1.5
-                shadow-[0_0_20px_rgba(214,168,79,0.08)]
+                border-sky-300/40
+                bg-gradient-to-br
+                from-sky-50
+                via-white
+                to-cyan-50
+                shadow-[0_5px_20px_rgba(14,165,233,0.12)]
 
-                sm:h-10
-                sm:min-w-[46px]
-                sm:max-w-[125px]
-                sm:rounded-xl
+                sm:h-11
+                sm:w-11
               "
             >
+              {/* Water glow */}
+
               <div
                 className="
                   pointer-events-none
                   absolute
                   inset-0
                   rounded-xl
-                  bg-[radial-gradient(circle_at_center,rgba(214,168,79,0.15),transparent_70%)]
-                  opacity-70
+                  bg-[radial-gradient(circle_at_center,rgba(14,165,233,0.18),transparent_70%)]
                 "
               />
 
               <img
                 src="/logo/buntysheth.png"
-                alt="BB Biryani Logo"
+                alt="BB Aqua"
                 className="
                   relative
                   z-10
                   h-full
                   w-full
                   object-contain
-                  p-0.5
-                  transition-transform
-                  duration-500
-                  group-hover:scale-110
+                  p-1
                 "
               />
             </motion.div>
 
-            {/* Brand */}
+            {/* Brand Name */}
 
             <div className="hidden min-w-0 min-[360px]:block">
               <p
                 className="
                   truncate
-                  text-[10px]
-                  font-bold
+                  text-[11px]
+                  font-black
                   uppercase
-                  tracking-[0.12em]
-                  text-white
+                  tracking-[0.16em]
+                  text-[#063B5C]
 
-                  sm:text-xs
-                  sm:tracking-[0.16em]
+                  sm:text-sm
                 "
               >
-                BB Biryani
+                BB AQUA
               </p>
 
               <p
@@ -267,14 +261,15 @@ export default function Navbar() {
                   mt-0.5
                   hidden
                   text-[7px]
+                  font-medium
                   uppercase
-                  tracking-[0.2em]
-                  text-white/30
+                  tracking-[0.22em]
+                  text-sky-700/45
 
                   sm:block
                 "
               >
-                Authentic Taste
+                Pure · Fresh · Trusted
               </p>
             </div>
           </motion.button>
@@ -288,34 +283,43 @@ export default function Navbar() {
               <motion.button
                 key={item.id}
                 type="button"
-                onClick={() => handleNavigation(item.id)}
-                whileTap={{ scale: 0.96 }}
+                onClick={() =>
+                  scrollToSection(item.id)
+                }
+                whileTap={{
+                  scale: 0.96,
+                }}
                 className="
                   group
                   relative
                   rounded-full
-                  px-4
+                  px-3.5
                   py-2.5
                   text-xs
-                  font-medium
-                  text-white/55
+                  font-semibold
+                  text-[#164E63]/60
                   transition
                   duration-300
-                  hover:bg-white/[0.04]
-                  hover:text-white
+                  hover:bg-sky-50
+                  hover:text-[#0369A1]
                 "
               >
                 {item.label}
+
+                {/* Underline */}
 
                 <span
                   className="
                     absolute
                     bottom-1.5
                     left-1/2
-                    h-[1px]
+                    h-[2px]
                     w-0
                     -translate-x-1/2
-                    bg-[#D6A84F]
+                    rounded-full
+                    bg-gradient-to-r
+                    from-sky-400
+                    to-cyan-400
                     transition-all
                     duration-300
                     group-hover:w-5
@@ -326,15 +330,15 @@ export default function Navbar() {
           </div>
 
           {/* =================================================
-              DESKTOP AQUA BUTTON
+              DESKTOP CUSTOM BOTTLE BUTTON
           ================================================== */}
 
           <div className="hidden lg:block">
             <motion.button
               type="button"
-              onClick={handleAqua}
+              onClick={handleCustomBottle}
               whileHover={{
-                scale: 1.05,
+                scale: 1.04,
               }}
               whileTap={{
                 scale: 0.97,
@@ -348,34 +352,34 @@ export default function Navbar() {
                 gap-2
                 overflow-hidden
                 rounded-full
-                border
-                border-cyan-300/20
-                bg-cyan-400/10
+                bg-gradient-to-r
+                from-[#0369A1]
+                to-[#0891B2]
                 px-5
                 text-xs
                 font-bold
-                text-cyan-100
-                shadow-[0_10px_30px_rgba(34,211,238,0.08)]
-                backdrop-blur-xl
+                text-white
+                shadow-[0_10px_30px_rgba(3,105,161,0.20)]
                 transition
                 duration-300
-                hover:border-cyan-300/40
-                hover:bg-cyan-300/15
-                hover:shadow-[0_15px_40px_rgba(34,211,238,0.16)]
+                hover:shadow-[0_15px_40px_rgba(3,105,161,0.28)]
               "
             >
-              {/* Aqua glow */}
+              {/* Shine */}
 
               <span
                 className="
                   pointer-events-none
                   absolute
-                  inset-0
-                  bg-[radial-gradient(circle_at_center,rgba(34,211,238,0.15),transparent_65%)]
-                  opacity-0
-                  transition
-                  duration-500
-                  group-hover:opacity-100
+                  inset-y-0
+                  -left-12
+                  w-8
+                  rotate-[20deg]
+                  bg-white/40
+                  blur-sm
+                  transition-all
+                  duration-700
+                  group-hover:left-[115%]
                 "
               />
 
@@ -384,7 +388,6 @@ export default function Navbar() {
                 className="
                   relative
                   z-10
-                  text-cyan-300
                   transition
                   duration-300
                   group-hover:scale-110
@@ -392,7 +395,7 @@ export default function Navbar() {
               />
 
               <span className="relative z-10">
-                BB AQUA
+                CUSTOMIZE BOTTLE
               </span>
 
               <ArrowRight
@@ -420,7 +423,9 @@ export default function Navbar() {
                 : "Open navigation menu"
             }
             aria-expanded={isOpen}
-            onClick={() => setIsOpen((prev) => !prev)}
+            onClick={() =>
+              setIsOpen((prev) => !prev)
+            }
             whileTap={{
               scale: 0.9,
             }}
@@ -433,11 +438,9 @@ export default function Navbar() {
               justify-center
               rounded-xl
               border
-              border-white/[0.08]
-              bg-white/[0.03]
-              text-white
-              transition
-              duration-200
+              border-sky-900/10
+              bg-sky-50/70
+              text-[#075985]
 
               lg:hidden
             "
@@ -504,17 +507,27 @@ export default function Navbar() {
             {/* Backdrop */}
 
             <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.25 }}
-              onClick={() => setIsOpen(false)}
+              initial={{
+                opacity: 0,
+              }}
+              animate={{
+                opacity: 1,
+              }}
+              exit={{
+                opacity: 0,
+              }}
+              transition={{
+                duration: 0.25,
+              }}
+              onClick={() =>
+                setIsOpen(false)
+              }
               className="
                 fixed
                 inset-0
                 z-[90]
-                bg-black/70
-                backdrop-blur-sm
+                bg-[#06283D]/35
+                backdrop-blur-md
                 lg:hidden
               "
             />
@@ -545,15 +558,15 @@ export default function Navbar() {
                 fixed
                 left-3
                 right-3
-                top-[82px]
+                top-[84px]
                 z-[95]
                 overflow-hidden
                 rounded-3xl
                 border
-                border-white/[0.08]
-                bg-[#0B0806]/95
+                border-sky-900/10
+                bg-white/95
                 p-4
-                shadow-[0_30px_80px_rgba(0,0,0,0.55)]
+                shadow-[0_30px_80px_rgba(7,89,133,0.20)]
                 backdrop-blur-2xl
 
                 min-[360px]:left-4
@@ -567,7 +580,7 @@ export default function Navbar() {
                 lg:hidden
               "
             >
-              {/* Glow */}
+              {/* Decorative Water Glow */}
 
               <div
                 className="
@@ -575,15 +588,29 @@ export default function Navbar() {
                   absolute
                   -right-20
                   -top-20
-                  h-40
-                  w-40
+                  h-44
+                  w-44
                   rounded-full
-                  bg-[#D6A84F]/10
+                  bg-cyan-200/30
                   blur-3xl
                 "
               />
 
-              {/* Heading */}
+              <div
+                className="
+                  pointer-events-none
+                  absolute
+                  -bottom-24
+                  -left-20
+                  h-44
+                  w-44
+                  rounded-full
+                  bg-sky-200/30
+                  blur-3xl
+                "
+              />
+
+              {/* Menu Heading */}
 
               <div
                 className="
@@ -593,7 +620,7 @@ export default function Navbar() {
                   items-center
                   gap-3
                   border-b
-                  border-white/[0.07]
+                  border-sky-900/10
                   px-2
                   pb-4
                 "
@@ -607,45 +634,42 @@ export default function Navbar() {
                     items-center
                     justify-center
                     rounded-xl
-                    border
-                    border-[#D6A84F]/20
-                    bg-[#D6A84F]/10
+                    bg-sky-100
+                    text-sky-600
                   "
                 >
-                  <Utensils
-                    size={16}
-                    className="text-[#D6A84F]"
-                  />
+                  <Waves size={17} />
                 </div>
 
                 <div>
                   <p
                     className="
                       text-xs
-                      font-bold
+                      font-black
                       uppercase
-                      tracking-[0.15em]
-                      text-white
+                      tracking-[0.16em]
+                      text-[#063B5C]
                     "
                   >
-                    BB Biryani
+                    BB AQUA
                   </p>
 
                   <p
                     className="
                       mt-0.5
                       text-[8px]
+                      font-medium
                       uppercase
                       tracking-[0.18em]
-                      text-white/30
+                      text-sky-700/45
                     "
                   >
-                    Navigation
+                    Pure · Fresh · Trusted
                   </p>
                 </div>
               </div>
 
-              {/* Links */}
+              {/* Navigation Links */}
 
               <div className="relative flex flex-col gap-1">
                 {navItems.map(
@@ -662,13 +686,14 @@ export default function Navbar() {
                         x: 0,
                       }}
                       transition={{
-                        delay: index * 0.04,
+                        delay:
+                          index * 0.04,
                       }}
                       whileTap={{
                         scale: 0.98,
                       }}
                       onClick={() =>
-                        handleNavigation(
+                        scrollToSection(
                           item.id
                         )
                       }
@@ -683,11 +708,11 @@ export default function Navbar() {
                         px-4
                         text-left
                         text-sm
-                        font-medium
-                        text-white/65
+                        font-semibold
+                        text-[#164E63]/65
                         transition
-                        hover:bg-white/[0.04]
-                        hover:text-white
+                        hover:bg-sky-50
+                        hover:text-sky-700
                       "
                     >
                       <span>
@@ -697,11 +722,10 @@ export default function Navbar() {
                       <ArrowRight
                         size={15}
                         className="
-                          text-[#D6A84F]/50
+                          text-sky-400
                           transition
                           duration-300
                           group-hover:translate-x-1
-                          group-hover:text-[#D6A84F]
                         "
                       />
                     </motion.button>
@@ -710,12 +734,12 @@ export default function Navbar() {
               </div>
 
               {/* =================================================
-                  MOBILE AQUA BUTTON
+                  MOBILE CUSTOM BOTTLE CTA
               ================================================== */}
 
               <motion.button
                 type="button"
-                onClick={handleAqua}
+                onClick={handleCustomBottle}
                 whileTap={{
                   scale: 0.98,
                 }}
@@ -731,37 +755,24 @@ export default function Navbar() {
                   gap-2
                   overflow-hidden
                   rounded-full
-                  border
-                  border-cyan-300/20
-                  bg-cyan-400/10
+                  bg-gradient-to-r
+                  from-[#0369A1]
+                  to-[#0891B2]
                   px-6
                   py-3.5
                   text-sm
                   font-bold
-                  text-cyan-100
-                  shadow-[0_15px_40px_rgba(34,211,238,0.08)]
+                  text-white
+                  shadow-[0_15px_40px_rgba(3,105,161,0.18)]
                 "
               >
-                <span
-                  className="
-                    pointer-events-none
-                    absolute
-                    inset-0
-                    bg-[radial-gradient(circle_at_center,rgba(34,211,238,0.16),transparent_65%)]
-                  "
-                />
-
                 <Droplets
                   size={17}
-                  className="
-                    relative
-                    z-10
-                    text-cyan-300
-                  "
+                  className="relative z-10"
                 />
 
                 <span className="relative z-10">
-                  BB AQUA
+                  CUSTOMIZE YOUR BOTTLE
                 </span>
 
                 <ArrowRight
@@ -775,6 +786,36 @@ export default function Navbar() {
                   "
                 />
               </motion.button>
+
+              {/* =================================================
+                  BACK TO BIRYANI
+              ================================================== */}
+
+              <button
+                type="button"
+                onClick={handleBiryani}
+                className="
+                  mt-3
+                  flex
+                  min-h-[44px]
+                  w-full
+                  items-center
+                  justify-center
+                  gap-2
+                  rounded-full
+                  border
+                  border-sky-900/10
+                  bg-slate-50
+                  text-xs
+                  font-semibold
+                  text-[#164E63]/60
+                  transition
+                  hover:bg-sky-50
+                  hover:text-sky-700
+                "
+              >
+                ← BB Biryani
+              </button>
             </motion.div>
           </>
         )}
