@@ -1,4 +1,6 @@
 import { motion } from "motion/react";
+import { useTranslation } from "react-i18next";
+
 import {
   ArrowRight,
   CheckCircle2,
@@ -12,35 +14,33 @@ import {
 const steps = [
   {
     number: "01",
-    title: "Share Your Brand",
-    description:
-      "Share your logo, business name, event details or bottle branding requirement with us.",
+    titleKey: "aqua.howItWorks.steps.share.title",
+    descriptionKey: "aqua.howItWorks.steps.share.description",
     icon: FileImage,
   },
   {
     number: "02",
-    title: "Design & Approval",
-    description:
-      "Your bottle branding design is prepared around your identity and moved ahead after approval.",
+    titleKey: "aqua.howItWorks.steps.design.title",
+    descriptionKey: "aqua.howItWorks.steps.design.description",
     icon: ClipboardCheck,
   },
   {
     number: "03",
-    title: "Branding & Production",
-    description:
-      "Once the design is approved, the bottle branding and production process begins.",
+    titleKey: "aqua.howItWorks.steps.production.title",
+    descriptionKey: "aqua.howItWorks.steps.production.description",
     icon: Factory,
   },
   {
     number: "04",
-    title: "Delivery",
-    description:
-      "Your finished branded bottles are prepared for delivery according to your requirement.",
+    titleKey: "aqua.howItWorks.steps.delivery.title",
+    descriptionKey: "aqua.howItWorks.steps.delivery.description",
     icon: PackageCheck,
   },
 ];
 
 export default function AquaHowItWorks() {
+  const { t } = useTranslation();
+
   return (
     <section
       id="process"
@@ -162,7 +162,9 @@ export default function AquaHowItWorks() {
                 sm:text-xs
               "
             >
-              Our Process
+              {t("aqua.howItWorks.eyebrow", {
+                defaultValue: "Our Process",
+              })}
             </span>
           </div>
 
@@ -177,9 +179,14 @@ export default function AquaHowItWorks() {
               lg:text-7xl
             "
           >
-            From Your Brand
+            {t("aqua.howItWorks.heading.first", {
+              defaultValue: "From Your Brand",
+            })}
+
             <span className="block text-sky-500">
-              To Every Bottle.
+              {t("aqua.howItWorks.heading.second", {
+                defaultValue: "To Every Bottle.",
+              })}
             </span>
           </h2>
 
@@ -195,8 +202,10 @@ export default function AquaHowItWorks() {
               sm:leading-8
             "
           >
-            A simple process that takes your brand identity and turns it
-            into a professional bottle branding experience.
+            {t("aqua.howItWorks.description", {
+              defaultValue:
+                "A simple process that takes your brand identity and turns it into a professional bottle branding experience.",
+            })}
           </p>
         </motion.div>
 
@@ -368,7 +377,9 @@ export default function AquaHowItWorks() {
                       text-[#06283D]
                     "
                   >
-                    {step.title}
+                    {t(step.titleKey, {
+                      defaultValue: "Share Your Brand",
+                    })}
                   </h3>
 
                   <p
@@ -379,7 +390,10 @@ export default function AquaHowItWorks() {
                       text-slate-500
                     "
                   >
-                    {step.description}
+                    {t(step.descriptionKey, {
+                      defaultValue:
+                        "Share your logo, business name, event details or bottle branding requirement with us.",
+                    })}
                   </p>
 
                   <div
@@ -472,11 +486,17 @@ export default function AquaHowItWorks() {
 
               <div>
                 <h3 className="text-base font-black text-[#06283D] sm:text-lg">
-                  Ready to put your brand on every bottle?
+                  {t("aqua.howItWorks.cta.title", {
+                    defaultValue:
+                      "Ready to put your brand on every bottle?",
+                  })}
                 </h3>
 
                 <p className="mt-1 text-xs leading-5 text-slate-500 sm:text-sm">
-                  Share your branding requirement and start the conversation.
+                  {t("aqua.howItWorks.cta.description", {
+                    defaultValue:
+                      "Share your branding requirement and start the conversation.",
+                  })}
                 </p>
               </div>
             </div>
@@ -502,7 +522,10 @@ export default function AquaHowItWorks() {
                 sm:w-auto
               "
             >
-              Start Bottle Branding
+              {t("aqua.howItWorks.cta.button", {
+                defaultValue: "Start Bottle Branding",
+              })}
+
               <ArrowRight className="h-4 w-4 text-cyan-300" />
             </a>
           </div>

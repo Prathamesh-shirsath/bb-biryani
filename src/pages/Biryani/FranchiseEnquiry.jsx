@@ -10,6 +10,7 @@ import {
   Sparkles,
   UserRound,
 } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 const WHATSAPP_NUMBER = "917038925137";
 
@@ -22,6 +23,8 @@ const initialForm = {
 };
 
 export default function FranchiseEnquiry() {
+  const { t } = useTranslation();
+
   const [form, setForm] = useState(initialForm);
   const [errors, setErrors] = useState({});
 
@@ -53,17 +56,42 @@ export default function FranchiseEnquiry() {
     const newErrors = {};
 
     if (!form.name.trim()) {
-      newErrors.name = "Please enter your name.";
+      newErrors.name = t(
+        "biryani.franchiseEnquiry.validation.nameRequired",
+        {
+          defaultValue: "Please enter your name.",
+        }
+      );
     }
 
     if (!form.phone.trim()) {
-      newErrors.phone = "Please enter your phone number.";
-    } else if (!/^[0-9+\-\s]{10,15}$/.test(form.phone.trim())) {
-      newErrors.phone = "Please enter a valid phone number.";
+      newErrors.phone = t(
+        "biryani.franchiseEnquiry.validation.phoneRequired",
+        {
+          defaultValue: "Please enter your phone number.",
+        }
+      );
+    } else if (
+      !/^[0-9+\-\s]{10,15}$/.test(
+        form.phone.trim()
+      )
+    ) {
+      newErrors.phone = t(
+        "biryani.franchiseEnquiry.validation.phoneInvalid",
+        {
+          defaultValue:
+            "Please enter a valid phone number.",
+        }
+      );
     }
 
     if (!form.city.trim()) {
-      newErrors.city = "Please enter your city.";
+      newErrors.city = t(
+        "biryani.franchiseEnquiry.validation.cityRequired",
+        {
+          defaultValue: "Please enter your city.",
+        }
+      );
     }
 
     setErrors(newErrors);
@@ -152,7 +180,10 @@ Sent through BB Biryani Website
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
+          viewport={{
+            once: true,
+            amount: 0.2,
+          }}
           transition={{
             duration: 0.7,
             ease: [0.22, 1, 0.36, 1],
@@ -166,21 +197,41 @@ Sent through BB Biryani Website
             />
 
             <span className="text-[9px] font-semibold uppercase tracking-[0.25em] text-[#D6A84F]">
-              Franchise Enquiry
+              {t(
+                "biryani.franchiseEnquiry.eyebrow",
+                {
+                  defaultValue: "Franchise Enquiry",
+                }
+              )}
             </span>
           </div>
 
           <h2 className="mt-5 font-serif text-[2.4rem] font-black leading-[0.95] tracking-[-0.045em] text-white sm:text-5xl md:text-6xl">
-            Start Your
+            {t(
+              "biryani.franchiseEnquiry.heading.start",
+              {
+                defaultValue: "Start Your",
+              }
+            )}
+
             <span className="block bg-gradient-to-r from-[#F5D58A] via-[#D6A84F] to-[#A66A16] bg-clip-text text-transparent">
-              BB Journey.
+              {t(
+                "biryani.franchiseEnquiry.heading.journey",
+                {
+                  defaultValue: "BB Journey.",
+                }
+              )}
             </span>
           </h2>
 
           <p className="mx-auto mt-5 max-w-xl text-sm leading-6 text-white/40 sm:text-base sm:leading-7">
-            Interested in bringing BB Biryani to your city?
-            Fill in your details and connect with our team directly
-            on WhatsApp.
+            {t(
+              "biryani.franchiseEnquiry.description",
+              {
+                defaultValue:
+                  "Interested in bringing BB Biryani to your city? Fill in your details and connect with our team directly on WhatsApp.",
+              }
+            )}
           </p>
         </motion.div>
 
@@ -189,15 +240,23 @@ Sent through BB Biryani Website
         ====================================================== */}
 
         <div className="mx-auto mt-12 grid max-w-6xl gap-6 lg:grid-cols-[0.75fr_1.25fr] lg:gap-8">
-
           {/* =================================================
               LEFT INFO
           ================================================== */}
 
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.15 }}
+            initial={{
+              opacity: 0,
+              x: -30,
+            }}
+            whileInView={{
+              opacity: 1,
+              x: 0,
+            }}
+            viewport={{
+              once: true,
+              amount: 0.15,
+            }}
             transition={{
               duration: 0.75,
               ease: [0.22, 1, 0.36, 1],
@@ -217,26 +276,51 @@ Sent through BB Biryani Website
               </div>
 
               <h3 className="mt-6 font-serif text-2xl font-bold text-white">
-                Grow With BB
+                {t(
+                  "biryani.franchiseEnquiry.info.title",
+                  {
+                    defaultValue: "Grow With BB",
+                  }
+                )}
               </h3>
 
               <p className="mt-3 text-sm leading-6 text-white/35">
-                Tell us a little about yourself and your franchise
-                plans. Our team can connect with you directly through
-                WhatsApp.
+                {t(
+                  "biryani.franchiseEnquiry.info.description",
+                  {
+                    defaultValue:
+                      "Tell us a little about yourself and your franchise plans. Our team can connect with you directly through WhatsApp.",
+                  }
+                )}
               </p>
 
               {/* Highlights */}
 
               <div className="mt-7 space-y-4">
                 {[
-                  "BB Biryani franchise opportunity",
-                  "Food-focused business model",
-                  "Growing BB business network",
-                  "Direct WhatsApp communication",
+                  {
+                    key: "opportunity",
+                    defaultValue:
+                      "BB Biryani franchise opportunity",
+                  },
+                  {
+                    key: "businessModel",
+                    defaultValue:
+                      "Food-focused business model",
+                  },
+                  {
+                    key: "network",
+                    defaultValue:
+                      "Growing BB business network",
+                  },
+                  {
+                    key: "whatsapp",
+                    defaultValue:
+                      "Direct WhatsApp communication",
+                  },
                 ].map((item) => (
                   <div
-                    key={item}
+                    key={item.key}
                     className="flex items-start gap-3"
                   >
                     <div className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#D6A84F]/10">
@@ -247,7 +331,13 @@ Sent through BB Biryani Website
                     </div>
 
                     <span className="text-xs leading-5 text-white/45">
-                      {item}
+                      {t(
+                        `biryani.franchiseEnquiry.highlights.${item.key}`,
+                        {
+                          defaultValue:
+                            item.defaultValue,
+                        }
+                      )}
                     </span>
                   </div>
                 ))}
@@ -257,7 +347,12 @@ Sent through BB Biryani Website
 
               <div className="mt-8 border-t border-white/[0.06] pt-6">
                 <p className="text-[9px] font-semibold uppercase tracking-[0.22em] text-[#D6A84F]">
-                  Direct Contact
+                  {t(
+                    "biryani.franchiseEnquiry.contact.direct",
+                    {
+                      defaultValue: "Direct Contact",
+                    }
+                  )}
                 </p>
 
                 <a
@@ -283,13 +378,40 @@ Sent through BB Biryani Website
                   />
 
                   <p className="text-xs leading-5 text-white/30">
-                    Near Toll Plaza, Mhasne Phata,
+                    {t(
+                      "biryani.franchiseEnquiry.contact.address.line1",
+                      {
+                        defaultValue:
+                          "Near Toll Plaza, Mhasne Phata,",
+                      }
+                    )}
                     <br />
-                    Nagar - Pune Highway,
+
+                    {t(
+                      "biryani.franchiseEnquiry.contact.address.line2",
+                      {
+                        defaultValue:
+                          "Nagar - Pune Highway,",
+                      }
+                    )}
                     <br />
-                    New MIDC Chowk, Supe,
+
+                    {t(
+                      "biryani.franchiseEnquiry.contact.address.line3",
+                      {
+                        defaultValue:
+                          "New MIDC Chowk, Supe,",
+                      }
+                    )}
                     <br />
-                    Maharashtra - 414301
+
+                    {t(
+                      "biryani.franchiseEnquiry.contact.address.line4",
+                      {
+                        defaultValue:
+                          "Maharashtra - 414301",
+                      }
+                    )}
                   </p>
                 </div>
               </div>
@@ -301,9 +423,18 @@ Sent through BB Biryani Website
           ================================================== */}
 
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.15 }}
+            initial={{
+              opacity: 0,
+              x: 30,
+            }}
+            whileInView={{
+              opacity: 1,
+              x: 0,
+            }}
+            viewport={{
+              once: true,
+              amount: 0.15,
+            }}
             transition={{
               duration: 0.75,
               delay: 0.1,
@@ -323,11 +454,23 @@ Sent through BB Biryani Website
 
               <div className="mb-7">
                 <p className="text-[9px] font-semibold uppercase tracking-[0.22em] text-[#D6A84F]">
-                  Tell Us About You
+                  {t(
+                    "biryani.franchiseEnquiry.form.eyebrow",
+                    {
+                      defaultValue:
+                        "Tell Us About You",
+                    }
+                  )}
                 </p>
 
                 <h3 className="mt-2 font-serif text-2xl font-bold text-white">
-                  Franchise Enquiry
+                  {t(
+                    "biryani.franchiseEnquiry.form.title",
+                    {
+                      defaultValue:
+                        "Franchise Enquiry",
+                    }
+                  )}
                 </h3>
               </div>
 
@@ -336,7 +479,6 @@ Sent through BB Biryani Website
               ================================================== */}
 
               <div className="grid gap-4 sm:grid-cols-2">
-
                 {/* Name */}
 
                 <div>
@@ -344,7 +486,12 @@ Sent through BB Biryani Website
                     htmlFor="name"
                     className="mb-2 block text-[10px] font-semibold uppercase tracking-[0.16em] text-white/35"
                   >
-                    Full Name *
+                    {t(
+                      "biryani.franchiseEnquiry.form.name.label",
+                      {
+                        defaultValue: "Full Name *",
+                      }
+                    )}
                   </label>
 
                   <div
@@ -365,7 +512,13 @@ Sent through BB Biryani Website
                       type="text"
                       value={form.name}
                       onChange={handleChange}
-                      placeholder="Enter your name"
+                      placeholder={t(
+                        "biryani.franchiseEnquiry.form.name.placeholder",
+                        {
+                          defaultValue:
+                            "Enter your name",
+                        }
+                      )}
                       className="w-full bg-transparent text-sm text-white outline-none placeholder:text-white/20"
                     />
                   </div>
@@ -384,7 +537,13 @@ Sent through BB Biryani Website
                     htmlFor="phone"
                     className="mb-2 block text-[10px] font-semibold uppercase tracking-[0.16em] text-white/35"
                   >
-                    Phone Number *
+                    {t(
+                      "biryani.franchiseEnquiry.form.phone.label",
+                      {
+                        defaultValue:
+                          "Phone Number *",
+                      }
+                    )}
                   </label>
 
                   <div
@@ -406,7 +565,13 @@ Sent through BB Biryani Website
                       inputMode="tel"
                       value={form.phone}
                       onChange={handleChange}
-                      placeholder="10 digit mobile number"
+                      placeholder={t(
+                        "biryani.franchiseEnquiry.form.phone.placeholder",
+                        {
+                          defaultValue:
+                            "10 digit mobile number",
+                        }
+                      )}
                       className="w-full bg-transparent text-sm text-white outline-none placeholder:text-white/20"
                     />
                   </div>
@@ -424,7 +589,6 @@ Sent through BB Biryani Website
               ================================================== */}
 
               <div className="mt-4 grid gap-4 sm:grid-cols-2">
-
                 {/* Email */}
 
                 <div>
@@ -432,7 +596,12 @@ Sent through BB Biryani Website
                     htmlFor="email"
                     className="mb-2 block text-[10px] font-semibold uppercase tracking-[0.16em] text-white/35"
                   >
-                    Email
+                    {t(
+                      "biryani.franchiseEnquiry.form.email.label",
+                      {
+                        defaultValue: "Email",
+                      }
+                    )}
                   </label>
 
                   <div className="group flex min-h-[52px] items-center rounded-xl border border-white/[0.08] bg-white/[0.025] px-4 transition focus-within:border-[#D6A84F]/40">
@@ -446,7 +615,13 @@ Sent through BB Biryani Website
                       type="email"
                       value={form.email}
                       onChange={handleChange}
-                      placeholder="your@email.com"
+                      placeholder={t(
+                        "biryani.franchiseEnquiry.form.email.placeholder",
+                        {
+                          defaultValue:
+                            "your@email.com",
+                        }
+                      )}
                       className="w-full bg-transparent text-sm text-white outline-none placeholder:text-white/20"
                     />
                   </div>
@@ -459,7 +634,13 @@ Sent through BB Biryani Website
                     htmlFor="city"
                     className="mb-2 block text-[10px] font-semibold uppercase tracking-[0.16em] text-white/35"
                   >
-                    City / Location *
+                    {t(
+                      "biryani.franchiseEnquiry.form.city.label",
+                      {
+                        defaultValue:
+                          "City / Location *",
+                      }
+                    )}
                   </label>
 
                   <div
@@ -480,7 +661,13 @@ Sent through BB Biryani Website
                       type="text"
                       value={form.city}
                       onChange={handleChange}
-                      placeholder="Your city"
+                      placeholder={t(
+                        "biryani.franchiseEnquiry.form.city.placeholder",
+                        {
+                          defaultValue:
+                            "Your city",
+                        }
+                      )}
                       className="w-full bg-transparent text-sm text-white outline-none placeholder:text-white/20"
                     />
                   </div>
@@ -502,7 +689,13 @@ Sent through BB Biryani Website
                   htmlFor="message"
                   className="mb-2 block text-[10px] font-semibold uppercase tracking-[0.16em] text-white/35"
                 >
-                  Additional Message
+                  {t(
+                    "biryani.franchiseEnquiry.form.message.label",
+                    {
+                      defaultValue:
+                        "Additional Message",
+                    }
+                  )}
                 </label>
 
                 <textarea
@@ -511,7 +704,13 @@ Sent through BB Biryani Website
                   rows={5}
                   value={form.message}
                   onChange={handleChange}
-                  placeholder="Tell us about your franchise plans..."
+                  placeholder={t(
+                    "biryani.franchiseEnquiry.form.message.placeholder",
+                    {
+                      defaultValue:
+                        "Tell us about your franchise plans...",
+                    }
+                  )}
                   className="w-full rounded-xl border border-white/[0.08] bg-white/[0.025] px-4 py-3 text-sm leading-6 text-white outline-none transition placeholder:text-white/20 focus:border-[#D6A84F]/40"
                 />
               </div>
@@ -540,7 +739,13 @@ Sent through BB Biryani Website
                 />
 
                 <span className="relative z-10">
-                  Continue on WhatsApp
+                  {t(
+                    "biryani.franchiseEnquiry.form.submit",
+                    {
+                      defaultValue:
+                        "Continue on WhatsApp",
+                    }
+                  )}
                 </span>
 
                 <ArrowUpRight
@@ -552,8 +757,13 @@ Sent through BB Biryani Website
               {/* Privacy / info */}
 
               <p className="mt-4 text-center text-[9px] leading-4 text-white/20">
-                Your details will be added to a WhatsApp message.
-                You can review the message and send it yourself.
+                {t(
+                  "biryani.franchiseEnquiry.form.privacy",
+                  {
+                    defaultValue:
+                      "Your details will be added to a WhatsApp message. You can review the message and send it yourself.",
+                  }
+                )}
               </p>
             </form>
           </motion.div>

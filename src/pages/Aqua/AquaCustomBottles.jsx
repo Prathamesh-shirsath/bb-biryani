@@ -10,29 +10,36 @@ import {
   Sparkles,
   Utensils,
 } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 const useCases = [
   {
+    key: "hotels",
     title: "Hotels",
     icon: Hotel,
   },
   {
+    key: "restaurants",
     title: "Restaurants",
     icon: Utensils,
   },
   {
+    key: "weddings",
     title: "Weddings",
     icon: Crown,
   },
   {
+    key: "events",
     title: "Events",
     icon: PartyPopper,
   },
   {
+    key: "corporate",
     title: "Corporate",
     icon: Building2,
   },
   {
+    key: "resorts",
     title: "Resorts",
     icon: Sparkles,
   },
@@ -41,27 +48,52 @@ const useCases = [
 const brandingSteps = [
   {
     number: "01",
-    title: "Your Brand",
-    text: "Share your logo, business name or event identity.",
+    titleKey: "aqua.customBottles.steps.brand.title",
+    textKey: "aqua.customBottles.steps.brand.text",
   },
   {
     number: "02",
-    title: "Brand Design",
-    text: "Your branding is prepared for the bottle presentation.",
+    titleKey: "aqua.customBottles.steps.design.title",
+    textKey: "aqua.customBottles.steps.design.text",
   },
   {
     number: "03",
-    title: "Branding & Production",
-    text: "The approved branding moves into the production process.",
+    titleKey: "aqua.customBottles.steps.production.title",
+    textKey: "aqua.customBottles.steps.production.text",
   },
   {
     number: "04",
-    title: "Branded Bottles",
-    text: "Your bottles are ready to represent your brand.",
+    titleKey: "aqua.customBottles.steps.bottles.title",
+    textKey: "aqua.customBottles.steps.bottles.text",
+  },
+];
+
+const brandingPoints = [
+  {
+    key: "logo",
+    defaultValue: "Your logo and business identity",
+  },
+  {
+    key: "professional",
+    defaultValue: "Professional bottle branding",
+  },
+  {
+    key: "hotelRestaurant",
+    defaultValue: "Hotel and restaurant branding",
+  },
+  {
+    key: "corporateEvent",
+    defaultValue: "Corporate and event branding",
+  },
+  {
+    key: "bulk",
+    defaultValue: "Bulk branding requirements",
   },
 ];
 
 export default function AquaCustomBottles() {
+  const { t } = useTranslation();
+
   return (
     <section
       id="custom-bottles"
@@ -76,7 +108,9 @@ export default function AquaCustomBottles() {
         lg:py-32
       "
     >
-      {/* Background */}
+      {/* =====================================================
+          BACKGROUND
+      ====================================================== */}
 
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <motion.div
@@ -165,7 +199,9 @@ export default function AquaCustomBottles() {
       </div>
 
       <div className="bb-container relative z-10">
-        {/* Header */}
+        {/* =====================================================
+            HEADER
+        ====================================================== */}
 
         <motion.div
           initial={{
@@ -214,7 +250,9 @@ export default function AquaCustomBottles() {
                 sm:text-xs
               "
             >
-              Custom Bottle Branding
+              {t("aqua.customBottles.eyebrow", {
+                defaultValue: "Custom Bottle Branding",
+              })}
             </span>
           </div>
 
@@ -228,9 +266,14 @@ export default function AquaCustomBottles() {
               lg:text-7xl
             "
           >
-            YOUR BRAND.
+            {t("aqua.customBottles.heading.first", {
+              defaultValue: "YOUR BRAND.",
+            })}
+
             <span className="block text-cyan-300">
-              ON EVERY BOTTLE.
+              {t("aqua.customBottles.heading.second", {
+                defaultValue: "ON EVERY BOTTLE.",
+              })}
             </span>
           </h2>
 
@@ -246,13 +289,16 @@ export default function AquaCustomBottles() {
               sm:leading-8
             "
           >
-            Turn water bottles into a visible extension of your business.
-            Add your logo, brand identity or event branding and create a
-            professional experience for your customers and guests.
+            {t("aqua.customBottles.description", {
+              defaultValue:
+                "Turn water bottles into a visible extension of your business. Add your logo, brand identity or event branding and create a professional experience for your customers and guests.",
+            })}
           </p>
         </motion.div>
 
-        {/* Main Content */}
+        {/* =====================================================
+            MAIN CONTENT
+        ====================================================== */}
 
         <div
           className="
@@ -266,7 +312,9 @@ export default function AquaCustomBottles() {
             lg:gap-16
           "
         >
-          {/* Bottle */}
+          {/* =================================================
+              BOTTLE
+          ================================================== */}
 
           <motion.div
             initial={{
@@ -384,7 +432,9 @@ export default function AquaCustomBottles() {
             >
               <img
                 src="/aqua/bottle.png"
-                alt="BB Aqua branded water bottle"
+                alt={t("aqua.customBottles.bottleAlt", {
+                  defaultValue: "BB Aqua branded water bottle",
+                })}
                 className="
                   h-full
                   w-full
@@ -438,7 +488,9 @@ export default function AquaCustomBottles() {
                 <Droplets className="h-4 w-4 text-cyan-300" />
 
                 <span className="text-xs font-bold text-white">
-                  YOUR BRAND
+                  {t("aqua.customBottles.brandBadge", {
+                    defaultValue: "YOUR BRAND",
+                  })}
                 </span>
               </div>
             </motion.div>
@@ -473,13 +525,17 @@ export default function AquaCustomBottles() {
                 <Sparkles className="h-4 w-4 text-cyan-300" />
 
                 <span className="text-xs font-semibold text-slate-200">
-                  Bottle Branding
+                  {t("aqua.customBottles.bottleBrandingBadge", {
+                    defaultValue: "Bottle Branding",
+                  })}
                 </span>
               </div>
             </motion.div>
           </motion.div>
 
-          {/* Content */}
+          {/* =================================================
+              CONTENT
+          ================================================== */}
 
           <motion.div
             initial={{
@@ -507,7 +563,9 @@ export default function AquaCustomBottles() {
                 text-cyan-300
               "
             >
-              Brand Visibility
+              {t("aqua.customBottles.content.eyebrow", {
+                defaultValue: "Brand Visibility",
+              })}
             </span>
 
             <h3
@@ -521,9 +579,14 @@ export default function AquaCustomBottles() {
                 lg:text-5xl
               "
             >
-              Make your bottle
+              {t("aqua.customBottles.content.heading.first", {
+                defaultValue: "Make your bottle",
+              })}
+
               <span className="block text-cyan-300">
-                work for your brand.
+                {t("aqua.customBottles.content.heading.second", {
+                  defaultValue: "work for your brand.",
+                })}
               </span>
             </h3>
 
@@ -537,21 +600,16 @@ export default function AquaCustomBottles() {
                 sm:leading-8
               "
             >
-              A branded water bottle gives your logo another place to be
-              seen. It can become part of your restaurant table, hotel
-              room, event setup, corporate meeting or special occasion.
+              {t("aqua.customBottles.content.description", {
+                defaultValue:
+                  "A branded water bottle gives your logo another place to be seen. It can become part of your restaurant table, hotel room, event setup, corporate meeting or special occasion.",
+              })}
             </p>
 
             <div className="mt-7 space-y-3">
-              {[
-                "Your logo and business identity",
-                "Professional bottle branding",
-                "Hotel and restaurant branding",
-                "Corporate and event branding",
-                "Bulk branding requirements",
-              ].map((item) => (
+              {brandingPoints.map((item) => (
                 <div
-                  key={item}
+                  key={item.key}
                   className="flex items-center gap-3"
                 >
                   <span
@@ -572,7 +630,12 @@ export default function AquaCustomBottles() {
                   </span>
 
                   <span className="text-sm font-medium text-slate-200">
-                    {item}
+                    {t(
+                      `aqua.customBottles.points.${item.key}`,
+                      {
+                        defaultValue: item.defaultValue,
+                      }
+                    )}
                   </span>
                 </div>
               ))}
@@ -604,13 +667,18 @@ export default function AquaCustomBottles() {
                 sm:w-auto
               "
             >
-              Start Bottle Branding
+              {t("aqua.customBottles.content.button", {
+                defaultValue: "Start Bottle Branding",
+              })}
+
               <ArrowRight className="h-4 w-4" />
             </motion.a>
           </motion.div>
         </div>
 
-        {/* Branding Journey */}
+        {/* =====================================================
+            BRANDING JOURNEY
+        ====================================================== */}
 
         <motion.div
           initial={{
@@ -640,7 +708,9 @@ export default function AquaCustomBottles() {
                 text-cyan-300
               "
             >
-              Branding Journey
+              {t("aqua.customBottles.journey.eyebrow", {
+                defaultValue: "Branding Journey",
+              })}
             </span>
 
             <h3
@@ -652,7 +722,10 @@ export default function AquaCustomBottles() {
                 sm:text-3xl
               "
             >
-              From your identity to every bottle.
+              {t("aqua.customBottles.journey.heading", {
+                defaultValue:
+                  "From your identity to every bottle.",
+              })}
             </h3>
           </div>
 
@@ -727,18 +800,38 @@ export default function AquaCustomBottles() {
                 </div>
 
                 <h4 className="mt-5 text-lg font-bold text-white">
-                  {step.title}
+                  {t(step.titleKey, {
+                    defaultValue:
+                      index === 0
+                        ? "Your Brand"
+                        : index === 1
+                          ? "Brand Design"
+                          : index === 2
+                            ? "Branding & Production"
+                            : "Branded Bottles",
+                  })}
                 </h4>
 
                 <p className="mt-2 text-sm leading-6 text-slate-400">
-                  {step.text}
+                  {t(step.textKey, {
+                    defaultValue:
+                      index === 0
+                        ? "Share your logo, business name or event identity."
+                        : index === 1
+                          ? "Your branding is prepared for the bottle presentation."
+                          : index === 2
+                            ? "The approved branding moves into the production process."
+                            : "Your bottles are ready to represent your brand.",
+                  })}
                 </p>
               </motion.div>
             ))}
           </div>
         </motion.div>
 
-        {/* Use Cases */}
+        {/* =====================================================
+            USE CASES
+        ====================================================== */}
 
         <motion.div
           initial={{
@@ -766,11 +859,15 @@ export default function AquaCustomBottles() {
                 text-slate-400
               "
             >
-              Branding Applications
+              {t("aqua.customBottles.useCases.eyebrow", {
+                defaultValue: "Branding Applications",
+              })}
             </span>
 
             <h3 className="mt-3 text-2xl font-black sm:text-3xl">
-              Built for businesses and occasions.
+              {t("aqua.customBottles.useCases.heading", {
+                defaultValue: "Built for businesses and occasions.",
+              })}
             </h3>
           </div>
 
@@ -788,7 +885,7 @@ export default function AquaCustomBottles() {
 
               return (
                 <motion.div
-                  key={item.title}
+                  key={item.key}
                   initial={{
                     opacity: 0,
                     scale: 0.94,
@@ -829,7 +926,12 @@ export default function AquaCustomBottles() {
                   <Icon className="h-6 w-6 text-cyan-300" />
 
                   <span className="mt-3 text-sm font-semibold text-slate-200">
-                    {item.title}
+                    {t(
+                      `aqua.customBottles.useCases.items.${item.key}`,
+                      {
+                        defaultValue: item.title,
+                      }
+                    )}
                   </span>
                 </motion.div>
               );

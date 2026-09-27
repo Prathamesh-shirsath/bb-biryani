@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { AnimatePresence, motion } from "motion/react";
 import {
   ArrowUpRight,
@@ -10,181 +11,244 @@ import {
 
 const menuCategories = {
   veg: {
-    label: "VEG",
-    marathi: "व्हेज",
+    labelKey: "biryani.menu.categories.veg",
+    defaultLabel: "VEG",
+    marathiKey: "biryani.menu.categories.vegMarathi",
+    defaultMarathi: "व्हेज",
     icon: Leaf,
     accent: "green",
     items: [
       {
         id: "veg-1",
-        name: "Veg Dum Biryani",
-        marathi: "व्हेज दम बिर्याणी",
+        nameKey: "biryani.menu.items.vegDumBiryani.name",
+        marathiKey: "biryani.menu.items.vegDumBiryani.marathi",
+        defaultName: "Veg Dum Biryani",
+        defaultMarathi: "व्हेज दम बिर्याणी",
         price: "₹120",
-        size: "Full",
+        sizeKey: "biryani.menu.sizes.full",
+        defaultSize: "Full",
         image: "/biryani/veg.png",
         featured: true,
       },
       {
         id: "veg-2",
-        name: "Veg Rice",
-        marathi: "व्हेज राईस",
+        nameKey: "biryani.menu.items.vegRice.name",
+        marathiKey: "biryani.menu.items.vegRice.marathi",
+        defaultName: "Veg Rice",
+        defaultMarathi: "व्हेज राईस",
         price: "₹80 / ₹140",
-        size: "Half / Full",
+        sizeKey: "biryani.menu.sizes.halfFull",
+        defaultSize: "Half / Full",
         image: "/biryani/rice.png",
       },
       {
         id: "veg-3",
-        name: "Veg Noodles",
-        marathi: "व्हेज नूडल्स",
+        nameKey: "biryani.menu.items.vegNoodles.name",
+        marathiKey: "biryani.menu.items.vegNoodles.marathi",
+        defaultName: "Veg Noodles",
+        defaultMarathi: "व्हेज नूडल्स",
         price: "₹80 / ₹140",
-        size: "Half / Full",
+        sizeKey: "biryani.menu.sizes.halfFull",
+        defaultSize: "Half / Full",
         image: "/biryani/noodles.png",
       },
       {
         id: "veg-4",
-        name: "Veg Triple Rice",
-        marathi: "व्हेज ट्रिपल राईस",
+        nameKey: "biryani.menu.items.vegTripleRice.name",
+        marathiKey: "biryani.menu.items.vegTripleRice.marathi",
+        defaultName: "Veg Triple Rice",
+        defaultMarathi: "व्हेज ट्रिपल राईस",
         price: "₹130 / ₹230",
-        size: "Half / Full",
+        sizeKey: "biryani.menu.sizes.halfFull",
+        defaultSize: "Half / Full",
         image: "/biryani/triple_rice.png",
       },
       {
         id: "veg-5",
-        name: "Veg Triple Noodles",
-        marathi: "व्हेज ट्रिपल नूडल्स",
+        nameKey: "biryani.menu.items.vegTripleNoodles.name",
+        marathiKey: "biryani.menu.items.vegTripleNoodles.marathi",
+        defaultName: "Veg Triple Noodles",
+        defaultMarathi: "व्हेज ट्रिपल नूडल्स",
         price: "₹130 / ₹230",
-        size: "Half / Full",
+        sizeKey: "biryani.menu.sizes.halfFull",
+        defaultSize: "Half / Full",
         image: "/biryani/triple_noodles.png",
       },
       {
         id: "veg-6",
-        name: "Veg Soup",
-        marathi: "व्हेज सूप",
+        nameKey: "biryani.menu.items.vegSoup.name",
+        marathiKey: "biryani.menu.items.vegSoup.marathi",
+        defaultName: "Veg Soup",
+        defaultMarathi: "व्हेज सूप",
         price: "₹70",
-        size: "Full",
+        sizeKey: "biryani.menu.sizes.full",
+        defaultSize: "Full",
         image: "/biryani/soup.png",
       },
       {
         id: "veg-7",
-        name: "Veg Manchurian",
-        marathi: "व्हेज मंचुरियन",
+        nameKey: "biryani.menu.items.vegManchurian.name",
+        marathiKey: "biryani.menu.items.vegManchurian.marathi",
+        defaultName: "Veg Manchurian",
+        defaultMarathi: "व्हेज मंचुरियन",
         price: "₹100 / ₹180",
-        size: "Half / Full",
+        sizeKey: "biryani.menu.sizes.halfFull",
+        defaultSize: "Half / Full",
         image: "/biryani/munchuriyan.png",
       },
       {
         id: "veg-8",
-        name: "Soyabean Chilli",
-        marathi: "सोयाबीन चिली",
+        nameKey: "biryani.menu.items.soyabeanChilli.name",
+        marathiKey: "biryani.menu.items.soyabeanChilli.marathi",
+        defaultName: "Soyabean Chilli",
+        defaultMarathi: "सोयाबीन चिली",
         price: "₹100 / ₹180",
-        size: "Half / Full",
+        sizeKey: "biryani.menu.sizes.halfFull",
+        defaultSize: "Half / Full",
         image: "/biryani/soyabean_chili.png",
       },
       {
         id: "veg-9",
-        name: "Paneer Chilli",
-        marathi: "पनीर चिली",
+        nameKey: "biryani.menu.items.paneerChilli.name",
+        marathiKey: "biryani.menu.items.paneerChilli.marathi",
+        defaultName: "Paneer Chilli",
+        defaultMarathi: "पनीर चिली",
         price: "₹120 / ₹220",
-        size: "Half / Full",
+        sizeKey: "biryani.menu.sizes.halfFull",
+        defaultSize: "Half / Full",
         image: "/biryani/paneer_chilli.png",
       },
-      
     ],
   },
 
   nonVeg: {
-    label: "NON-VEG",
-    marathi: "नॉनव्हेज",
+    labelKey: "biryani.menu.categories.nonVeg",
+    defaultLabel: "NON-VEG",
+    marathiKey: "biryani.menu.categories.nonVegMarathi",
+    defaultMarathi: "नॉनव्हेज",
     icon: Utensils,
     accent: "red",
     items: [
       {
         id: "nonveg-1",
-        name: "Chicken Dum Biryani",
-        marathi: "चिकन दम बिर्याणी",
+        nameKey: "biryani.menu.items.chickenDumBiryani.name",
+        marathiKey: "biryani.menu.items.chickenDumBiryani.marathi",
+        defaultName: "Chicken Dum Biryani",
+        defaultMarathi: "चिकन दम बिर्याणी",
         price: "₹130",
-        size: "Full",
+        sizeKey: "biryani.menu.sizes.full",
+        defaultSize: "Full",
         image: "/biryani/chicken.png",
         featured: true,
       },
       {
         id: "nonveg-2",
-        name: "Chicken Rice",
-        marathi: "चिकन राईस",
+        nameKey: "biryani.menu.items.chickenRice.name",
+        marathiKey: "biryani.menu.items.chickenRice.marathi",
+        defaultName: "Chicken Rice",
+        defaultMarathi: "चिकन राईस",
         price: "₹80 / ₹140",
-        size: "Half / Full",
+        sizeKey: "biryani.menu.sizes.halfFull",
+        defaultSize: "Half / Full",
         image: "/biryani/chicken.png",
       },
       {
         id: "nonveg-3",
-        name: "Chicken Noodles",
-        marathi: "चिकन नूडल्स",
+        nameKey: "biryani.menu.items.chickenNoodles.name",
+        marathiKey: "biryani.menu.items.chickenNoodles.marathi",
+        defaultName: "Chicken Noodles",
+        defaultMarathi: "चिकन नूडल्स",
         price: "₹80 / ₹140",
-        size: "Half / Full",
+        sizeKey: "biryani.menu.sizes.halfFull",
+        defaultSize: "Half / Full",
         image: "/biryani/chicken_noodles.png",
       },
       {
         id: "nonveg-4",
-        name: "Chicken Soup",
-        marathi: "चिकन सूप",
+        nameKey: "biryani.menu.items.chickenSoup.name",
+        marathiKey: "biryani.menu.items.chickenSoup.marathi",
+        defaultName: "Chicken Soup",
+        defaultMarathi: "चिकन सूप",
         price: "₹80",
-        size: "Full",
+        sizeKey: "biryani.menu.sizes.full",
+        defaultSize: "Full",
         image: "/biryani/chicken_soup.png",
       },
       {
         id: "nonveg-5",
-        name: "Chicken Triple Rice",
-        marathi: "चिकन ट्रिपल राईस",
+        nameKey: "biryani.menu.items.chickenTripleRice.name",
+        marathiKey: "biryani.menu.items.chickenTripleRice.marathi",
+        defaultName: "Chicken Triple Rice",
+        defaultMarathi: "चिकन ट्रिपल राईस",
         price: "₹130 / ₹230",
-        size: "Half / Full",
+        sizeKey: "biryani.menu.sizes.halfFull",
+        defaultSize: "Half / Full",
         image: "/biryani/chicken_triple_rice.png",
       },
       {
         id: "nonveg-6",
-        name: "Chicken Triple Noodles",
-        marathi: "चिकन ट्रिपल नूडल्स",
+        nameKey: "biryani.menu.items.chickenTripleNoodles.name",
+        marathiKey: "biryani.menu.items.chickenTripleNoodles.marathi",
+        defaultName: "Chicken Triple Noodles",
+        defaultMarathi: "चिकन ट्रिपल नूडल्स",
         price: "₹130 / ₹230",
-        size: "Half / Full",
+        sizeKey: "biryani.menu.sizes.halfFull",
+        defaultSize: "Half / Full",
         image: "/biryani/chicken_triple_noodles.png",
       },
       {
         id: "nonveg-7",
-        name: "Chicken Lollipop",
-        marathi: "चिकन लॉलीपॉप",
+        nameKey: "biryani.menu.items.chickenLollipop.name",
+        marathiKey: "biryani.menu.items.chickenLollipop.marathi",
+        defaultName: "Chicken Lollipop",
+        defaultMarathi: "चिकन लॉलीपॉप",
         price: "₹100 / ₹180",
-        size: "Half / Full",
+        sizeKey: "biryani.menu.sizes.halfFull",
+        defaultSize: "Half / Full",
         image: "/biryani/lollipop.png",
       },
       {
         id: "nonveg-8",
-        name: "Chicken Masala Lollipop",
-        marathi: "चिकन मसाला लॉलीपॉप",
+        nameKey: "biryani.menu.items.chickenMasalaLollipop.name",
+        marathiKey: "biryani.menu.items.chickenMasalaLollipop.marathi",
+        defaultName: "Chicken Masala Lollipop",
+        defaultMarathi: "चिकन मसाला लॉलीपॉप",
         price: "₹130 / ₹230",
-        size: "Half / Full",
+        sizeKey: "biryani.menu.sizes.halfFull",
+        defaultSize: "Half / Full",
         image: "/biryani/masala_lollipop.png",
       },
       {
         id: "nonveg-9",
-        name: "Chicken Chilli",
-        marathi: "चिकन चिली",
+        nameKey: "biryani.menu.items.chickenChilli.name",
+        marathiKey: "biryani.menu.items.chickenChilli.marathi",
+        defaultName: "Chicken Chilli",
+        defaultMarathi: "चिकन चिली",
         price: "₹130 / ₹230",
-        size: "Half / Full",
+        sizeKey: "biryani.menu.sizes.halfFull",
+        defaultSize: "Half / Full",
         image: "/biryani/chicken_chilli.png",
       },
       {
         id: "nonveg-10",
-        name: "Chicken 65",
-        marathi: "चिकन 65",
+        nameKey: "biryani.menu.items.chicken65.name",
+        marathiKey: "biryani.menu.items.chicken65.marathi",
+        defaultName: "Chicken 65",
+        defaultMarathi: "चिकन 65",
         price: "₹100 / ₹180",
-        size: "Half / Full",
+        sizeKey: "biryani.menu.sizes.halfFull",
+        defaultSize: "Half / Full",
         image: "/biryani/chicken65.png",
       },
       {
         id: "nonveg-11",
-        name: "BB Fried Chicken",
-        marathi: "BB फ्राईड चिकन",
+        nameKey: "biryani.menu.items.bbFriedChicken.name",
+        marathiKey: "biryani.menu.items.bbFriedChicken.marathi",
+        defaultName: "BB Fried Chicken",
+        defaultMarathi: "BB फ्राईड चिकन",
         price: "₹100 / ₹180",
-        size: "Half / Full",
+        sizeKey: "biryani.menu.sizes.halfFull",
+        defaultSize: "Half / Full",
         image: "/biryani/fried_chicken.png",
         featured: true,
       },
@@ -193,7 +257,20 @@ const menuCategories = {
 };
 
 function MenuCard({ item, index }) {
+  const { t } = useTranslation();
   const [active, setActive] = useState(false);
+
+  const itemName = t(item.nameKey, {
+    defaultValue: item.defaultName,
+  });
+
+  const itemMarathi = t(item.marathiKey, {
+    defaultValue: item.defaultMarathi,
+  });
+
+  const itemSize = t(item.sizeKey, {
+    defaultValue: item.defaultSize,
+  });
 
   return (
     <motion.article
@@ -436,7 +513,9 @@ function MenuCard({ item, index }) {
               />
 
               <span className="text-[6px] font-bold uppercase tracking-wider text-[#D6A84F] sm:text-[8px]">
-                Special
+                {t("biryani.menu.special", {
+                  defaultValue: "Special",
+                })}
               </span>
             </motion.div>
           )}
@@ -445,7 +524,7 @@ function MenuCard({ item, index }) {
 
           <motion.img
             src={item.image}
-            alt={item.name}
+            alt={itemName}
             draggable="false"
             loading="lazy"
             className="
@@ -515,7 +594,9 @@ function MenuCard({ item, index }) {
 
         <div className="relative z-30 p-3.5 sm:p-5">
           <p className="text-[7px] font-semibold uppercase tracking-[0.18em] text-[#D6A84F]/60 sm:text-[9px]">
-            BB Kitchen
+            {t("biryani.menu.kitchen", {
+              defaultValue: "BB Kitchen",
+            })}
           </p>
 
           <h3
@@ -529,11 +610,11 @@ function MenuCard({ item, index }) {
               sm:text-xl
             "
           >
-            {item.name}
+            {itemName}
           </h3>
 
           <p className="mt-1 text-[8px] text-white/30 sm:text-[10px]">
-            {item.marathi}
+            {itemMarathi}
           </p>
 
           <div className="my-3 h-px bg-white/[0.07]" />
@@ -541,7 +622,7 @@ function MenuCard({ item, index }) {
           <div className="flex items-end justify-between">
             <div>
               <p className="text-[7px] uppercase tracking-wider text-white/20 sm:text-[8px]">
-                {item.size}
+                {itemSize}
               </p>
 
               <motion.p
@@ -608,7 +689,9 @@ function MenuCard({ item, index }) {
                   />
 
                   <span className="text-[8px] uppercase tracking-wider text-white/30">
-                    Freshly prepared at BB
+                    {t("biryani.menu.freshlyPrepared", {
+                      defaultValue: "Freshly prepared at BB",
+                    })}
                   </span>
                 </div>
               </motion.div>
@@ -621,6 +704,7 @@ function MenuCard({ item, index }) {
 }
 
 export default function Menu() {
+  const { t } = useTranslation();
   const [category, setCategory] = useState("veg");
 
   const current = menuCategories[category];
@@ -628,6 +712,18 @@ export default function Menu() {
 
   const featured = current.items[0];
   const remaining = current.items.slice(1);
+
+  const featuredName = t(featured.nameKey, {
+    defaultValue: featured.defaultName,
+  });
+
+  const featuredMarathi = t(featured.marathiKey, {
+    defaultValue: featured.defaultMarathi,
+  });
+
+  const featuredSize = t(featured.sizeKey, {
+    defaultValue: featured.defaultSize,
+  });
 
   return (
     <section
@@ -753,7 +849,9 @@ export default function Menu() {
           </div>
 
           <p className="mt-4 bb-eyebrow">
-            BB BIRYANI
+            {t("biryani.menu.eyebrow", {
+              defaultValue: "BB BIRYANI",
+            })}
           </p>
 
           <h2
@@ -770,15 +868,22 @@ export default function Menu() {
               lg:text-7xl
             "
           >
-            Taste The
+            {t("biryani.menu.tasteThe", {
+              defaultValue: "Taste The",
+            })}
+
             <span className="block bg-gradient-to-r from-[#FFF0B8] via-[#D6A84F] to-[#A66A16] bg-clip-text text-transparent">
-              Difference
+              {t("biryani.menu.difference", {
+                defaultValue: "Difference",
+              })}
             </span>
           </h2>
 
           <p className="mx-auto mt-5 max-w-[340px] text-[12px] leading-5 text-white/35 sm:max-w-xl sm:text-sm sm:leading-6">
-            A carefully crafted collection of flavours,
-            prepared fresh and served with the BB touch.
+            {t("biryani.menu.description", {
+              defaultValue:
+                "A carefully crafted collection of flavours, prepared fresh and served with the BB touch.",
+            })}
           </p>
         </motion.div>
 
@@ -850,7 +955,10 @@ export default function Menu() {
                       `}
                     >
                       <Category size={15} />
-                      {value.label}
+
+                      {t(value.labelKey, {
+                        defaultValue: value.defaultLabel,
+                      })}
                     </span>
                   </button>
                 );
@@ -896,8 +1004,14 @@ export default function Menu() {
             />
 
             <span className="text-[9px] font-semibold uppercase tracking-[0.2em] text-white/30">
-              {current.items.length} dishes •{" "}
-              {current.marathi}
+              {current.items.length}{" "}
+              {t("biryani.menu.dishes", {
+                defaultValue: "dishes",
+              })}{" "}
+              •{" "}
+              {t(current.marathiKey, {
+                defaultValue: current.defaultMarathi,
+              })}
             </span>
           </motion.div>
         </AnimatePresence>
@@ -978,7 +1092,7 @@ export default function Menu() {
 
                   <motion.img
                     src={featured.image}
-                    alt={featured.name}
+                    alt={featuredName}
                     draggable="false"
                     className="
                       relative
@@ -1000,7 +1114,9 @@ export default function Menu() {
                   />
 
                   <div className="absolute bottom-4 left-4 rounded-full border border-[#D6A84F]/20 bg-black/60 px-3 py-1.5 text-[8px] uppercase tracking-[0.2em] text-[#D6A84F] backdrop-blur-xl sm:bottom-6 sm:left-6 sm:text-[9px]">
-                    BB Signature
+                    {t("biryani.menu.signature", {
+                      defaultValue: "BB Signature",
+                    })}
                   </div>
                 </div>
 
@@ -1014,27 +1130,31 @@ export default function Menu() {
                     />
 
                     <span className="text-[8px] font-bold uppercase tracking-[0.22em] text-[#D6A84F] sm:text-[10px]">
-                      Chef's Special
+                      {t("biryani.menu.chefsSpecial", {
+                        defaultValue: "Chef's Special",
+                      })}
                     </span>
                   </div>
 
                   <h3 className="mt-3 font-serif text-3xl font-black leading-[0.95] text-white sm:text-5xl">
-                    {featured.name}
+                    {featuredName}
                   </h3>
 
                   <p className="mt-2 text-sm text-[#D6A84F]/70">
-                    {featured.marathi}
+                    {featuredMarathi}
                   </p>
 
                   <p className="mt-5 max-w-md text-xs leading-6 text-white/35 sm:text-sm">
-                    Prepared with aromatic spices, premium
-                    ingredients and the authentic BB touch.
+                    {t("biryani.menu.featuredDescription", {
+                      defaultValue:
+                        "Prepared with aromatic spices, premium ingredients and the authentic BB touch.",
+                    })}
                   </p>
 
                   <div className="mt-7 flex items-end justify-between">
                     <div>
                       <p className="text-[8px] uppercase tracking-widest text-white/20">
-                        {featured.size}
+                        {featuredSize}
                       </p>
 
                       <p className="mt-1 text-3xl font-black text-[#D6A84F] sm:text-4xl">
@@ -1116,7 +1236,9 @@ export default function Menu() {
           />
 
           <span className="text-[8px] uppercase tracking-[0.25em] text-white/20">
-            Fresh • Authentic • BB
+            {t("biryani.menu.bottomTagline", {
+              defaultValue: "Fresh • Authentic • BB",
+            })}
           </span>
 
           <Sparkles

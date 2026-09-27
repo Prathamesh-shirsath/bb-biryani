@@ -6,33 +6,51 @@ import {
   Phone,
   Sparkles,
   Store,
-  Navigation,
 } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 const franchiseLocations = [
   {
     id: "01",
-    name: "Main Branch",
-    location: "Supa,Maharashtra, India",
-    status: "Flagship",
-    description:
-      "The heart of the BB Biryani experience — authentic flavours and premium hospitality.",
+    nameKey: "biryani.franchise.locations.main.name",
+    locationKey: "biryani.franchise.locations.main.location",
+    statusKey: "biryani.franchise.locations.main.status",
+    descriptionKey: "biryani.franchise.locations.main.description",
+    defaults: {
+      name: "Main Branch",
+      location: "Supa, Maharashtra, India",
+      status: "Flagship",
+      description:
+        "The heart of the BB Biryani experience — authentic flavours and premium hospitality.",
+    },
   },
   {
     id: "02",
-    name: "Branch 02",
-    location: "Rahuri, Maharashtra, India",
-    status: "Expanding",
-    description:
-      "A new BB destination bringing our signature taste closer to more customers.",
+    nameKey: "biryani.franchise.locations.branch02.name",
+    locationKey: "biryani.franchise.locations.branch02.location",
+    statusKey: "biryani.franchise.locations.branch02.status",
+    descriptionKey: "biryani.franchise.locations.branch02.description",
+    defaults: {
+      name: "Branch 02",
+      location: "Rahuri, Maharashtra, India",
+      status: "Expanding",
+      description:
+        "A new BB destination bringing our signature taste closer to more customers.",
+    },
   },
   {
     id: "03",
-    name: "Branch 03",
-    location: "Ahilyanagar, Maharashtra, India",
-    status: "Expanding",
-    description:
-      "Another chapter in the BB journey, built around taste, quality and trust.",
+    nameKey: "biryani.franchise.locations.branch03.name",
+    locationKey: "biryani.franchise.locations.branch03.location",
+    statusKey: "biryani.franchise.locations.branch03.status",
+    descriptionKey: "biryani.franchise.locations.branch03.description",
+    defaults: {
+      name: "Branch 03",
+      location: "Ahilyanagar, Maharashtra, India",
+      status: "Expanding",
+      description:
+        "Another chapter in the BB journey, built around taste, quality and trust.",
+    },
   },
 ];
 
@@ -62,7 +80,7 @@ function FloatingParticle({ delay, x, y, size = 3 }) {
   );
 }
 
-function FranchiseCard({ branch, index }) {
+function FranchiseCard({ branch, index, t }) {
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
@@ -85,13 +103,8 @@ function FranchiseCard({ branch, index }) {
   const handleMouseMove = (event) => {
     const rect = event.currentTarget.getBoundingClientRect();
 
-    mouseX.set(
-      event.clientX - (rect.left + rect.width / 2)
-    );
-
-    mouseY.set(
-      event.clientY - (rect.top + rect.height / 2)
-    );
+    mouseX.set(event.clientX - (rect.left + rect.width / 2));
+    mouseY.set(event.clientY - (rect.top + rect.height / 2));
   };
 
   const handleMouseLeave = () => {
@@ -335,7 +348,9 @@ function FranchiseCard({ branch, index }) {
             >
               <span className="h-1.5 w-1.5 rounded-full bg-[#D6A84F] shadow-[0_0_8px_#D6A84F]" />
 
-              {branch.status}
+              {t(branch.statusKey, {
+                defaultValue: branch.defaults.status,
+              })}
             </motion.span>
           </div>
 
@@ -370,7 +385,9 @@ function FranchiseCard({ branch, index }) {
 
           <div className="mt-8">
             <p className="text-[8px] font-semibold uppercase tracking-[0.25em] text-[#D6A84F]/60">
-              BB BIRYANI
+              {t("biryani.franchise.brand", {
+                defaultValue: "BB BIRYANI",
+              })}
             </p>
 
             <motion.h3
@@ -387,7 +404,9 @@ function FranchiseCard({ branch, index }) {
                 sm:text-3xl
               "
             >
-              {branch.name}
+              {t(branch.nameKey, {
+                defaultValue: branch.defaults.name,
+              })}
             </motion.h3>
           </div>
 
@@ -434,7 +453,9 @@ function FranchiseCard({ branch, index }) {
             </motion.div>
 
             <span className="text-[11px] text-white/40">
-              {branch.location}
+              {t(branch.locationKey, {
+                defaultValue: branch.defaults.location,
+              })}
             </span>
           </div>
 
@@ -451,7 +472,9 @@ function FranchiseCard({ branch, index }) {
               sm:leading-6
             "
           >
-            {branch.description}
+            {t(branch.descriptionKey, {
+              defaultValue: branch.defaults.description,
+            })}
           </p>
 
           {/* BOTTOM */}
@@ -489,7 +512,9 @@ function FranchiseCard({ branch, index }) {
               />
 
               <span className="text-[7px] uppercase tracking-[0.18em] text-white/25">
-                BB Network
+                {t("biryani.franchise.network", {
+                  defaultValue: "BB Network",
+                })}
               </span>
             </div>
 
@@ -527,6 +552,8 @@ function FranchiseCard({ branch, index }) {
 }
 
 export default function Franchise() {
+  const { t } = useTranslation();
+
   return (
     <section
       id="franchise"
@@ -679,7 +706,9 @@ export default function Franchise() {
           </div>
 
           <p className="mt-4 bb-eyebrow">
-            Our Growing Network
+            {t("biryani.franchise.eyebrow", {
+              defaultValue: "Our Growing Network",
+            })}
           </p>
 
           <h2
@@ -696,9 +725,14 @@ export default function Franchise() {
               lg:text-6xl
             "
           >
-            Our
+            {t("biryani.franchise.heading.our", {
+              defaultValue: "Our",
+            })}
+
             <span className="block bg-gradient-to-r from-[#FFF0B8] via-[#D6A84F] to-[#A66A16] bg-clip-text text-transparent">
-              Franchise
+              {t("biryani.franchise.heading.franchise", {
+                defaultValue: "Franchise",
+              })}
             </span>
           </h2>
 
@@ -715,8 +749,10 @@ export default function Franchise() {
               sm:leading-6
             "
           >
-            Bringing the BB Biryani experience to new places,
-            one location at a time.
+            {t("biryani.franchise.description", {
+              defaultValue:
+                "Bringing the BB Biryani experience to new places, one location at a time.",
+            })}
           </p>
         </motion.div>
 
@@ -741,6 +777,7 @@ export default function Franchise() {
               key={branch.id}
               branch={branch}
               index={index}
+              t={t}
             />
           ))}
         </div>
@@ -854,7 +891,9 @@ export default function Franchise() {
             </motion.div>
 
             <p className="mt-4 text-[8px] font-semibold uppercase tracking-[0.25em] text-[#D6A84F] sm:text-[10px]">
-              Become Part Of BB
+              {t("biryani.franchise.cta.eyebrow", {
+                defaultValue: "Become Part Of BB",
+              })}
             </p>
 
             <h3
@@ -869,7 +908,10 @@ export default function Franchise() {
                 sm:text-4xl
               "
             >
-              Grow With
+              {t("biryani.franchise.cta.growWith", {
+                defaultValue: "Grow With",
+              })}
+
               <span className="ml-2 text-[#D6A84F]">
                 BB
               </span>
@@ -888,9 +930,10 @@ export default function Franchise() {
                 sm:leading-6
               "
             >
-              Interested in bringing BB Biryani to your
-              city? Connect with us and explore franchise
-              opportunities.
+              {t("biryani.franchise.cta.description", {
+                defaultValue:
+                  "Interested in bringing BB Biryani to your city? Connect with us and explore franchise opportunities.",
+              })}
             </p>
 
             <motion.a
@@ -951,7 +994,9 @@ export default function Franchise() {
               <Phone size={14} />
 
               <span className="relative">
-                Franchise Enquiry
+                {t("biryani.franchise.cta.button", {
+                  defaultValue: "Franchise Enquiry",
+                })}
               </span>
 
               <ArrowUpRight

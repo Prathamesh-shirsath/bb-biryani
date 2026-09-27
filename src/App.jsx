@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Routes, Route, Navigate, Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 import {
   motion,
@@ -26,9 +27,12 @@ import Aqua from "./pages/Aqua/Aqua";
 const businesses = [
   {
     id: "biryani",
-    title: "BB BIRYANI",
-    subtitle: "Authentic Taste. Royal Experience.",
-    description:
+    titleKey: "home.businesses.biryani.title",
+    subtitleKey: "home.businesses.biryani.subtitle",
+    descriptionKey: "home.businesses.biryani.description",
+    titleDefault: "BB BIRYANI",
+    subtitleDefault: "Authentic Taste. Royal Experience.",
+    descriptionDefault:
       "Authentic flavours, rich aromas and a premium dining experience.",
     href: "/biryani",
     number: "01",
@@ -38,9 +42,12 @@ const businesses = [
 
   {
     id: "aqua",
-    title: "BB AQUA",
-    subtitle: "Pure. Fresh. Trusted.",
-    description:
+    titleKey: "home.businesses.aqua.title",
+    subtitleKey: "home.businesses.aqua.subtitle",
+    descriptionKey: "home.businesses.aqua.description",
+    titleDefault: "BB AQUA",
+    subtitleDefault: "Pure. Fresh. Trusted.",
+    descriptionDefault:
       "Quality-focused water solutions built around purity and trust.",
     href: "/aqua",
     number: "02",
@@ -126,12 +133,7 @@ function FallingBottles() {
               top: "-80px",
             }}
             animate={{
-              y: [
-                "-10vh",
-                "35vh",
-                "75vh",
-                "115vh",
-              ],
+              y: ["-10vh", "35vh", "75vh", "115vh"],
               x: [
                 0,
                 index % 2 === 0 ? 18 : -18,
@@ -144,12 +146,7 @@ function FallingBottles() {
                 index % 2 === 0 ? -20 : 20,
                 index % 2 === 0 ? 30 : -30,
               ],
-              opacity: [
-                0,
-                0.15,
-                0.25,
-                0,
-              ],
+              opacity: [0, 0.15, 0.25, 0],
             }}
             transition={{
               duration,
@@ -204,7 +201,7 @@ function WaterOrbs() {
             opacity: [0.15, 0.35, 0.15],
           }}
           transition={{
-            duration: 5 + index % 3,
+            duration: 5 + (index % 3),
             repeat: Infinity,
             delay: index * 0.4,
             ease: "easeInOut",
@@ -255,6 +252,8 @@ function BusinessCard({
   index,
   visible,
 }) {
+  const { t } = useTranslation();
+
   const cardRef = useRef(null);
 
   const mouseX = useMotionValue(0);
@@ -372,9 +371,7 @@ function BusinessCard({
         }}
         className="group relative"
       >
-        {/* =================================================
-            ROTATING BORDER
-        ================================================== */}
+        {/* ROTATING BORDER */}
 
         <motion.div
           animate={{
@@ -396,9 +393,7 @@ function BusinessCard({
           to={business.href}
           className="relative block overflow-hidden rounded-[24px] border border-black/[0.07] bg-white/[0.82] shadow-[0_20px_60px_rgba(65,45,20,0.12)] backdrop-blur-2xl sm:rounded-[30px] sm:shadow-[0_30px_90px_rgba(65,45,20,0.14)]"
         >
-          {/* =================================================
-              SPOTLIGHT
-          ================================================== */}
+          {/* SPOTLIGHT */}
 
           <motion.div
             className="pointer-events-none absolute z-30 h-32 w-32 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/30 blur-3xl opacity-0 transition-opacity duration-500 group-hover:opacity-100 sm:h-44 sm:w-44"
@@ -408,14 +403,14 @@ function BusinessCard({
             }}
           />
 
-          {/* =================================================
-              IMAGE
-          ================================================== */}
+          {/* IMAGE */}
 
           <div className="relative h-[125px] overflow-hidden min-[360px]:h-[145px] sm:h-[275px]">
             <motion.img
               src={business.image}
-              alt={business.title}
+              alt={t(business.titleKey, {
+                defaultValue: business.titleDefault,
+              })}
               className="absolute inset-0 h-full w-full object-cover"
               initial={{
                 scale: 1.3,
@@ -517,7 +512,9 @@ function BusinessCard({
               />
 
               <span className="text-[6px] font-semibold uppercase tracking-[0.12em] text-white/80 sm:text-[8px]">
-                Explore
+                {t("home.businessCard.explore", {
+                  defaultValue: "Explore",
+                })}
               </span>
             </motion.div>
 
@@ -543,9 +540,7 @@ function BusinessCard({
             />
           </div>
 
-          {/* =================================================
-              CONTENT
-          ================================================== */}
+          {/* CONTENT */}
 
           <div className="relative p-3 min-[360px]:p-3.5 sm:p-6">
             <div className="flex items-start justify-between gap-2 sm:gap-4">
@@ -557,7 +552,9 @@ function BusinessCard({
                       : "text-[#467D99]"
                   }`}
                 >
-                  BB Group Business
+                  {t("home.businessCard.businessLabel", {
+                    defaultValue: "BB Group Business",
+                  })}
                 </p>
 
                 <motion.h2
@@ -578,11 +575,15 @@ function BusinessCard({
                   }}
                   className="mt-1.5 font-serif text-[15px] font-black leading-none tracking-[-0.04em] text-[#17130E] min-[360px]:text-[17px] sm:mt-2 sm:text-3xl"
                 >
-                  {business.title}
+                  {t(business.titleKey, {
+                    defaultValue: business.titleDefault,
+                  })}
                 </motion.h2>
 
                 <p className="mt-1 line-clamp-1 text-[7px] font-medium leading-3 text-[#17130E]/50 min-[360px]:text-[8px] sm:text-xs">
-                  {business.subtitle}
+                  {t(business.subtitleKey, {
+                    defaultValue: business.subtitleDefault,
+                  })}
                 </p>
               </div>
 
@@ -607,7 +608,9 @@ function BusinessCard({
             </div>
 
             <p className="mt-2 line-clamp-2 text-[8px] leading-3.5 text-[#17130E]/45 min-[360px]:text-[9px] sm:mt-4 sm:text-xs sm:leading-5">
-              {business.description}
+              {t(business.descriptionKey, {
+                defaultValue: business.descriptionDefault,
+              })}
             </p>
 
             {/* Enter bar */}
@@ -631,7 +634,9 @@ function BusinessCard({
                 />
 
                 <span className="truncate text-[6px] font-bold uppercase tracking-[0.08em] text-[#17130E]/40 min-[360px]:text-[7px] sm:text-[9px] sm:tracking-[0.2em]">
-                  Click to Enter
+                  {t("home.businessCard.clickToEnter", {
+                    defaultValue: "Click to Enter",
+                  })}
                 </span>
               </div>
 
@@ -645,7 +650,10 @@ function BusinessCard({
                 }}
                 className="flex shrink-0 items-center gap-0.5 text-[6px] font-bold uppercase tracking-[0.08em] text-[#17130E]/45 min-[360px]:text-[7px] sm:gap-1 sm:text-[9px] sm:tracking-[0.18em]"
               >
-                Explore
+                {t("home.businessCard.explore", {
+                  defaultValue: "Explore",
+                })}
+
                 <ChevronRight
                   size={10}
                   className="sm:h-[13px] sm:w-[13px]"
@@ -664,6 +672,8 @@ function BusinessCard({
 ========================================================= */
 
 function BrandIntro({ visible }) {
+  const { t } = useTranslation();
+
   return (
     <AnimatePresence>
       {visible && (
@@ -801,7 +811,9 @@ function BrandIntro({ visible }) {
               />
 
               <p className="text-[9px] font-bold uppercase tracking-[0.42em] text-[#94702E]">
-                Welcome to
+                {t("home.intro.welcome", {
+                  defaultValue: "Welcome to",
+                })}
               </p>
 
               <Sparkles
@@ -811,7 +823,9 @@ function BrandIntro({ visible }) {
             </div>
 
             <p className="mt-2 font-serif text-lg font-bold text-[#211A11]">
-              BB Group of Businesses
+              {t("home.brandName", {
+                defaultValue: "BB Group of Businesses",
+              })}
             </p>
 
             <motion.div
@@ -839,6 +853,8 @@ function BrandIntro({ visible }) {
 ========================================================= */
 
 function Home() {
+  const { t } = useTranslation();
+
   const [intro, setIntro] = useState(true);
   const [cardsVisible, setCardsVisible] = useState(false);
 
@@ -1002,7 +1018,6 @@ function Home() {
       ====================================================== */}
 
       <div className="relative z-10 min-h-[100svh] px-4 sm:px-8">
-
         {/* =================================================
             HEADER
         ================================================== */}
@@ -1042,11 +1057,15 @@ function Home() {
 
             <div>
               <p className="text-[6px] font-semibold uppercase tracking-[0.22em] text-[#9A742F] sm:text-[8px] sm:tracking-[0.3em]">
-                Welcome to
+                {t("home.intro.welcome", {
+                  defaultValue: "Welcome to",
+                })}
               </p>
 
               <p className="font-serif text-[11px] font-bold text-[#201A12] sm:text-base">
-                BB Group of Businesses
+                {t("home.brandName", {
+                  defaultValue: "BB Group of Businesses",
+                })}
               </p>
             </div>
           </div>
@@ -1058,7 +1077,9 @@ function Home() {
             />
 
             <span className="text-[8px] font-semibold uppercase tracking-[0.22em] text-[#201A12]/40">
-              Business Portfolio
+              {t("home.header.portfolio", {
+                defaultValue: "Business Portfolio",
+              })}
             </span>
           </div>
         </motion.header>
@@ -1109,7 +1130,9 @@ function Home() {
             />
 
             <span className="text-[7px] font-bold uppercase tracking-[0.25em] text-[#9A742F] sm:text-[9px] sm:tracking-[0.4em]">
-              One Vision · Multiple Businesses
+              {t("home.eyebrow", {
+                defaultValue: "One Vision · Multiple Businesses",
+              })}
             </span>
 
             <motion.span
@@ -1154,8 +1177,10 @@ function Home() {
             }}
             className="mx-auto mt-3 max-w-[290px] text-[9px] leading-4 text-[#201A12]/40 min-[360px]:text-[10px] sm:mt-5 sm:max-w-lg sm:text-sm sm:leading-6"
           >
-            Explore the businesses, experiences and vision
-            behind the BB brand.
+            {t("home.description", {
+              defaultValue:
+                "Explore the businesses, experiences and vision behind the BB brand.",
+            })}
           </motion.p>
         </motion.div>
 
@@ -1242,7 +1267,9 @@ function Home() {
             />
 
             <span className="text-[6px] font-bold uppercase tracking-[0.2em] text-[#201A12]/35 sm:text-[8px] sm:tracking-[0.28em]">
-              Select a business to continue
+              {t("home.selectBusiness", {
+                defaultValue: "Select a business to continue",
+              })}
             </span>
           </div>
         </motion.div>
@@ -1272,6 +1299,8 @@ export default function App() {
         path="/aqua"
         element={<Aqua />}
       />
+
+      
 
       <Route
         path="*"

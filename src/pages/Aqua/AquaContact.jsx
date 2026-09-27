@@ -1,4 +1,6 @@
 import { motion } from "motion/react";
+import { useTranslation } from "react-i18next";
+
 import {
   ArrowRight,
   Clock3,
@@ -10,28 +12,35 @@ import {
 
 const contactItems = [
   {
+    key: "call",
     icon: Phone,
-    title: "Call Us",
+    titleKey: "aqua.contact.items.call.title",
     value: "+91 7038925137",
     href: "tel:+917038925137",
     clickable: true,
   },
   {
+    key: "whatsapp",
     icon: MessageCircle,
-    title: "WhatsApp",
-    value: "Start an enquiry",
+    titleKey: "aqua.contact.items.whatsapp.title",
+    valueKey: "aqua.contact.items.whatsapp.value",
+    valueDefault: "Start an enquiry",
     href: "https://wa.me/917038925137",
     clickable: true,
   },
   {
+    key: "hours",
     icon: Clock3,
-    title: "Business Hours",
-    value: "Contact us for availability",
+    titleKey: "aqua.contact.items.hours.title",
+    valueKey: "aqua.contact.items.hours.value",
+    valueDefault: "Contact us for availability",
     clickable: false,
   },
 ];
 
 export default function AquaContact() {
+  const { t } = useTranslation();
+
   return (
     <section
       id="contact"
@@ -161,7 +170,9 @@ export default function AquaContact() {
                 sm:text-xs
               "
             >
-              Contact BB Aqua
+              {t("aqua.contact.eyebrow", {
+                defaultValue: "Contact BB Aqua",
+              })}
             </span>
           </div>
 
@@ -175,9 +186,14 @@ export default function AquaContact() {
               lg:text-7xl
             "
           >
-            Let's Talk About
+            {t("aqua.contact.heading.first", {
+              defaultValue: "Let's Talk About",
+            })}
+
             <span className="block text-cyan-300">
-              Your Brand.
+              {t("aqua.contact.heading.second", {
+                defaultValue: "Your Brand.",
+              })}
             </span>
           </h2>
 
@@ -193,8 +209,10 @@ export default function AquaContact() {
               sm:leading-8
             "
           >
-            Have a bottle branding requirement, bulk enquiry or want
-            to know more about BB Aqua? Get in touch with us.
+            {t("aqua.contact.description", {
+              defaultValue:
+                "Have a bottle branding requirement, bulk enquiry or want to know more about BB Aqua? Get in touch with us.",
+            })}
           </p>
         </motion.div>
 
@@ -252,7 +270,9 @@ export default function AquaContact() {
                 text-cyan-300
               "
             >
-              Get In Touch
+              {t("aqua.contact.info.eyebrow", {
+                defaultValue: "Get In Touch",
+              })}
             </p>
 
             <h3
@@ -263,7 +283,9 @@ export default function AquaContact() {
                 sm:text-3xl
               "
             >
-              Connect with BB Aqua.
+              {t("aqua.contact.info.heading", {
+                defaultValue: "Connect with BB Aqua.",
+              })}
             </h3>
 
             <p
@@ -275,8 +297,10 @@ export default function AquaContact() {
                 text-slate-400
               "
             >
-              For branded water, Custom Bottle Branding or bulk
-              requirements, contact us directly.
+              {t("aqua.contact.info.description", {
+                defaultValue:
+                  "For branded water, Custom Bottle Branding or bulk requirements, contact us directly.",
+              })}
             </p>
 
             {/* Contact Items */}
@@ -284,6 +308,12 @@ export default function AquaContact() {
             <div className="mt-8 space-y-3">
               {contactItems.map((item, index) => {
                 const Icon = item.icon;
+
+                const value = item.valueKey
+                  ? t(item.valueKey, {
+                      defaultValue: item.valueDefault,
+                    })
+                  : item.value;
 
                 const content = (
                   <>
@@ -312,7 +342,14 @@ export default function AquaContact() {
                           text-slate-500
                         "
                       >
-                        {item.title}
+                        {t(item.titleKey, {
+                          defaultValue:
+                            item.key === "call"
+                              ? "Call Us"
+                              : item.key === "whatsapp"
+                                ? "WhatsApp"
+                                : "Business Hours",
+                        })}
                       </p>
 
                       <p
@@ -324,7 +361,7 @@ export default function AquaContact() {
                           text-white
                         "
                       >
-                        {item.value}
+                        {value}
                       </p>
                     </div>
                   </>
@@ -333,7 +370,7 @@ export default function AquaContact() {
                 if (item.clickable && item.href) {
                   return (
                     <motion.a
-                      key={item.title}
+                      key={item.key}
                       href={item.href}
                       target={
                         item.href.startsWith("http")
@@ -384,7 +421,7 @@ export default function AquaContact() {
 
                 return (
                   <motion.div
-                    key={item.title}
+                    key={item.key}
                     initial={{
                       opacity: 0,
                       y: 15,
@@ -434,11 +471,16 @@ export default function AquaContact() {
 
                 <div>
                   <p className="text-xs font-bold text-white">
-                    WhatsApp Enquiry
+                    {t("aqua.contact.whatsapp.title", {
+                      defaultValue: "WhatsApp Enquiry",
+                    })}
                   </p>
 
                   <p className="mt-1 text-[11px] text-slate-400">
-                    Your enquiry can open directly in WhatsApp.
+                    {t("aqua.contact.whatsapp.description", {
+                      defaultValue:
+                        "Your enquiry can open directly in WhatsApp.",
+                    })}
                   </p>
                 </div>
               </div>
@@ -530,7 +572,9 @@ export default function AquaContact() {
                 font-black
               "
             >
-              Let's Connect.
+              {t("aqua.contact.connect.title", {
+                defaultValue: "Let's Connect.",
+              })}
             </h3>
 
             <p
@@ -543,8 +587,10 @@ export default function AquaContact() {
                 text-[#16445B]
               "
             >
-              For location details, business enquiries and visiting
-              information, please contact BB Aqua directly.
+              {t("aqua.contact.connect.description", {
+                defaultValue:
+                  "For location details, business enquiries and visiting information, please contact BB Aqua directly.",
+              })}
             </p>
 
             {/* Quick WhatsApp Card */}
@@ -569,7 +615,9 @@ export default function AquaContact() {
                   text-cyan-300
                 "
               >
-                Need A Quick Response?
+                {t("aqua.contact.quickResponse.title", {
+                  defaultValue: "Need A Quick Response?",
+                })}
               </p>
 
               <p
@@ -580,8 +628,10 @@ export default function AquaContact() {
                   text-slate-300
                 "
               >
-                Send your bottle branding or bulk requirement directly
-                on WhatsApp.
+                {t("aqua.contact.quickResponse.description", {
+                  defaultValue:
+                    "Send your bottle branding or bulk requirement directly on WhatsApp.",
+                })}
               </p>
 
               <a
@@ -606,7 +656,10 @@ export default function AquaContact() {
                   hover:-translate-y-1
                 "
               >
-                WhatsApp BB Aqua
+                {t("aqua.contact.quickResponse.button", {
+                  defaultValue: "WhatsApp BB Aqua",
+                })}
+
                 <ArrowRight className="h-4 w-4" />
               </a>
             </div>
@@ -668,7 +721,9 @@ export default function AquaContact() {
           "
         >
           <p className="text-xs text-slate-500">
-            BB GROUP OF BUSINESSES
+            {t("aqua.contact.footer.groupName", {
+              defaultValue: "BB GROUP OF BUSINESSES",
+            })}
           </p>
 
           <p
@@ -679,7 +734,9 @@ export default function AquaContact() {
               text-slate-300
             "
           >
-            BB Aqua · Pure. Fresh. Trusted.
+            {t("aqua.contact.footer.tagline", {
+              defaultValue: "BB Aqua · Pure. Fresh. Trusted.",
+            })}
           </p>
         </motion.div>
       </div>

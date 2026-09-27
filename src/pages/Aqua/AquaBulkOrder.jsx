@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { motion } from "motion/react";
+import { useTranslation } from "react-i18next";
+
 import {
   ArrowRight,
   Building2,
@@ -19,19 +21,50 @@ const initialForm = {
   email: "",
   quantity: "",
   requirement: "",
+  additionalRequirement: "",
 };
 
 const requirements = [
-  "BB Aqua Branded Water",
-  "Custom Bottle Branding",
-  "Hotel / Restaurant",
-  "Wedding / Event",
-  "Corporate Requirement",
-  "Bulk Requirement",
-  "Other",
+  {
+    value: "BB Aqua Branded Water",
+    key: "brandedWater",
+    defaultValue: "BB Aqua Branded Water",
+  },
+  {
+    value: "Custom Bottle Branding",
+    key: "customBranding",
+    defaultValue: "Custom Bottle Branding",
+  },
+  {
+    value: "Hotel / Restaurant",
+    key: "hotelRestaurant",
+    defaultValue: "Hotel / Restaurant",
+  },
+  {
+    value: "Wedding / Event",
+    key: "weddingEvent",
+    defaultValue: "Wedding / Event",
+  },
+  {
+    value: "Corporate Requirement",
+    key: "corporate",
+    defaultValue: "Corporate Requirement",
+  },
+  {
+    value: "Bulk Requirement",
+    key: "bulk",
+    defaultValue: "Bulk Requirement",
+  },
+  {
+    value: "Other",
+    key: "other",
+    defaultValue: "Other",
+  },
 ];
 
 export default function AquaBulkOrder() {
+  const { t } = useTranslation();
+
   const [form, setForm] = useState(initialForm);
   const [submitted, setSubmitted] = useState(false);
 
@@ -51,19 +84,62 @@ export default function AquaBulkOrder() {
   const handleSubmit = (event) => {
     event.preventDefault();
 
+    const selectedRequirement =
+      requirements.find((item) => item.value === form.requirement);
+
+    const requirementText = selectedRequirement
+      ? t(
+          `aqua.bulkOrder.requirements.${selectedRequirement.key}`,
+          {
+            defaultValue: selectedRequirement.defaultValue,
+          }
+        )
+      : form.requirement || "Not specified";
+
     const message = `
-Hello BB Aqua,
+${t("aqua.bulkOrder.whatsapp.greeting", {
+  defaultValue: "Hello BB Aqua,",
+})}
 
-I would like to enquire about a bulk / bottle branding requirement.
+${t("aqua.bulkOrder.whatsapp.intro", {
+  defaultValue:
+    "I would like to enquire about a bulk / bottle branding requirement.",
+})}
 
-Name: ${form.name}
-Business / Organisation: ${form.businessName}
-Phone: ${form.phone}
-Email: ${form.email || "Not provided"}
-Quantity: ${form.quantity || "Not specified"}
-Requirement: ${form.requirement || "Not specified"}
+${t("aqua.bulkOrder.whatsapp.name", {
+  defaultValue: "Name",
+})}: ${form.name}
 
-Please share the available options and further details.
+${t("aqua.bulkOrder.whatsapp.business", {
+  defaultValue: "Business / Organisation",
+})}: ${form.businessName}
+
+${t("aqua.bulkOrder.whatsapp.phone", {
+  defaultValue: "Phone",
+})}: ${form.phone}
+
+${t("aqua.bulkOrder.whatsapp.email", {
+  defaultValue: "Email",
+})}: ${form.email || "Not provided"}
+
+${t("aqua.bulkOrder.whatsapp.quantity", {
+  defaultValue: "Quantity",
+})}: ${form.quantity || "Not specified"}
+
+${t("aqua.bulkOrder.whatsapp.requirement", {
+  defaultValue: "Requirement",
+})}: ${requirementText}
+
+${t("aqua.bulkOrder.whatsapp.additionalRequirement", {
+  defaultValue: "Additional Requirement",
+})}: ${
+      form.additionalRequirement || "Not provided"
+    }
+
+${t("aqua.bulkOrder.whatsapp.closing", {
+  defaultValue:
+    "Please share the available options and further details.",
+})}
     `.trim();
 
     const whatsappNumber = "917038925137";
@@ -202,7 +278,9 @@ Please share the available options and further details.
                 sm:text-xs
               "
             >
-              Bulk & Branding Enquiry
+              {t("aqua.bulkOrder.eyebrow", {
+                defaultValue: "Bulk & Branding Enquiry",
+              })}
             </span>
           </div>
 
@@ -216,9 +294,14 @@ Please share the available options and further details.
               lg:text-7xl
             "
           >
-            Need Bottles For
+            {t("aqua.bulkOrder.heading.first", {
+              defaultValue: "Need Bottles For",
+            })}
+
             <span className="block text-cyan-600">
-              Your Business?
+              {t("aqua.bulkOrder.heading.second", {
+                defaultValue: "Your Business?",
+              })}
             </span>
           </h2>
 
@@ -234,9 +317,10 @@ Please share the available options and further details.
               sm:leading-8
             "
           >
-            Tell us about your requirement. Whether you need BB Aqua
-            branded water or custom bottle branding, send your details
-            and continue the conversation on WhatsApp.
+            {t("aqua.bulkOrder.description", {
+              defaultValue:
+                "Tell us about your requirement. Whether you need BB Aqua branded water or custom bottle branding, send your details and continue the conversation on WhatsApp.",
+            })}
           </p>
         </motion.div>
 
@@ -310,10 +394,15 @@ Please share the available options and further details.
                 sm:text-3xl
               "
             >
-              Let's build your
+              {t("aqua.bulkOrder.info.title.first", {
+                defaultValue: "Let's build your",
+              })}
+
               <span className="text-cyan-300">
                 {" "}
-                bottle identity.
+                {t("aqua.bulkOrder.info.title.second", {
+                  defaultValue: "bottle identity.",
+                })}
               </span>
             </h3>
 
@@ -325,20 +414,33 @@ Please share the available options and further details.
                 text-slate-300
               "
             >
-              Share your basic requirement and our team can continue
-              the discussion about your bottle branding or bulk
-              requirement.
+              {t("aqua.bulkOrder.info.description", {
+                defaultValue:
+                  "Share your basic requirement and our team can continue the discussion about your bottle branding or bulk requirement.",
+              })}
             </p>
 
             <div className="mt-8 space-y-4">
               {[
-                "BB Aqua branded water",
-                "Custom Bottle Branding",
-                "Business & event requirements",
-                "Bulk enquiries",
+                {
+                  key: "brandedWater",
+                  defaultValue: "BB Aqua branded water",
+                },
+                {
+                  key: "customBranding",
+                  defaultValue: "Custom Bottle Branding",
+                },
+                {
+                  key: "businessEvents",
+                  defaultValue: "Business & event requirements",
+                },
+                {
+                  key: "bulk",
+                  defaultValue: "Bulk enquiries",
+                },
               ].map((item) => (
                 <div
-                  key={item}
+                  key={item.key}
                   className="flex items-center gap-3"
                 >
                   <div
@@ -357,7 +459,12 @@ Please share the available options and further details.
                   </div>
 
                   <span className="text-sm text-slate-300">
-                    {item}
+                    {t(
+                      `aqua.bulkOrder.info.highlights.${item.key}`,
+                      {
+                        defaultValue: item.defaultValue,
+                      }
+                    )}
                   </span>
                 </div>
               ))}
@@ -378,11 +485,16 @@ Please share the available options and further details.
 
                 <div>
                   <p className="text-xs font-bold text-white">
-                    WhatsApp Enquiry
+                    {t("aqua.bulkOrder.whatsapp.title", {
+                      defaultValue: "WhatsApp Enquiry",
+                    })}
                   </p>
 
                   <p className="mt-1 text-[11px] text-slate-400">
-                    Your enquiry will open directly in WhatsApp.
+                    {t("aqua.bulkOrder.whatsapp.description", {
+                      defaultValue:
+                        "Your enquiry will open directly in WhatsApp.",
+                    })}
                   </p>
                 </div>
               </div>
@@ -425,21 +537,35 @@ Please share the available options and further details.
 
             <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
               <Field
-                label="Your Name"
+                label={t("aqua.bulkOrder.form.name.label", {
+                  defaultValue: "Your Name",
+                })}
                 name="name"
                 value={form.name}
                 onChange={handleChange}
-                placeholder="Enter your name"
+                placeholder={t(
+                  "aqua.bulkOrder.form.name.placeholder",
+                  {
+                    defaultValue: "Enter your name",
+                  }
+                )}
                 icon={User}
                 required
               />
 
               <Field
-                label="Business / Organisation"
+                label={t("aqua.bulkOrder.form.business.label", {
+                  defaultValue: "Business / Organisation",
+                })}
                 name="businessName"
                 value={form.businessName}
                 onChange={handleChange}
-                placeholder="Business name"
+                placeholder={t(
+                  "aqua.bulkOrder.form.business.placeholder",
+                  {
+                    defaultValue: "Business name",
+                  }
+                )}
                 icon={Building2}
                 required
               />
@@ -449,22 +575,36 @@ Please share the available options and further details.
 
             <div className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2">
               <Field
-                label="Phone Number"
+                label={t("aqua.bulkOrder.form.phone.label", {
+                  defaultValue: "Phone Number",
+                })}
                 name="phone"
                 value={form.phone}
                 onChange={handleChange}
-                placeholder="Your phone number"
+                placeholder={t(
+                  "aqua.bulkOrder.form.phone.placeholder",
+                  {
+                    defaultValue: "Your phone number",
+                  }
+                )}
                 icon={Phone}
                 type="tel"
                 required
               />
 
               <Field
-                label="Email"
+                label={t("aqua.bulkOrder.form.email.label", {
+                  defaultValue: "Email",
+                })}
                 name="email"
                 value={form.email}
                 onChange={handleChange}
-                placeholder="your@email.com"
+                placeholder={t(
+                  "aqua.bulkOrder.form.email.placeholder",
+                  {
+                    defaultValue: "your@email.com",
+                  }
+                )}
                 icon={Mail}
                 type="email"
               />
@@ -474,11 +614,18 @@ Please share the available options and further details.
 
             <div className="mt-5">
               <Field
-                label="Approximate Quantity"
+                label={t("aqua.bulkOrder.form.quantity.label", {
+                  defaultValue: "Approximate Quantity",
+                })}
                 name="quantity"
                 value={form.quantity}
                 onChange={handleChange}
-                placeholder="Example: 500 bottles"
+                placeholder={t(
+                  "aqua.bulkOrder.form.quantity.placeholder",
+                  {
+                    defaultValue: "Example: 500 bottles",
+                  }
+                )}
                 icon={PackageCheck}
               />
             </div>
@@ -496,7 +643,9 @@ Please share the available options and further details.
                   text-[#06283D]
                 "
               >
-                Requirement
+                {t("aqua.bulkOrder.form.requirement.label", {
+                  defaultValue: "Requirement",
+                })}
               </label>
 
               <select
@@ -523,12 +672,19 @@ Please share the available options and further details.
                 "
               >
                 <option value="">
-                  Select your requirement
+                  {t("aqua.bulkOrder.form.requirement.placeholder", {
+                    defaultValue: "Select your requirement",
+                  })}
                 </option>
 
                 {requirements.map((item) => (
-                  <option key={item} value={item}>
-                    {item}
+                  <option key={item.key} value={item.value}>
+                    {t(
+                      `aqua.bulkOrder.requirements.${item.key}`,
+                      {
+                        defaultValue: item.defaultValue,
+                      }
+                    )}
                   </option>
                 ))}
               </select>
@@ -547,21 +703,27 @@ Please share the available options and further details.
                   text-[#06283D]
                 "
               >
-                Additional Requirement
+                {t(
+                  "aqua.bulkOrder.form.additionalRequirement.label",
+                  {
+                    defaultValue: "Additional Requirement",
+                  }
+                )}
               </label>
 
               <textarea
                 id="additionalRequirement"
                 name="additionalRequirement"
-                placeholder="Tell us about your branding, event or bulk requirement..."
+                placeholder={t(
+                  "aqua.bulkOrder.form.additionalRequirement.placeholder",
+                  {
+                    defaultValue:
+                      "Tell us about your branding, event or bulk requirement...",
+                  }
+                )}
                 rows={5}
-                value={form.additionalRequirement || ""}
-                onChange={(event) =>
-                  setForm((previous) => ({
-                    ...previous,
-                    additionalRequirement: event.target.value,
-                  }))
-                }
+                value={form.additionalRequirement}
+                onChange={handleChange}
                 className="
                   w-full
                   rounded-2xl
@@ -610,7 +772,9 @@ Please share the available options and further details.
             >
               <Send className="h-4 w-4 text-cyan-300" />
 
-              Send Enquiry on WhatsApp
+              {t("aqua.bulkOrder.form.submit", {
+                defaultValue: "Send Enquiry on WhatsApp",
+              })}
 
               <ArrowRight className="h-4 w-4 text-cyan-300" />
             </button>
@@ -639,13 +803,18 @@ Please share the available options and further details.
                   text-green-700
                 "
               >
-                Your enquiry is ready in WhatsApp.
+                {t("aqua.bulkOrder.form.success", {
+                  defaultValue:
+                    "Your enquiry is ready in WhatsApp.",
+                })}
               </motion.div>
             )}
 
             <p className="mt-4 text-center text-[10px] leading-5 text-slate-400">
-              By submitting, you will be redirected to WhatsApp to
-              continue the enquiry.
+              {t("aqua.bulkOrder.form.privacy", {
+                defaultValue:
+                  "By submitting, you will be redirected to WhatsApp to continue the enquiry.",
+              })}
             </p>
           </motion.form>
         </div>

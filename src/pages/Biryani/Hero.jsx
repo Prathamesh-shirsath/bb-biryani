@@ -1,9 +1,12 @@
+import { useTranslation } from "react-i18next";
 import { motion } from "motion/react";
 import { ArrowDown, ArrowRight } from "lucide-react";
 
 import BiryaniSpinner from "./BiryaniSpinner";
 
 export default function Hero() {
+  const { t } = useTranslation();
+
   return (
     <section
       id="home"
@@ -183,7 +186,6 @@ export default function Hero() {
           lg:pt-28
         "
       >
-
         {/* =================================================
             LEFT / TEXT CONTENT
         ================================================== */}
@@ -226,7 +228,9 @@ export default function Hero() {
               md:text-sm
             "
           >
-            BB GROUP OF BUSINESSES
+            {t("biryani.hero.brand", {
+              defaultValue: "BB GROUP OF BUSINESSES",
+            })}
           </motion.p>
 
           {/* Main heading */}
@@ -316,7 +320,9 @@ export default function Hero() {
                   md:text-sm
                 "
               >
-                Authentic Taste. Royal Experience.
+                {t("biryani.hero.tagline", {
+                  defaultValue: "Authentic Taste. Royal Experience.",
+                })}
               </p>
             </div>
           </motion.div>
@@ -353,8 +359,10 @@ export default function Hero() {
               lg:mx-0
             "
           >
-            Authentic flavours, aromatic spices and a royal
-            biryani experience crafted for every celebration.
+            {t("biryani.hero.description", {
+              defaultValue:
+                "Authentic flavours, aromatic spices and a royal biryani experience crafted for every celebration.",
+            })}
           </motion.p>
 
           {/* =================================================
@@ -422,7 +430,9 @@ export default function Hero() {
                 sm:hover:scale-105
               "
             >
-              VIEW MENU
+              {t("biryani.hero.viewMenu", {
+                defaultValue: "VIEW MENU",
+              })}
 
               <ArrowRight
                 size={16}
@@ -434,9 +444,8 @@ export default function Hero() {
               />
             </a>
 
-           
-           {/* Order */}
-           {/* <a
+            {/* Order */}
+            {/* <a
               href="#enquiry"
               className="
                 group
@@ -466,7 +475,7 @@ export default function Hero() {
                 sm:hover:bg-white/[0.06]
               "
             >
-            {/* <span className="flex items-center gap-2">
+              <span className="flex items-center gap-2">
                 ORDER NOW
 
                 <ArrowRight
@@ -479,7 +488,7 @@ export default function Hero() {
                   "
                 />
               </span>
-            </a>*/}
+            </a> */}
           </motion.div>
 
           {/* Location */}
@@ -502,7 +511,10 @@ export default function Hero() {
               sm:text-xs
             "
           >
-            📍 Main Branch • Maharashtra
+            📍{" "}
+            {t("biryani.hero.location", {
+              defaultValue: "Main Branch • Maharashtra",
+            })}
           </motion.div>
 
           {/* =================================================
@@ -548,7 +560,9 @@ export default function Hero() {
               </p>
 
               <p className="mt-1 text-[7px] uppercase tracking-[0.12em] text-white/30 sm:text-[10px] sm:tracking-widest">
-                Fresh
+                {t("biryani.hero.fresh", {
+                  defaultValue: "Fresh",
+                })}
               </p>
             </div>
 
@@ -561,7 +575,9 @@ export default function Hero() {
               </p>
 
               <p className="mt-1 text-[7px] uppercase tracking-[0.12em] text-white/30 sm:text-[10px] sm:tracking-widest">
-                Signature
+                {t("biryani.hero.signature", {
+                  defaultValue: "Signature",
+                })}
               </p>
             </div>
 
@@ -574,7 +590,9 @@ export default function Hero() {
               </p>
 
               <p className="mt-1 text-[7px] uppercase tracking-[0.12em] text-white/30 sm:text-[10px] sm:tracking-widest">
-                Cravings
+                {t("biryani.hero.cravings", {
+                  defaultValue: "Cravings",
+                })}
               </p>
             </div>
           </motion.div>
@@ -743,11 +761,15 @@ export default function Hero() {
             "
           >
             <p className="text-[7px] uppercase tracking-[0.15em] text-white/30 sm:text-[10px] sm:tracking-widest">
-              Today's Special
+              {t("biryani.hero.todaySpecial", {
+                defaultValue: "Today's Special",
+              })}
             </p>
 
             <p className="mt-1 text-[10px] font-bold text-[#D6A84F] sm:text-sm">
-              Royal Biryani
+              {t("biryani.hero.royalBiryani", {
+                defaultValue: "Royal Biryani",
+              })}
             </p>
           </motion.div>
         </div>
@@ -780,7 +802,9 @@ export default function Hero() {
         "
       >
         <span className="text-[9px] uppercase tracking-[0.4em]">
-          Scroll
+          {t("biryani.hero.scroll", {
+            defaultValue: "Scroll",
+          })}
         </span>
 
         <ArrowDown size={14} />

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
+import { useTranslation } from "react-i18next";
 
 import {
   ArrowLeft,
@@ -15,57 +16,51 @@ const stages = [
   {
     id: 0,
     number: "01",
-    title: "Bottle",
-    subtitle: "Start with the bottle",
-    description:
-      "Start with a clean water bottle ready to carry your brand identity.",
+    titleKey: "aqua.bottleShowcase.stages.bottle.title",
+    subtitleKey: "aqua.bottleShowcase.stages.bottle.subtitle",
+    descriptionKey: "aqua.bottleShowcase.stages.bottle.description",
     image: "/aqua/raw.png",
   },
   {
     id: 1,
     number: "02",
-    title: "Your Logo",
-    subtitle: "Add your identity",
-    description:
-      "Your business logo, brand name or event identity becomes the visual focus.",
+    titleKey: "aqua.bottleShowcase.stages.logo.title",
+    subtitleKey: "aqua.bottleShowcase.stages.logo.subtitle",
+    descriptionKey: "aqua.bottleShowcase.stages.logo.description",
     image: "/aqua/bottle.png",
   },
   {
     id: 2,
     number: "03",
-    title: "Brand Design",
-    subtitle: "Build your presentation",
-    description:
-      "Your branding is arranged into a professional bottle presentation.",
+    titleKey: "aqua.bottleShowcase.stages.design.title",
+    subtitleKey: "aqua.bottleShowcase.stages.design.subtitle",
+    descriptionKey: "aqua.bottleShowcase.stages.design.description",
     image: "/aqua/sticker.png",
   },
   {
     id: 3,
     number: "04",
-    title: "Branded Bottle",
-    subtitle: "Ready to represent you",
-    description:
-      "The finished branded bottle becomes part of your customer or guest experience.",
+    titleKey: "aqua.bottleShowcase.stages.branded.title",
+    subtitleKey: "aqua.bottleShowcase.stages.branded.subtitle",
+    descriptionKey: "aqua.bottleShowcase.stages.branded.description",
     image: "/aqua/brand.png",
   },
 ];
 
 export default function AquaBottleShowcase() {
+  const { t } = useTranslation();
+
   const [activeStage, setActiveStage] = useState(0);
 
   const current = stages[activeStage];
 
   const nextStage = () => {
-    setActiveStage(
-      (prev) => (prev + 1) % stages.length
-    );
+    setActiveStage((prev) => (prev + 1) % stages.length);
   };
 
   const previousStage = () => {
     setActiveStage(
-      (prev) =>
-        (prev - 1 + stages.length) %
-        stages.length
+      (prev) => (prev - 1 + stages.length) % stages.length
     );
   };
 
@@ -237,7 +232,9 @@ export default function AquaBottleShowcase() {
                 sm:text-xs
               "
             >
-              Custom Bottle Branding
+              {t("aqua.bottleShowcase.eyebrow", {
+                defaultValue: "Custom Bottle Branding",
+              })}
             </span>
           </div>
 
@@ -254,10 +251,14 @@ export default function AquaBottleShowcase() {
               lg:text-7xl
             "
           >
-            From Bottle
+            {t("aqua.bottleShowcase.heading.first", {
+              defaultValue: "From Bottle",
+            })}
 
             <span className="block text-sky-500">
-              To Brand.
+              {t("aqua.bottleShowcase.heading.second", {
+                defaultValue: "To Brand.",
+              })}
             </span>
           </h2>
 
@@ -274,9 +275,10 @@ export default function AquaBottleShowcase() {
               sm:leading-8
             "
           >
-            See how your identity can move from a
-            bottle to a professionally branded
-            presentation.
+            {t("aqua.bottleShowcase.description", {
+              defaultValue:
+                "See how your identity can move from a bottle to a professionally branded presentation.",
+            })}
           </p>
         </motion.div>
 
@@ -547,7 +549,9 @@ export default function AquaBottleShowcase() {
 
                 <motion.img
                   src={current.image}
-                  alt={`${current.title} - BB Aqua`}
+                  alt={`${t(current.titleKey, {
+                    defaultValue: "Bottle",
+                  })} - BB Aqua`}
                   animate={{
                     y: [0, -10, 0, 7, 0],
                     rotateZ: [-1, 1, -1],
@@ -689,7 +693,9 @@ export default function AquaBottleShowcase() {
               "
             >
               <div className="text-[9px] font-bold uppercase tracking-[0.2em] text-sky-500">
-                Stage
+                {t("aqua.bottleShowcase.stageLabel", {
+                  defaultValue: "Stage",
+                })}
               </div>
 
               <div className="mt-1 text-lg font-black text-[#06283D]">
@@ -735,11 +741,15 @@ export default function AquaBottleShowcase() {
               <div className="flex items-center justify-between gap-3">
                 <div>
                   <p className="text-[9px] font-bold uppercase tracking-[0.18em] text-sky-500">
-                    {current.subtitle}
+                    {t(current.subtitleKey, {
+                      defaultValue: "Start with the bottle",
+                    })}
                   </p>
 
                   <h3 className="mt-1 text-lg font-black text-[#06283D]">
-                    {current.title}
+                    {t(current.titleKey, {
+                      defaultValue: "Bottle",
+                    })}
                   </h3>
                 </div>
 
@@ -779,7 +789,9 @@ export default function AquaBottleShowcase() {
                   text-sky-500
                 "
               >
-                Your Brand Journey
+                {t("aqua.bottleShowcase.journey.eyebrow", {
+                  defaultValue: "Your Brand Journey",
+                })}
               </span>
 
               <h3
@@ -794,17 +806,22 @@ export default function AquaBottleShowcase() {
                   sm:text-4xl
                 "
               >
-                See your identity
+                {t("aqua.bottleShowcase.journey.heading.first", {
+                  defaultValue: "See your identity",
+                })}
 
                 <span className="block text-sky-500">
-                  become the bottle brand.
+                  {t("aqua.bottleShowcase.journey.heading.second", {
+                    defaultValue: "become the bottle brand.",
+                  })}
                 </span>
               </h3>
 
               <p className="mt-5 text-sm leading-7 text-slate-600 sm:text-base sm:leading-8">
-                Your bottle starts simple. Your logo
-                and brand identity transform it into a
-                professional branded product.
+                {t("aqua.bottleShowcase.journey.description", {
+                  defaultValue:
+                    "Your bottle starts simple. Your logo and brand identity transform it into a professional branded product.",
+                })}
               </p>
             </motion.div>
 
@@ -814,16 +831,13 @@ export default function AquaBottleShowcase() {
 
             <div className="mt-8 space-y-3">
               {stages.map((stage, index) => {
-                const isActive =
-                  activeStage === index;
+                const isActive = activeStage === index;
 
                 return (
                   <motion.button
                     key={stage.id}
                     type="button"
-                    onClick={() =>
-                      setActiveStage(index)
-                    }
+                    onClick={() => setActiveStage(index)}
                     whileHover={{
                       x: 5,
                     }}
@@ -851,9 +865,7 @@ export default function AquaBottleShowcase() {
                   >
                     <motion.span
                       animate={{
-                        scale: isActive
-                          ? 1.05
-                          : 1,
+                        scale: isActive ? 1.05 : 1,
                       }}
                       className={`
                         flex
@@ -890,7 +902,9 @@ export default function AquaBottleShowcase() {
                           }
                         `}
                       >
-                        {stage.title}
+                        {t(stage.titleKey, {
+                          defaultValue: "Bottle",
+                        })}
                       </h4>
 
                       <p
@@ -906,15 +920,15 @@ export default function AquaBottleShowcase() {
                           }
                         `}
                       >
-                        {stage.subtitle}
+                        {t(stage.subtitleKey, {
+                          defaultValue: "Start with the bottle",
+                        })}
                       </p>
                     </div>
 
                     <motion.div
                       animate={{
-                        x: isActive
-                          ? 4
-                          : 0,
+                        x: isActive ? 4 : 0,
                       }}
                     >
                       <ArrowRight
@@ -971,7 +985,10 @@ export default function AquaBottleShowcase() {
                   <Sparkles className="mt-0.5 h-4 w-4 shrink-0 text-sky-500" />
 
                   <p className="text-sm leading-6 text-slate-600">
-                    {current.description}
+                    {t(current.descriptionKey, {
+                      defaultValue:
+                        "Start with a clean water bottle ready to carry your brand identity.",
+                    })}
                   </p>
                 </div>
               </motion.div>
@@ -1007,7 +1024,12 @@ export default function AquaBottleShowcase() {
                   hover:border-sky-200
                   hover:bg-sky-50
                 "
-                aria-label="Previous stage"
+                aria-label={t(
+                  "aqua.bottleShowcase.previousStage",
+                  {
+                    defaultValue: "Previous stage",
+                  }
+                )}
               >
                 <ArrowLeft className="h-4 w-4" />
               </motion.button>
@@ -1038,7 +1060,9 @@ export default function AquaBottleShowcase() {
                   shadow-[0_12px_35px_rgba(2,40,61,0.15)]
                 "
               >
-                Next Stage
+                {t("aqua.bottleShowcase.nextStage", {
+                  defaultValue: "Next Stage",
+                })}
 
                 <ArrowRight className="h-4 w-4 text-cyan-300" />
               </motion.button>
@@ -1050,8 +1074,10 @@ export default function AquaBottleShowcase() {
               <Check className="h-4 w-4 text-sky-500" />
 
               <span>
-                Professional bottle branding for your
-                business
+                {t("aqua.bottleShowcase.trustLine", {
+                  defaultValue:
+                    "Professional bottle branding for your business",
+                })}
               </span>
             </div>
           </div>
@@ -1113,11 +1139,17 @@ export default function AquaBottleShowcase() {
 
             <div>
               <p className="text-sm font-bold text-[#06283D]">
-                Your logo. Your brand. Every bottle.
+                {t("aqua.bottleShowcase.bottomCta.title", {
+                  defaultValue:
+                    "Your logo. Your brand. Every bottle.",
+                })}
               </p>
 
               <p className="mt-0.5 text-xs text-slate-400">
-                Create your bottle branding experience.
+                {t("aqua.bottleShowcase.bottomCta.description", {
+                  defaultValue:
+                    "Create your bottle branding experience.",
+                })}
               </p>
             </div>
           </div>
@@ -1142,7 +1174,9 @@ export default function AquaBottleShowcase() {
               sm:w-auto
             "
           >
-            Start Bottle Branding
+            {t("aqua.bottleShowcase.bottomCta.button", {
+              defaultValue: "Start Bottle Branding",
+            })}
 
             <ArrowRight className="h-4 w-4" />
           </a>

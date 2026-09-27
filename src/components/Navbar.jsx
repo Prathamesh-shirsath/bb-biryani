@@ -8,37 +8,62 @@ import {
   Droplets,
 } from "lucide-react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const navItems = [
   {
-    label: "Home",
+    key: "home",
     id: "home",
+    defaultLabel: "Home",
   },
   {
-    label: "Menu",
+    key: "menu",
     id: "menu",
+    defaultLabel: "Menu",
   },
   {
-    label: "About",
+    key: "about",
     id: "owner",
+    defaultLabel: "About",
   },
   {
-    label: "Franchise",
+    key: "franchise",
     id: "franchise",
+    defaultLabel: "Franchise",
   },
   {
-    label: "Gallery",
+    key: "gallery",
     id: "gallery",
+    defaultLabel: "Gallery",
   },
 ];
 
 export default function Navbar() {
+  const { t, i18n } = useTranslation();
+
   const [isOpen, setIsOpen] = useState(false);
 
   const location = useLocation();
   const navigate = useNavigate();
 
   const isBiryaniPage = location.pathname === "/biryani";
+
+  /* =========================================================
+     LANGUAGE
+  ========================================================= */
+
+  const currentLanguage =
+    i18n.resolvedLanguage === "mr" ? "mr" : "en";
+
+  const changeLanguage = (language) => {
+    i18n.changeLanguage(language);
+
+    try {
+      localStorage.setItem("bb-language", language);
+    } catch {
+      // Ignore localStorage errors
+    }
+  };
 
   /* =========================================================
      CLOSE MOBILE MENU WHEN ROUTE CHANGES
@@ -274,7 +299,9 @@ export default function Navbar() {
                   sm:block
                 "
               >
-                Authentic Taste
+                {t("navbar.authenticTaste", {
+                  defaultValue: "Authentic Taste",
+                })}
               </p>
             </div>
           </motion.button>
@@ -305,7 +332,9 @@ export default function Navbar() {
                   hover:text-white
                 "
               >
-                {item.label}
+                {t(`navbar.${item.key}`, {
+                  defaultValue: item.defaultLabel,
+                })}
 
                 <span
                   className="
@@ -326,10 +355,77 @@ export default function Navbar() {
           </div>
 
           {/* =================================================
-              DESKTOP AQUA BUTTON
+              DESKTOP RIGHT SIDE
           ================================================== */}
 
-          <div className="hidden lg:block">
+          <div className="hidden items-center gap-2 lg:flex">
+            {/* Language Selector */}
+
+            <div
+              className="
+                flex
+                items-center
+                rounded-full
+                border
+                border-white/[0.08]
+                bg-white/[0.03]
+                p-1
+                backdrop-blur-xl
+              "
+              aria-label="Language selector"
+            >
+              <button
+                type="button"
+                onClick={() => changeLanguage("en")}
+                aria-pressed={currentLanguage === "en"}
+                className={`
+                  min-w-[38px]
+                  rounded-full
+                  px-2.5
+                  py-1.5
+                  text-[9px]
+                  font-bold
+                  uppercase
+                  tracking-[0.08em]
+                  transition
+                  duration-300
+                  ${
+                    currentLanguage === "en"
+                      ? "bg-[#D6A84F] text-[#17110A] shadow-[0_4px_15px_rgba(214,168,79,0.18)]"
+                      : "text-white/45 hover:text-white"
+                  }
+                `}
+              >
+                EN
+              </button>
+
+              <button
+                type="button"
+                onClick={() => changeLanguage("mr")}
+                aria-pressed={currentLanguage === "mr"}
+                className={`
+                  min-w-[48px]
+                  rounded-full
+                  px-2.5
+                  py-1.5
+                  text-[9px]
+                  font-bold
+                  tracking-[0.04em]
+                  transition
+                  duration-300
+                  ${
+                    currentLanguage === "mr"
+                      ? "bg-[#D6A84F] text-[#17110A] shadow-[0_4px_15px_rgba(214,168,79,0.18)]"
+                      : "text-white/45 hover:text-white"
+                  }
+                `}
+              >
+                मराठी
+              </button>
+            </div>
+
+            {/* Aqua Button */}
+
             <motion.button
               type="button"
               onClick={handleAqua}
@@ -364,8 +460,6 @@ export default function Navbar() {
                 hover:shadow-[0_15px_40px_rgba(34,211,238,0.16)]
               "
             >
-              {/* Aqua glow */}
-
               <span
                 className="
                   pointer-events-none
@@ -416,8 +510,12 @@ export default function Navbar() {
             type="button"
             aria-label={
               isOpen
-                ? "Close navigation menu"
-                : "Open navigation menu"
+                ? t("navbar.closeMenu", {
+                    defaultValue: "Close navigation menu",
+                  })
+                : t("navbar.openMenu", {
+                    defaultValue: "Open navigation menu",
+                  })
             }
             aria-expanded={isOpen}
             onClick={() => setIsOpen((prev) => !prev)}
@@ -640,7 +738,9 @@ export default function Navbar() {
                       text-white/30
                     "
                   >
-                    Navigation
+                    {t("navbar.navigation", {
+                      defaultValue: "Navigation",
+                    })}
                   </p>
                 </div>
               </div>
@@ -648,65 +748,156 @@ export default function Navbar() {
               {/* Links */}
 
               <div className="relative flex flex-col gap-1">
-                {navItems.map(
-                  (item, index) => (
-                    <motion.button
-                      key={item.id}
-                      type="button"
-                      initial={{
-                        opacity: 0,
-                        x: -15,
-                      }}
-                      animate={{
-                        opacity: 1,
-                        x: 0,
-                      }}
-                      transition={{
-                        delay: index * 0.04,
-                      }}
-                      whileTap={{
-                        scale: 0.98,
-                      }}
-                      onClick={() =>
-                        handleNavigation(
-                          item.id
-                        )
-                      }
-                      className="
-                        group
-                        flex
-                        min-h-[48px]
-                        w-full
-                        items-center
-                        justify-between
-                        rounded-xl
-                        px-4
-                        text-left
-                        text-sm
-                        font-medium
-                        text-white/65
-                        transition
-                        hover:bg-white/[0.04]
-                        hover:text-white
-                      "
-                    >
-                      <span>
-                        {item.label}
-                      </span>
+                {navItems.map((item, index) => (
+                  <motion.button
+                    key={item.id}
+                    type="button"
+                    initial={{
+                      opacity: 0,
+                      x: -15,
+                    }}
+                    animate={{
+                      opacity: 1,
+                      x: 0,
+                    }}
+                    transition={{
+                      delay: index * 0.04,
+                    }}
+                    whileTap={{
+                      scale: 0.98,
+                    }}
+                    onClick={() =>
+                      handleNavigation(item.id)
+                    }
+                    className="
+                      group
+                      flex
+                      min-h-[48px]
+                      w-full
+                      items-center
+                      justify-between
+                      rounded-xl
+                      px-4
+                      text-left
+                      text-sm
+                      font-medium
+                      text-white/65
+                      transition
+                      hover:bg-white/[0.04]
+                      hover:text-white
+                    "
+                  >
+                    <span>
+                      {t(`navbar.${item.key}`, {
+                        defaultValue: item.defaultLabel,
+                      })}
+                    </span>
 
-                      <ArrowRight
-                        size={15}
-                        className="
-                          text-[#D6A84F]/50
-                          transition
-                          duration-300
-                          group-hover:translate-x-1
-                          group-hover:text-[#D6A84F]
-                        "
-                      />
-                    </motion.button>
-                  )
-                )}
+                    <ArrowRight
+                      size={15}
+                      className="
+                        text-[#D6A84F]/50
+                        transition
+                        duration-300
+                        group-hover:translate-x-1
+                        group-hover:text-[#D6A84F]
+                      "
+                    />
+                  </motion.button>
+                ))}
+              </div>
+
+              {/* =================================================
+                  MOBILE LANGUAGE SELECTOR
+              ================================================== */}
+
+              <div
+                className="
+                  relative
+                  mt-3
+                  flex
+                  items-center
+                  justify-between
+                  rounded-2xl
+                  border
+                  border-white/[0.07]
+                  bg-white/[0.025]
+                  px-4
+                  py-3
+                "
+              >
+                <div>
+                  <p className="text-[9px] font-bold uppercase tracking-[0.18em] text-white/45">
+                    {t("navbar.language", {
+                      defaultValue: "Language",
+                    })}
+                  </p>
+
+                  <p className="mt-1 text-[8px] text-white/25">
+                    {currentLanguage === "mr"
+                      ? "मराठी"
+                      : "English"}
+                  </p>
+                </div>
+
+                <div className="flex items-center rounded-full border border-white/[0.08] bg-black/20 p-1">
+                  <button
+                    type="button"
+                    onClick={() =>
+                      changeLanguage("en")
+                    }
+                    aria-pressed={
+                      currentLanguage === "en"
+                    }
+                    className={`
+                      min-w-[40px]
+                      rounded-full
+                      px-2.5
+                      py-1.5
+                      text-[9px]
+                      font-bold
+                      uppercase
+                      tracking-[0.08em]
+                      transition
+                      duration-300
+                      ${
+                        currentLanguage === "en"
+                          ? "bg-[#D6A84F] text-[#17110A]"
+                          : "text-white/45"
+                      }
+                    `}
+                  >
+                    EN
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() =>
+                      changeLanguage("mr")
+                    }
+                    aria-pressed={
+                      currentLanguage === "mr"
+                    }
+                    className={`
+                      min-w-[52px]
+                      rounded-full
+                      px-2.5
+                      py-1.5
+                      text-[9px]
+                      font-bold
+                      tracking-[0.04em]
+                      transition
+                      duration-300
+                      ${
+                        currentLanguage === "mr"
+                          ? "bg-[#D6A84F] text-[#17110A]"
+                          : "text-white/45"
+                      }
+                    `}
+                  >
+                    मराठी
+                  </button>
+                </div>
               </div>
 
               {/* =================================================

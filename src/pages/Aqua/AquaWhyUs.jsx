@@ -1,4 +1,6 @@
 import { motion } from "motion/react";
+import { useTranslation } from "react-i18next";
+
 import {
   ArrowRight,
   BadgeCheck,
@@ -16,44 +18,38 @@ import {
 const strengths = [
   {
     number: "01",
-    title: "Quality Focus",
-    description:
-      "A professional approach to presenting and supplying branded water bottles for business requirements.",
+    titleKey: "aqua.whyUs.strengths.quality.title",
+    descriptionKey: "aqua.whyUs.strengths.quality.description",
     icon: BadgeCheck,
   },
   {
     number: "02",
-    title: "Brand Visibility",
-    description:
-      "Your logo and identity can become part of the bottle experience your customers see.",
+    titleKey: "aqua.whyUs.strengths.visibility.title",
+    descriptionKey: "aqua.whyUs.strengths.visibility.description",
     icon: Sparkles,
   },
   {
     number: "03",
-    title: "Custom Bottle Branding",
-    description:
-      "Bottle branding designed around your business, event or organisation identity.",
+    titleKey: "aqua.whyUs.strengths.customBranding.title",
+    descriptionKey: "aqua.whyUs.strengths.customBranding.description",
     icon: Layers3,
   },
   {
     number: "04",
-    title: "Bulk Requirements",
-    description:
-      "Suitable for businesses and occasions that need branded bottles in larger quantities.",
+    titleKey: "aqua.whyUs.strengths.bulk.title",
+    descriptionKey: "aqua.whyUs.strengths.bulk.description",
     icon: Boxes,
   },
   {
     number: "05",
-    title: "Business Focus",
-    description:
-      "A bottle branding solution designed around practical business and event requirements.",
+    titleKey: "aqua.whyUs.strengths.business.title",
+    descriptionKey: "aqua.whyUs.strengths.business.description",
     icon: Building2,
   },
   {
     number: "06",
-    title: "Brand Support",
-    description:
-      "A straightforward process from sharing your branding requirement to the finished bottles.",
+    titleKey: "aqua.whyUs.strengths.support.title",
+    descriptionKey: "aqua.whyUs.strengths.support.description",
     icon: Handshake,
   },
 ];
@@ -61,27 +57,29 @@ const strengths = [
 const highlights = [
   {
     icon: Droplets,
-    title: "Water",
-    text: "BB Aqua branded water",
+    titleKey: "aqua.whyUs.highlights.water.title",
+    textKey: "aqua.whyUs.highlights.water.text",
   },
   {
     icon: Layers3,
-    title: "Branding",
-    text: "Your identity on bottles",
+    titleKey: "aqua.whyUs.highlights.branding.title",
+    textKey: "aqua.whyUs.highlights.branding.text",
   },
   {
     icon: Boxes,
-    title: "Bulk",
-    text: "Business & event requirements",
+    titleKey: "aqua.whyUs.highlights.bulk.title",
+    textKey: "aqua.whyUs.highlights.bulk.text",
   },
   {
     icon: Truck,
-    title: "Delivery",
-    text: "Finished bottles prepared for delivery",
+    titleKey: "aqua.whyUs.highlights.delivery.title",
+    textKey: "aqua.whyUs.highlights.delivery.text",
   },
 ];
 
 export default function AquaWhyUs() {
+  const { t } = useTranslation();
+
   return (
     <section
       id="why-us"
@@ -208,7 +206,9 @@ export default function AquaWhyUs() {
                 sm:text-xs
               "
             >
-              Why BB Aqua
+              {t("aqua.whyUs.eyebrow", {
+                defaultValue: "Why BB Aqua",
+              })}
             </span>
           </div>
 
@@ -222,9 +222,14 @@ export default function AquaWhyUs() {
               lg:text-7xl
             "
           >
-            More Than
+            {t("aqua.whyUs.heading.first", {
+              defaultValue: "More Than",
+            })}
+
             <span className="block text-cyan-300">
-              Just A Bottle.
+              {t("aqua.whyUs.heading.second", {
+                defaultValue: "Just A Bottle.",
+              })}
             </span>
           </h2>
 
@@ -240,8 +245,10 @@ export default function AquaWhyUs() {
               sm:leading-8
             "
           >
-            BB Aqua combines branded water and bottle branding into a
-            practical solution for businesses, events and organisations.
+            {t("aqua.whyUs.description", {
+              defaultValue:
+                "BB Aqua combines branded water and bottle branding into a practical solution for businesses, events and organisations.",
+            })}
           </p>
         </motion.div>
 
@@ -365,7 +372,9 @@ export default function AquaWhyUs() {
                       text-white
                     "
                   >
-                    {item.title}
+                    {t(item.titleKey, {
+                      defaultValue: "Quality Focus",
+                    })}
                   </h3>
 
                   <p
@@ -376,7 +385,10 @@ export default function AquaWhyUs() {
                       text-slate-400
                     "
                   >
-                    {item.description}
+                    {t(item.descriptionKey, {
+                      defaultValue:
+                        "A professional approach to presenting and supplying branded water bottles for business requirements.",
+                    })}
                   </p>
 
                   <div
@@ -443,7 +455,7 @@ export default function AquaWhyUs() {
 
               return (
                 <motion.div
-                  key={item.title}
+                  key={item.titleKey}
                   initial={{
                     opacity: 0,
                   }}
@@ -470,11 +482,15 @@ export default function AquaWhyUs() {
                   <Icon className="h-5 w-5 text-cyan-300" />
 
                   <h4 className="mt-3 text-sm font-bold text-white">
-                    {item.title}
+                    {t(item.titleKey, {
+                      defaultValue: "Water",
+                    })}
                   </h4>
 
                   <p className="mt-1 text-[10px] leading-4 text-slate-500 sm:text-xs">
-                    {item.text}
+                    {t(item.textKey, {
+                      defaultValue: "BB Aqua branded water",
+                    })}
                   </p>
                 </motion.div>
               );
@@ -522,7 +538,9 @@ export default function AquaWhyUs() {
               <CheckCircle2 className="h-5 w-5" />
 
               <span className="text-xs font-black uppercase tracking-[0.18em]">
-                BB Aqua
+                {t("aqua.whyUs.cta.brand", {
+                  defaultValue: "BB Aqua",
+                })}
               </span>
             </div>
 
@@ -535,12 +553,16 @@ export default function AquaWhyUs() {
                 sm:text-3xl
               "
             >
-              Water that carries your identity.
+              {t("aqua.whyUs.cta.title", {
+                defaultValue: "Water that carries your identity.",
+              })}
             </h3>
 
             <p className="mt-2 max-w-xl text-sm leading-6 text-[#16445B]">
-              Whether you need BB Aqua branded water or bottle branding for
-              your business, your bottle can become part of the experience.
+              {t("aqua.whyUs.cta.description", {
+                defaultValue:
+                  "Whether you need BB Aqua branded water or bottle branding for your business, your bottle can become part of the experience.",
+              })}
             </p>
           </div>
 
@@ -563,7 +585,10 @@ export default function AquaWhyUs() {
               sm:w-auto
             "
           >
-            Start Your Enquiry
+            {t("aqua.whyUs.cta.button", {
+              defaultValue: "Start Your Enquiry",
+            })}
+
             <ArrowRight className="h-4 w-4 text-cyan-300" />
           </a>
         </motion.div>

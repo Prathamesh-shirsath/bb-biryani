@@ -1,4 +1,6 @@
 import { motion } from "motion/react";
+import { useTranslation } from "react-i18next";
+
 import {
   Building2,
   Cake,
@@ -13,63 +15,57 @@ import {
 const audiences = [
   {
     number: "01",
-    title: "Hotels",
-    description:
-      "Create a professional branded bottle experience for guests and hospitality spaces.",
+    titleKey: "aqua.whoWeServe.audiences.hotels.title",
+    descriptionKey: "aqua.whoWeServe.audiences.hotels.description",
     icon: Hotel,
   },
   {
     number: "02",
-    title: "Restaurants",
-    description:
-      "Keep your restaurant identity visible on every table and bottle.",
+    titleKey: "aqua.whoWeServe.audiences.restaurants.title",
+    descriptionKey: "aqua.whoWeServe.audiences.restaurants.description",
     icon: Utensils,
   },
   {
     number: "03",
-    title: "Cafes",
-    description:
-      "Add your brand identity to bottles served with your food and beverages.",
+    titleKey: "aqua.whoWeServe.audiences.cafes.title",
+    descriptionKey: "aqua.whoWeServe.audiences.cafes.description",
     icon: Coffee,
   },
   {
     number: "04",
-    title: "Weddings",
-    description:
-      "Add event branding to bottles for weddings and memorable celebrations.",
+    titleKey: "aqua.whoWeServe.audiences.weddings.title",
+    descriptionKey: "aqua.whoWeServe.audiences.weddings.description",
     icon: Crown,
   },
   {
     number: "05",
-    title: "Events",
-    description:
-      "Make branded bottles part of your event's overall visual identity.",
+    titleKey: "aqua.whoWeServe.audiences.events.title",
+    descriptionKey: "aqua.whoWeServe.audiences.events.description",
     icon: PartyPopper,
   },
   {
     number: "06",
-    title: "Corporate",
-    description:
-      "Use branded bottles for meetings, conferences and corporate occasions.",
+    titleKey: "aqua.whoWeServe.audiences.corporate.title",
+    descriptionKey: "aqua.whoWeServe.audiences.corporate.description",
     icon: Building2,
   },
   {
     number: "07",
-    title: "Resorts",
-    description:
-      "Present a consistent bottle identity across hospitality and leisure spaces.",
+    titleKey: "aqua.whoWeServe.audiences.resorts.title",
+    descriptionKey: "aqua.whoWeServe.audiences.resorts.description",
     icon: Store,
   },
   {
     number: "08",
-    title: "Caterers",
-    description:
-      "Add branded bottles to catering setups, functions and special occasions.",
+    titleKey: "aqua.whoWeServe.audiences.caterers.title",
+    descriptionKey: "aqua.whoWeServe.audiences.caterers.description",
     icon: Cake,
   },
 ];
 
 export default function AquaWhoWeServe() {
+  const { t } = useTranslation();
+
   return (
     <section
       id="who-we-serve"
@@ -196,7 +192,9 @@ export default function AquaWhoWeServe() {
                 sm:text-xs
               "
             >
-              Who We Serve
+              {t("aqua.whoWeServe.eyebrow", {
+                defaultValue: "Who We Serve",
+              })}
             </span>
           </div>
 
@@ -210,9 +208,14 @@ export default function AquaWhoWeServe() {
               lg:text-7xl
             "
           >
-            Your Business.
+            {t("aqua.whoWeServe.heading.first", {
+              defaultValue: "Your Business.",
+            })}
+
             <span className="block text-cyan-300">
-              Your Bottle.
+              {t("aqua.whoWeServe.heading.second", {
+                defaultValue: "Your Bottle.",
+              })}
             </span>
           </h2>
 
@@ -228,9 +231,10 @@ export default function AquaWhoWeServe() {
               sm:leading-8
             "
           >
-            From hospitality and restaurants to weddings and corporate
-            events, BB Aqua bottle branding can become part of your
-            customer experience.
+            {t("aqua.whoWeServe.description", {
+              defaultValue:
+                "From hospitality and restaurants to weddings and corporate events, BB Aqua bottle branding can become part of your customer experience.",
+            })}
           </p>
         </motion.div>
 
@@ -365,7 +369,9 @@ export default function AquaWhoWeServe() {
                       sm:text-xl
                     "
                   >
-                    {item.title}
+                    {t(item.titleKey, {
+                      defaultValue: "Hotels",
+                    })}
                   </h3>
 
                   <p
@@ -379,7 +385,10 @@ export default function AquaWhoWeServe() {
                       sm:leading-6
                     "
                   >
-                    {item.description}
+                    {t(item.descriptionKey, {
+                      defaultValue:
+                        "Create a professional branded bottle experience for guests and hospitality spaces.",
+                    })}
                   </p>
 
                   {/* Bottom line */}
@@ -445,7 +454,9 @@ export default function AquaWhoWeServe() {
               text-cyan-300
             "
           >
-            One Bottle. One Identity.
+            {t("aqua.whoWeServe.bottom.eyebrow", {
+              defaultValue: "One Bottle. One Identity.",
+            })}
           </p>
 
           <h3
@@ -457,8 +468,14 @@ export default function AquaWhoWeServe() {
               sm:text-3xl
             "
           >
-            Wherever your brand is seen,
-            <span className="text-cyan-300"> your identity follows.</span>
+            {t("aqua.whoWeServe.bottom.heading.first", {
+              defaultValue: "Wherever your brand is seen,",
+            })}{" "}
+            <span className="text-cyan-300">
+              {t("aqua.whoWeServe.bottom.heading.second", {
+                defaultValue: "your identity follows.",
+              })}
+            </span>
           </h3>
         </motion.div>
       </div>

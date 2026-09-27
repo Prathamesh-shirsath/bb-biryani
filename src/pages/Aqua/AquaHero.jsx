@@ -7,8 +7,11 @@ import {
   Droplets,
   Sparkles,
 } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 export default function AquaHero() {
+  const { t } = useTranslation();
+
   // =====================================================
   // BOTTLE IMAGE PATHS
   // =====================================================
@@ -18,7 +21,6 @@ export default function AquaHero() {
     "/aqua/bottle_2.png",
     "/aqua/brand.png",
     "/aqua/bottle_3.png",
-    
 
     // Add more bottles here
     // "/aqua/bottle-6.png",
@@ -33,7 +35,7 @@ export default function AquaHero() {
   const [activeBottle, setActiveBottle] = useState(0);
 
   // =====================================================
-  // CHANGE BOTTLE EVERY 2 SECONDS
+  // CHANGE BOTTLE EVERY 3.5 SECONDS
   // =====================================================
 
   useEffect(() => {
@@ -287,7 +289,9 @@ export default function AquaHero() {
                   sm:text-[10px]
                 "
               >
-                BB GROUP OF BUSINESSES
+                {t("aqua.hero.eyebrow", {
+                  defaultValue: "BB GROUP OF BUSINESSES",
+                })}
               </span>
             </motion.div>
 
@@ -323,14 +327,20 @@ export default function AquaHero() {
                 lg:text-[92px]
               "
             >
-              PURE
+              {t("aqua.hero.heading.pure", {
+                defaultValue: "PURE",
+              })}
 
               <span className="block text-sky-500">
-                WATER.
+                {t("aqua.hero.heading.water", {
+                  defaultValue: "WATER.",
+                })}
               </span>
 
               <span className="block text-[#06283D]">
-                YOUR BRAND.
+                {t("aqua.hero.heading.brand", {
+                  defaultValue: "YOUR BRAND.",
+                })}
               </span>
             </motion.h1>
 
@@ -364,10 +374,10 @@ export default function AquaHero() {
                 lg:mx-0
               "
             >
-              Premium packaged drinking water and
-              custom bottle branding designed for
-              businesses, hotels, restaurants, events
-              and special occasions.
+              {t("aqua.hero.description", {
+                defaultValue:
+                  "Premium packaged drinking water and custom bottle branding designed for businesses, hotels, restaurants, events and special occasions.",
+              })}
             </motion.p>
 
             {/* =================================================
@@ -429,7 +439,11 @@ export default function AquaHero() {
                   transition
                 "
               >
-                <span>EXPLORE BB AQUA</span>
+                <span>
+                  {t("aqua.hero.exploreButton", {
+                    defaultValue: "EXPLORE BB AQUA",
+                  })}
+                </span>
 
                 <ArrowRight
                   size={17}
@@ -482,7 +496,10 @@ export default function AquaHero() {
                 />
 
                 <span>
-                  CUSTOM BOTTLE BRANDING
+                  {t("aqua.hero.customBottleButton", {
+                    defaultValue:
+                      "CUSTOM BOTTLE BRANDING",
+                  })}
                 </span>
               </motion.button>
             </motion.div>
@@ -516,19 +533,31 @@ export default function AquaHero() {
                 lg:justify-start
               "
             >
-              <span>Pure Water</span>
+              <span>
+                {t("aqua.hero.trust.pureWater", {
+                  defaultValue: "Pure Water",
+                })}
+              </span>
 
               <span className="text-sky-300">
                 •
               </span>
 
-              <span>Custom Branding</span>
+              <span>
+                {t("aqua.hero.trust.customBranding", {
+                  defaultValue: "Custom Branding",
+                })}
+              </span>
 
               <span className="text-sky-300">
                 •
               </span>
 
-              <span>Bulk Orders</span>
+              <span>
+                {t("aqua.hero.trust.bulkOrders", {
+                  defaultValue: "Bulk Orders",
+                })}
+              </span>
             </motion.div>
           </div>
 
@@ -741,9 +770,12 @@ export default function AquaHero() {
 
                   <motion.img
                     src={bottles[activeBottle]}
-                    alt={`BB Aqua Bottle ${
-                      activeBottle + 1
-                    }`}
+                    alt={t("aqua.hero.bottleAlt", {
+                      defaultValue: `BB Aqua Bottle ${
+                        activeBottle + 1
+                      }`,
+                      number: activeBottle + 1,
+                    })}
                     animate={{
                       y: [0, -12, 0, 8, 0],
                       rotateZ: [
@@ -899,13 +931,12 @@ export default function AquaHero() {
               "
             >
               {String(activeBottle + 1).padStart(2, "0")}
+
               <span className="mx-1 text-sky-300">
                 /
               </span>
-              {String(bottles.length).padStart(
-                2,
-                "0"
-              )}
+
+              {String(bottles.length).padStart(2, "0")}
             </motion.div>
 
             {/* =================================================
@@ -955,7 +986,9 @@ export default function AquaHero() {
                   </p>
 
                   <p className="mt-0.5 text-[8px] text-slate-400">
-                    Pure & Trusted
+                    {t("aqua.hero.floatingLabel", {
+                      defaultValue: "Pure & Trusted",
+                    })}
                   </p>
                 </div>
               </div>
@@ -1019,7 +1052,9 @@ export default function AquaHero() {
                 className="text-cyan-500"
               />
 
-              Custom Branding
+              {t("aqua.hero.customBranding", {
+                defaultValue: "Custom Branding",
+              })}
             </motion.button>
           </div>
         </div>
@@ -1065,7 +1100,9 @@ export default function AquaHero() {
               tracking-[0.3em]
             "
           >
-            Explore
+            {t("aqua.hero.explore", {
+              defaultValue: "Explore",
+            })}
           </span>
 
           <motion.span

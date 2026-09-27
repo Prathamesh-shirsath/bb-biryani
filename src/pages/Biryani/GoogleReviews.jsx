@@ -10,6 +10,7 @@ import {
   Star,
   ThumbsUp,
 } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 const GOOGLE_MAPS_URL =
   "https://maps.app.goo.gl/ZNXzQ9i834E33THb7";
@@ -116,6 +117,8 @@ function Avatar({ review }) {
 }
 
 export default function GoogleReviews() {
+  const { t } = useTranslation();
+
   const [activeIndex, setActiveIndex] = useState(0);
   const [direction, setDirection] = useState(1);
 
@@ -138,6 +141,8 @@ export default function GoogleReviews() {
   };
 
   const goToReview = (index) => {
+    if (index === activeIndex) return;
+
     setDirection(index > activeIndex ? 1 : -1);
     setActiveIndex(index);
   };
@@ -175,16 +180,23 @@ export default function GoogleReviews() {
             </div>
 
             <span className="text-[10px] font-semibold uppercase tracking-[0.24em] text-white/55">
-              Google Reviews
+              {t("biryani.reviews.eyebrow", {
+                defaultValue: "Google Reviews",
+              })}
             </span>
           </div>
 
           <h2 className="mt-5 text-3xl font-semibold tracking-tight text-white sm:text-4xl lg:text-5xl">
-            What Our Customers Say
+            {t("biryani.reviews.heading", {
+              defaultValue: "What Our Customers Say",
+            })}
           </h2>
 
           <p className="mx-auto mt-4 max-w-xl text-sm leading-7 text-white/45 sm:text-base">
-            Real feedback shared by customers on our Google Maps listing.
+            {t("biryani.reviews.description", {
+              defaultValue:
+                "Real feedback shared by customers on our Google Maps listing.",
+            })}
           </p>
         </motion.div>
 
@@ -203,7 +215,9 @@ export default function GoogleReviews() {
             <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#d6a84f] to-transparent opacity-70" />
 
             <p className="text-[10px] font-semibold uppercase tracking-[0.25em] text-white/35">
-              Average Google Rating
+              {t("biryani.reviews.averageRating", {
+                defaultValue: "Average Google Rating",
+              })}
             </p>
 
             <div className="mt-3 flex items-center justify-center gap-3">
@@ -215,14 +229,21 @@ export default function GoogleReviews() {
                 <Stars rating={4.5} size={17} />
 
                 <p className="mt-1 text-xs text-white/35">
-                  Google Rating
+                  {t("biryani.reviews.googleRating", {
+                    defaultValue: "Google Rating",
+                  })}
                 </p>
               </div>
             </div>
 
             <div className="mt-5 flex items-center justify-center gap-2 text-xs text-white/40">
               <MapPin size={14} className="text-[#d6a84f]" />
-              <span>BB Biryani</span>
+
+              <span>
+                {t("biryani.reviews.brand", {
+                  defaultValue: "BB Biryani",
+                })}
+              </span>
             </div>
           </div>
         </motion.div>
@@ -233,6 +254,7 @@ export default function GoogleReviews() {
 
         <div className="mx-auto mt-12 max-w-5xl">
           {/* Desktop / Mobile Card */}
+
           <div className="relative">
             <AnimatePresence
               mode="wait"
@@ -264,9 +286,11 @@ export default function GoogleReviews() {
               >
                 <div className="relative overflow-hidden rounded-[30px] border border-white/10 bg-white/[0.045] shadow-[0_30px_100px_rgba(0,0,0,0.35)] backdrop-blur-xl">
                   {/* Gold top line */}
+
                   <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-[#d6a84f] to-transparent opacity-70" />
 
                   {/* Quote */}
+
                   <Quote
                     size={100}
                     strokeWidth={1}
@@ -275,6 +299,7 @@ export default function GoogleReviews() {
 
                   <div className="relative p-6 sm:p-8 lg:p-10">
                     {/* User */}
+
                     <div className="flex items-center justify-between gap-4">
                       <div className="flex min-w-0 items-center gap-4">
                         <Avatar review={currentReview} />
@@ -287,7 +312,9 @@ export default function GoogleReviews() {
 
                             {currentReview.isNew && (
                               <span className="rounded-full bg-[#d6a84f]/10 px-2 py-1 text-[9px] font-semibold uppercase tracking-wider text-[#d6a84f]">
-                                New
+                                {t("biryani.reviews.new", {
+                                  defaultValue: "New",
+                                })}
                               </span>
                             )}
                           </div>
@@ -312,6 +339,7 @@ export default function GoogleReviews() {
                     </div>
 
                     {/* Review rating only when explicitly known */}
+
                     {currentReview.rating && (
                       <div className="mt-6">
                         <Stars rating={currentReview.rating} />
@@ -319,6 +347,7 @@ export default function GoogleReviews() {
                     )}
 
                     {/* Review text */}
+
                     {currentReview.text ? (
                       <p className="mt-6 max-w-3xl text-base leading-8 text-white/70 sm:text-lg sm:leading-9">
                         “{currentReview.text}”
@@ -326,16 +355,23 @@ export default function GoogleReviews() {
                     ) : (
                       <div className="mt-6 rounded-2xl border border-white/[0.06] bg-black/10 px-5 py-5">
                         <p className="text-sm text-white/35">
-                          Customer review details available on Google Maps.
+                          {t("biryani.reviews.detailsOnGoogle", {
+                            defaultValue:
+                              "Customer review details available on Google Maps.",
+                          })}
                         </p>
                       </div>
                     )}
 
                     {/* Metadata */}
+
                     <div className="mt-7 flex flex-wrap gap-2">
                       {currentReview.orderType && (
                         <span className="rounded-full border border-white/10 bg-white/[0.035] px-3 py-2 text-[10px] text-white/45">
-                          Order:{" "}
+                          {t("biryani.reviews.order", {
+                            defaultValue: "Order",
+                          })}
+                          :{" "}
                           <span className="text-white/70">
                             {currentReview.orderType}
                           </span>
@@ -344,7 +380,10 @@ export default function GoogleReviews() {
 
                       {currentReview.mealType && (
                         <span className="rounded-full border border-white/10 bg-white/[0.035] px-3 py-2 text-[10px] text-white/45">
-                          Meal:{" "}
+                          {t("biryani.reviews.meal", {
+                            defaultValue: "Meal",
+                          })}
+                          :{" "}
                           <span className="text-white/70">
                             {currentReview.mealType}
                           </span>
@@ -353,7 +392,10 @@ export default function GoogleReviews() {
 
                       {currentReview.price && (
                         <span className="rounded-full border border-white/10 bg-white/[0.035] px-3 py-2 text-[10px] text-white/45">
-                          Price:{" "}
+                          {t("biryani.reviews.price", {
+                            defaultValue: "Price",
+                          })}
+                          :{" "}
                           <span className="text-white/70">
                             {currentReview.price}
                           </span>
@@ -362,6 +404,7 @@ export default function GoogleReviews() {
                     </div>
 
                     {/* Detail Ratings */}
+
                     {currentReview.details && (
                       <div className="mt-7 grid grid-cols-3 gap-2 sm:max-w-md">
                         {currentReview.details.map(
@@ -371,7 +414,32 @@ export default function GoogleReviews() {
                               className="rounded-2xl border border-white/[0.07] bg-white/[0.025] p-3"
                             >
                               <p className="text-[9px] uppercase tracking-wider text-white/30">
-                                {label}
+                                {label === "Food"
+                                  ? t(
+                                      "biryani.reviews.details.food",
+                                      {
+                                        defaultValue:
+                                          "Food",
+                                      }
+                                    )
+                                  : label === "Service"
+                                    ? t(
+                                        "biryani.reviews.details.service",
+                                        {
+                                          defaultValue:
+                                            "Service",
+                                        }
+                                      )
+                                    : label ===
+                                        "Atmosphere"
+                                      ? t(
+                                          "biryani.reviews.details.atmosphere",
+                                          {
+                                            defaultValue:
+                                              "Atmosphere",
+                                          }
+                                        )
+                                      : label}
                               </p>
 
                               <div className="mt-2 flex items-center gap-1">
@@ -392,10 +460,16 @@ export default function GoogleReviews() {
                     )}
 
                     {/* Footer */}
+
                     <div className="mt-8 flex items-center justify-between border-t border-white/[0.07] pt-5">
                       <div className="flex items-center gap-2 text-xs text-white/30">
                         <ThumbsUp size={14} />
-                        <span>Google Review</span>
+
+                        <span>
+                          {t("biryani.reviews.googleReview", {
+                            defaultValue: "Google Review",
+                          })}
+                        </span>
                       </div>
 
                       <span className="text-xs font-medium text-[#d6a84f]/70">
@@ -409,9 +483,15 @@ export default function GoogleReviews() {
             </AnimatePresence>
 
             {/* Arrows */}
+
             <button
               onClick={previousReview}
-              aria-label="Previous review"
+              aria-label={t(
+                "biryani.reviews.previousReview",
+                {
+                  defaultValue: "Previous review",
+                }
+              )}
               className="absolute left-2 top-1/2 z-20 grid h-11 w-11 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border border-white/10 bg-[#12100d]/90 text-white/70 shadow-xl backdrop-blur-xl transition hover:border-[#d6a84f]/50 hover:text-[#d6a84f] sm:left-0 sm:h-12 sm:w-12"
             >
               <ChevronLeft size={20} />
@@ -419,7 +499,12 @@ export default function GoogleReviews() {
 
             <button
               onClick={nextReview}
-              aria-label="Next review"
+              aria-label={t(
+                "biryani.reviews.nextReview",
+                {
+                  defaultValue: "Next review",
+                }
+              )}
               className="absolute right-2 top-1/2 z-20 grid h-11 w-11 translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border border-white/10 bg-[#12100d]/90 text-white/70 shadow-xl backdrop-blur-xl transition hover:border-[#d6a84f]/50 hover:text-[#d6a84f] sm:right-0 sm:h-12 sm:w-12"
             >
               <ChevronRight size={20} />
@@ -435,7 +520,13 @@ export default function GoogleReviews() {
               <button
                 key={review.id}
                 onClick={() => goToReview(index)}
-                aria-label={`Show review ${index + 1}`}
+                aria-label={t(
+                  "biryani.reviews.showReview",
+                  {
+                    defaultValue: `Show review ${index + 1}`,
+                    index: index + 1,
+                  }
+                )}
                 className={`h-1.5 rounded-full transition-all duration-300 ${
                   index === activeIndex
                     ? "w-9 bg-[#d6a84f]"
@@ -450,7 +541,10 @@ export default function GoogleReviews() {
           ======================================================== */}
 
           <p className="mt-5 text-center text-[10px] uppercase tracking-[0.2em] text-white/20 sm:hidden">
-            Swipe / Tap arrows to explore reviews
+            {t("biryani.reviews.swipeHint", {
+              defaultValue:
+                "Swipe / Tap arrows to explore reviews",
+            })}
           </p>
         </div>
 
@@ -471,7 +565,10 @@ export default function GoogleReviews() {
             rel="noopener noreferrer"
             className="group inline-flex min-h-[54px] items-center justify-center gap-3 rounded-full bg-[#d6a84f] px-7 text-sm font-semibold text-[#160f06] shadow-[0_15px_45px_rgba(214,168,79,0.18)] transition hover:-translate-y-0.5 hover:bg-[#e5bd6d]"
           >
-            View All Reviews on Google
+            {t("biryani.reviews.viewAll", {
+              defaultValue: "View All Reviews on Google",
+            })}
+
             <ExternalLink
               size={16}
               className="transition-transform duration-300 group-hover:translate-x-1"
@@ -480,7 +577,13 @@ export default function GoogleReviews() {
 
           <div className="mt-5 flex items-center gap-2 text-[10px] text-white/25">
             <MapPin size={12} />
-            <span>BB Biryani • Google Maps</span>
+
+            <span>
+              {t("biryani.reviews.googleMapsLabel", {
+                defaultValue:
+                  "BB Biryani • Google Maps",
+              })}
+            </span>
           </div>
         </motion.div>
       </div>

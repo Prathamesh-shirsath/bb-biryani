@@ -6,6 +6,7 @@ import {
   Image as ImageIcon,
   X,
 } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 /* =========================================================
    AUTOMATIC LOCAL GALLERY
@@ -61,6 +62,7 @@ function GalleryImage({
   alt,
   index,
   onClick,
+  t,
 }) {
   const [loaded, setLoaded] = useState(false);
   const [failed, setFailed] = useState(false);
@@ -70,7 +72,9 @@ function GalleryImage({
       type="button"
       onClick={onClick}
       className="absolute inset-0 h-full w-full overflow-hidden text-left"
-      aria-label={`Open ${alt}`}
+      aria-label={t("biryani.gallery.openImage", {
+        defaultValue: `Open ${alt}`,
+      })}
     >
       {/* Loading */}
 
@@ -91,7 +95,9 @@ function GalleryImage({
             />
 
             <p className="mt-2 text-[9px] uppercase tracking-[0.15em] text-white/30">
-              Image unavailable
+              {t("biryani.gallery.imageUnavailable", {
+                defaultValue: "Image unavailable",
+              })}
             </p>
           </div>
         </div>
@@ -101,9 +107,7 @@ function GalleryImage({
           alt={alt}
           loading={index < 4 ? "eager" : "lazy"}
           decoding="async"
-          fetchPriority={
-            index < 2 ? "high" : "auto"
-          }
+          fetchPriority={index < 2 ? "high" : "auto"}
           onLoad={() => setLoaded(true)}
           onError={() => setFailed(true)}
           className={[
@@ -125,6 +129,8 @@ function GalleryImage({
 ========================================================= */
 
 export default function Gallery() {
+  const { t } = useTranslation();
+
   const images = useMemo(
     () => galleryImages,
     []
@@ -242,14 +248,21 @@ export default function Gallery() {
         <div className="bb-container">
           <div className="mx-auto max-w-2xl text-center">
             <div className="bb-eyebrow">
-              OUR MEMORIES
+              {t("biryani.gallery.eyebrow", {
+                defaultValue: "OUR MEMORIES",
+              })}
             </div>
 
             <h2 className="mt-3 font-serif text-4xl font-black text-white sm:text-5xl">
-              Taste.
+              {t("biryani.gallery.heading.taste", {
+                defaultValue: "Taste.",
+              })}
+
               <span className="bg-gradient-to-r from-[#F5D58A] via-[#D6A84F] to-[#A66A16] bg-clip-text text-transparent">
                 {" "}
-                Moments.
+                {t("biryani.gallery.heading.moments", {
+                  defaultValue: "Moments.",
+                })}
               </span>
             </h2>
 
@@ -260,12 +273,18 @@ export default function Gallery() {
               />
 
               <h3 className="mt-5 text-lg font-bold text-white">
-                Gallery is empty
+                {t("biryani.gallery.empty.title", {
+                  defaultValue: "Gallery is empty",
+                })}
               </h3>
 
               <p className="mt-2 text-sm leading-6 text-white/40">
-                Add photos inside
+                {t("biryani.gallery.empty.description", {
+                  defaultValue: "Add photos inside",
+                })}
+
                 <br />
+
                 <span className="text-[#D6A84F]/70">
                   src/assets/gallery/
                 </span>
@@ -313,7 +332,6 @@ export default function Gallery() {
         </div>
 
         <div className="bb-container relative z-10">
-
           {/* =================================================
               HEADER
           ================================================= */}
@@ -337,21 +355,29 @@ export default function Gallery() {
             className="mx-auto max-w-2xl text-center"
           >
             <div className="bb-eyebrow">
-              OUR MEMORIES
+              {t("biryani.gallery.eyebrow", {
+                defaultValue: "OUR MEMORIES",
+              })}
             </div>
 
             <h2 className="mt-3 font-serif text-4xl font-black tracking-[-0.04em] text-white sm:text-5xl md:text-6xl">
-              Taste.
+              {t("biryani.gallery.heading.taste", {
+                defaultValue: "Taste.",
+              })}
+
               <span className="bg-gradient-to-r from-[#F5D58A] via-[#D6A84F] to-[#A66A16] bg-clip-text text-transparent">
                 {" "}
-                Moments.
+                {t("biryani.gallery.heading.moments", {
+                  defaultValue: "Moments.",
+                })}
               </span>
             </h2>
 
             <p className="mx-auto mt-4 max-w-xl text-sm leading-6 text-white/45 sm:text-base sm:leading-7">
-              A glimpse into the BB Biryani experience —
-              delicious food, happy moments and unforgettable
-              memories.
+              {t("biryani.gallery.description", {
+                defaultValue:
+                  "A glimpse into the BB Biryani experience — delicious food, happy moments and unforgettable memories.",
+              })}
             </p>
 
             {/* Photo count */}
@@ -375,7 +401,10 @@ export default function Gallery() {
             >
               <ImageIcon size={13} />
 
-              {images.length} Photos
+              {t("biryani.gallery.photoCount", {
+                defaultValue: "{{count}} Photos",
+                count: images.length,
+              })}
             </motion.div>
           </motion.div>
 
@@ -433,11 +462,12 @@ export default function Gallery() {
 
                   <GalleryImage
                     src={image.image}
-                    
+                    alt={image.name}
                     index={index}
                     onClick={() =>
                       openLightbox(index)
                     }
+                    t={t}
                   />
 
                   {/* DARK OVERLAY */}
@@ -465,8 +495,6 @@ export default function Gallery() {
 
                   <div className="pointer-events-none absolute inset-x-0 bottom-0 p-3 sm:p-4">
                     <div className="flex items-end justify-between gap-2">
-                      
-
                       <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-white/15 bg-black/35 text-white/80 backdrop-blur-xl transition duration-300 group-hover:border-[#D6A84F]/60 group-hover:bg-[#D6A84F] group-hover:text-black">
                         <ArrowRight size={14} />
                       </span>
@@ -510,7 +538,12 @@ export default function Gallery() {
               }}
               onClick={closeLightbox}
               className="absolute right-4 top-4 z-40 flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/[0.06] text-white backdrop-blur-xl transition hover:border-[#D6A84F]/40 hover:bg-[#D6A84F] hover:text-black sm:right-6 sm:top-6"
-              aria-label="Close gallery"
+              aria-label={t(
+                "biryani.gallery.lightbox.close",
+                {
+                  defaultValue: "Close gallery",
+                }
+              )}
             >
               <X size={20} />
             </motion.button>
@@ -535,7 +568,12 @@ export default function Gallery() {
                   showPrevious();
                 }}
                 className="absolute left-3 top-1/2 z-40 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/10 bg-black/50 text-white backdrop-blur-xl transition hover:border-[#D6A84F]/50 hover:bg-[#D6A84F] hover:text-black sm:left-6 sm:h-12 sm:w-12"
-                aria-label="Previous image"
+                aria-label={t(
+                  "biryani.gallery.lightbox.previous",
+                  {
+                    defaultValue: "Previous image",
+                  }
+                )}
               >
                 <ArrowLeft size={19} />
               </motion.button>
@@ -593,7 +631,12 @@ export default function Gallery() {
                   showNext();
                 }}
                 className="absolute right-3 top-1/2 z-40 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/10 bg-black/50 text-white backdrop-blur-xl transition hover:border-[#D6A84F]/50 hover:bg-[#D6A84F] hover:text-black sm:right-6 sm:h-12 sm:w-12"
-                aria-label="Next image"
+                aria-label={t(
+                  "biryani.gallery.lightbox.next",
+                  {
+                    defaultValue: "Next image",
+                  }
+                )}
               >
                 <ArrowRight size={19} />
               </motion.button>

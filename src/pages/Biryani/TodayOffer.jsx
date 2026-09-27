@@ -1,7 +1,10 @@
+import { useTranslation } from "react-i18next";
 import { motion } from "motion/react";
 import { ArrowRight, Flame, Sparkles, Tag } from "lucide-react";
 
 export default function TodayOffer() {
+  const { t } = useTranslation();
+
   return (
     <section
       id="offer"
@@ -93,7 +96,9 @@ export default function TodayOffer() {
             <span className="h-px w-5 bg-[#D6A84F]/50 sm:w-8" />
 
             <p className="bb-eyebrow">
-              Limited Time
+              {t("biryani.offer.limitedTime", {
+                defaultValue: "Limited Time",
+              })}
             </p>
 
             <span className="h-px w-5 bg-[#D6A84F]/50 sm:w-8" />
@@ -117,9 +122,14 @@ export default function TodayOffer() {
               lg:text-6xl
             "
           >
-            Today's
+            {t("biryani.offer.todays", {
+              defaultValue: "Today's",
+            })}
+
             <span className="block bg-gradient-to-r from-[#F5D58A] via-[#D6A84F] to-[#A66A16] bg-clip-text text-transparent">
-              Special Offer
+              {t("biryani.offer.specialOffer", {
+                defaultValue: "Special Offer",
+              })}
             </span>
           </h2>
 
@@ -140,8 +150,10 @@ export default function TodayOffer() {
               sm:leading-6
             "
           >
-            Royal flavour, premium ingredients and an offer
-            made specially for today's cravings.
+            {t("biryani.offer.description", {
+              defaultValue:
+                "Royal flavour, premium ingredients and an offer made specially for today's cravings.",
+            })}
           </p>
         </motion.div>
 
@@ -345,7 +357,9 @@ export default function TodayOffer() {
                       sm:tracking-[0.2em]
                     "
                   >
-                    Special Deal
+                    {t("biryani.offer.specialDeal", {
+                      defaultValue: "Special Deal",
+                    })}
                   </span>
                 </motion.div>
               </div>
@@ -387,7 +401,9 @@ export default function TodayOffer() {
                       sm:tracking-[0.3em]
                     "
                   >
-                    BB Signature
+                    {t("biryani.offer.signature", {
+                      defaultValue: "BB Signature",
+                    })}
                   </span>
                 </div>
 
@@ -409,9 +425,14 @@ export default function TodayOffer() {
                     lg:text-5xl
                   "
                 >
-                  Royal Chicken
+                  {t("biryani.offer.royalChicken", {
+                    defaultValue: "Royal Chicken",
+                  })}
+
                   <span className="block text-[#D6A84F]">
-                    Biryani
+                    {t("biryani.offer.biryani", {
+                      defaultValue: "Biryani",
+                    })}
                   </span>
                 </h3>
 
@@ -428,8 +449,10 @@ export default function TodayOffer() {
                     sm:leading-6
                   "
                 >
-                  Fragrant basmati rice, tender chicken,
-                  aromatic spices and our signature BB masala.
+                  {t("biryani.offer.foodDescription", {
+                    defaultValue:
+                      "Fragrant basmati rice, tender chicken, aromatic spices and our signature BB masala.",
+                  })}
                 </p>
 
                 {/* Price */}
@@ -437,7 +460,9 @@ export default function TodayOffer() {
                 <div className="mt-5 flex items-end gap-3 sm:mt-6">
                   <div>
                     <p className="text-[8px] uppercase tracking-[0.18em] text-white/25 sm:text-[9px]">
-                      Starting from
+                      {t("biryani.offer.startingFrom", {
+                        defaultValue: "Starting from",
+                      })}
                     </p>
 
                     <p
@@ -475,7 +500,9 @@ export default function TodayOffer() {
                       sm:text-[9px]
                     "
                   >
-                    Limited Time
+                    {t("biryani.offer.limitedTime", {
+                      defaultValue: "Limited Time",
+                    })}
                   </span>
                 </div>
 
@@ -514,7 +541,9 @@ export default function TodayOffer() {
                     lg:hover:shadow-[0_20px_45px_rgba(214,168,79,0.2)]
                   "
                 >
-                  EXPLORE MENU
+                  {t("biryani.offer.exploreMenu", {
+                    defaultValue: "EXPLORE MENU",
+                  })}
 
                   <ArrowRight
                     size={15}
@@ -535,7 +564,10 @@ export default function TodayOffer() {
                   />
 
                   <span>
-                    Freshly prepared • Signature BB taste
+                    {t("biryani.offer.trustLine", {
+                      defaultValue:
+                        "Freshly prepared • Signature BB taste",
+                    })}
                   </span>
                 </div>
               </div>

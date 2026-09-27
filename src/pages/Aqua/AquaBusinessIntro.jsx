@@ -7,46 +7,71 @@ import {
   Sparkles,
   Waves,
 } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 const businessCards = [
   {
     number: "01",
-    title: "BB Aqua Water",
-    description:
-      "BB Aqua branded drinking water bottles with a clean, professional presentation for businesses, events and everyday requirements.",
+    titleKey: "aqua.businessIntro.cards.water.title",
+    descriptionKey: "aqua.businessIntro.cards.water.description",
     points: [
-      "BB Aqua branded bottles",
-      "Premium brand presentation",
-      "Business & event supply",
+      "aqua.businessIntro.cards.water.points.brandedBottles",
+      "aqua.businessIntro.cards.water.points.premiumPresentation",
+      "aqua.businessIntro.cards.water.points.businessEventSupply",
     ],
     icon: Droplets,
   },
   {
     number: "02",
-    title: "Custom Bottle Branding",
-    description:
-      "Put your business logo, brand name or event identity on water bottles and turn every bottle into a visible part of your brand.",
+    titleKey: "aqua.businessIntro.cards.branding.title",
+    descriptionKey: "aqua.businessIntro.cards.branding.description",
     points: [
-      "Your logo & brand identity",
-      "Hotel & restaurant branding",
-      "Corporate & event branding",
+      "aqua.businessIntro.cards.branding.points.logoIdentity",
+      "aqua.businessIntro.cards.branding.points.hotelRestaurant",
+      "aqua.businessIntro.cards.branding.points.corporateEvent",
     ],
     icon: Sparkles,
   },
 ];
 
 const brandingUses = [
-  "Hotels",
-  "Restaurants",
-  "Cafes",
-  "Resorts",
-  "Corporate",
-  "Weddings",
-  "Events",
-  "Caterers",
+  {
+    key: "hotels",
+    defaultValue: "Hotels",
+  },
+  {
+    key: "restaurants",
+    defaultValue: "Restaurants",
+  },
+  {
+    key: "cafes",
+    defaultValue: "Cafes",
+  },
+  {
+    key: "resorts",
+    defaultValue: "Resorts",
+  },
+  {
+    key: "corporate",
+    defaultValue: "Corporate",
+  },
+  {
+    key: "weddings",
+    defaultValue: "Weddings",
+  },
+  {
+    key: "events",
+    defaultValue: "Events",
+  },
+  {
+    key: "caterers",
+    defaultValue: "Caterers",
+  },
 ];
 
 export default function AquaBusinessIntro() {
+  const { t } = useTranslation();
+
   return (
     <section
       id="about"
@@ -203,7 +228,9 @@ export default function AquaBusinessIntro() {
                 sm:text-xs
               "
             >
-              About BB Aqua
+              {t("aqua.businessIntro.eyebrow", {
+                defaultValue: "About BB Aqua",
+              })}
             </span>
           </motion.div>
 
@@ -218,9 +245,14 @@ export default function AquaBusinessIntro() {
               lg:text-7xl
             "
           >
-            Water That
+            {t("aqua.businessIntro.heading.first", {
+              defaultValue: "Water That",
+            })}
+
             <span className="block text-sky-500">
-              Carries Your Brand.
+              {t("aqua.businessIntro.heading.second", {
+                defaultValue: "Carries Your Brand.",
+              })}
             </span>
           </h2>
 
@@ -236,9 +268,10 @@ export default function AquaBusinessIntro() {
               sm:leading-8
             "
           >
-            BB Aqua operates across two connected business areas — our own
-            branded drinking water and professional custom bottle branding
-            for businesses, events and special occasions.
+            {t("aqua.businessIntro.description", {
+              defaultValue:
+                "BB Aqua operates across two connected business areas — our own branded drinking water and professional custom bottle branding for businesses, events and special occasions.",
+            })}
           </p>
         </motion.div>
 
@@ -369,7 +402,12 @@ export default function AquaBusinessIntro() {
                       sm:text-3xl
                     "
                   >
-                    {item.title}
+                    {t(item.titleKey, {
+                      defaultValue:
+                        index === 0
+                          ? "BB Aqua Water"
+                          : "Custom Bottle Branding",
+                    })}
                   </h3>
 
                   <p
@@ -381,11 +419,16 @@ export default function AquaBusinessIntro() {
                       sm:text-base
                     "
                   >
-                    {item.description}
+                    {t(item.descriptionKey, {
+                      defaultValue:
+                        index === 0
+                          ? "BB Aqua branded drinking water bottles with a clean, professional presentation for businesses, events and everyday requirements."
+                          : "Put your business logo, brand name or event identity on water bottles and turn every bottle into a visible part of your brand.",
+                    })}
                   </p>
 
                   <div className="mt-6 space-y-3">
-                    {item.points.map((point) => (
+                    {item.points.map((point, pointIndex) => (
                       <div
                         key={point}
                         className="flex items-center gap-3"
@@ -406,7 +449,20 @@ export default function AquaBusinessIntro() {
                         </span>
 
                         <span className="text-sm font-medium text-slate-700">
-                          {point}
+                          {t(point, {
+                            defaultValue:
+                              index === 0
+                                ? [
+                                    "BB Aqua branded bottles",
+                                    "Premium brand presentation",
+                                    "Business & event supply",
+                                  ][pointIndex]
+                                : [
+                                    "Your logo & brand identity",
+                                    "Hotel & restaurant branding",
+                                    "Corporate & event branding",
+                                  ][pointIndex],
+                          })}
                         </span>
                       </div>
                     ))}
@@ -533,7 +589,9 @@ export default function AquaBusinessIntro() {
                     text-cyan-200
                   "
                 >
-                  Custom Bottle Branding
+                  {t("aqua.businessIntro.customBranding.eyebrow", {
+                    defaultValue: "Custom Bottle Branding",
+                  })}
                 </span>
               </div>
 
@@ -548,9 +606,17 @@ export default function AquaBusinessIntro() {
                   lg:text-4xl
                 "
               >
-                Make every bottle
+                {t("aqua.businessIntro.customBranding.heading.first", {
+                  defaultValue: "Make every bottle",
+                })}
+
                 <span className="block text-cyan-300">
-                  represent your brand.
+                  {t(
+                    "aqua.businessIntro.customBranding.heading.second",
+                    {
+                      defaultValue: "represent your brand.",
+                    }
+                  )}
                 </span>
               </h3>
 
@@ -564,8 +630,10 @@ export default function AquaBusinessIntro() {
                   sm:text-base
                 "
               >
-                Your logo, your brand identity and your message can become
-                part of the bottle experience your customers see every day.
+                {t("aqua.businessIntro.customBranding.description", {
+                  defaultValue:
+                    "Your logo, your brand identity and your message can become part of the bottle experience your customers see every day.",
+                })}
               </p>
             </div>
 
@@ -595,7 +663,10 @@ export default function AquaBusinessIntro() {
                 sm:w-fit
               "
             >
-              Explore Brand Bottles
+              {t("aqua.businessIntro.customBranding.button", {
+                defaultValue: "Explore Brand Bottles",
+              })}
+
               <ArrowRight className="h-4 w-4" />
             </motion.a>
           </div>
@@ -631,7 +702,9 @@ export default function AquaBusinessIntro() {
               text-slate-400
             "
           >
-            Custom Bottle Branding For
+            {t("aqua.businessIntro.brandingUses.title", {
+              defaultValue: "Custom Bottle Branding For",
+            })}
           </p>
 
           <div
@@ -645,7 +718,7 @@ export default function AquaBusinessIntro() {
           >
             {brandingUses.map((item, index) => (
               <motion.div
-                key={item}
+                key={item.key}
                 initial={{
                   opacity: 0,
                   scale: 0.9,
@@ -675,7 +748,9 @@ export default function AquaBusinessIntro() {
                   backdrop-blur-md
                 "
               >
-                {item}
+                {t(`aqua.businessIntro.brandingUses.${item.key}`, {
+                  defaultValue: item.defaultValue,
+                })}
               </motion.div>
             ))}
           </div>

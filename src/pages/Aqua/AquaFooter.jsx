@@ -1,4 +1,6 @@
 import { motion } from "motion/react";
+import { useTranslation } from "react-i18next";
+
 import {
   ArrowUp,
   Droplets,
@@ -9,36 +11,38 @@ import {
 
 const quickLinks = [
   {
-    label: "Home",
+    key: "home",
     href: "#aqua-home",
   },
   {
-    label: "About",
+    key: "about",
     href: "#about",
   },
   {
-    label: "Products",
+    key: "products",
     href: "#products",
   },
   {
-    label: "Custom Bottles",
+    key: "customBottles",
     href: "#custom-bottles",
   },
   {
-    label: "Process",
+    key: "process",
     href: "#process",
   },
   {
-    label: "Gallery",
+    key: "gallery",
     href: "#gallery",
   },
   {
-    label: "Contact",
+    key: "contact",
     href: "#contact",
   },
 ];
 
 export default function AquaFooter() {
+  const { t } = useTranslation();
+
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -176,7 +180,9 @@ export default function AquaFooter() {
                   sm:text-xs
                 "
               >
-                Custom Bottle Branding
+                {t("aqua.footer.cta.eyebrow", {
+                  defaultValue: "Custom Bottle Branding",
+                })}
               </p>
 
               <h2
@@ -190,7 +196,9 @@ export default function AquaFooter() {
                   lg:text-4xl
                 "
               >
-                Your Brand. On Every Bottle.
+                {t("aqua.footer.cta.title", {
+                  defaultValue: "Your Brand. On Every Bottle.",
+                })}
               </h2>
 
               <p
@@ -202,8 +210,10 @@ export default function AquaFooter() {
                   text-[#16445B]
                 "
               >
-                Ready to turn your bottle into a part of your brand
-                experience?
+                {t("aqua.footer.cta.description", {
+                  defaultValue:
+                    "Ready to turn your bottle into a part of your brand experience?",
+                })}
               </p>
             </div>
 
@@ -228,7 +238,10 @@ export default function AquaFooter() {
                 sm:w-auto
               "
             >
-              Start Branding
+              {t("aqua.footer.cta.button", {
+                defaultValue: "Start Branding",
+              })}
+
               <ExternalLink className="h-4 w-4 text-cyan-300" />
             </a>
           </div>
@@ -276,7 +289,9 @@ export default function AquaFooter() {
                 </p>
 
                 <p className="mt-1 text-[10px] uppercase tracking-[0.18em] text-slate-500">
-                  Pure. Fresh. Trusted.
+                  {t("aqua.footer.brand.tagline", {
+                    defaultValue: "Pure. Fresh. Trusted.",
+                  })}
                 </p>
               </div>
             </div>
@@ -290,9 +305,14 @@ export default function AquaFooter() {
                 sm:text-4xl
               "
             >
-              Water That
+              {t("aqua.footer.brand.heading.first", {
+                defaultValue: "Water That",
+              })}
+
               <span className="block text-cyan-300">
-                Carries Your Brand.
+                {t("aqua.footer.brand.heading.second", {
+                  defaultValue: "Carries Your Brand.",
+                })}
               </span>
             </h3>
 
@@ -305,9 +325,10 @@ export default function AquaFooter() {
                 text-slate-400
               "
             >
-              BB Aqua brings together branded drinking water and
-              Custom Bottle Branding for businesses, events and
-              special occasions.
+              {t("aqua.footer.brand.description", {
+                defaultValue:
+                  "BB Aqua brings together branded drinking water and Custom Bottle Branding for businesses, events and special occasions.",
+              })}
             </p>
 
             {/* Contact */}
@@ -346,7 +367,10 @@ export default function AquaFooter() {
                 "
               >
                 <MessageCircle className="h-4 w-4 text-cyan-300" />
-                WhatsApp BB Aqua
+
+                {t("aqua.footer.contact.whatsapp", {
+                  defaultValue: "WhatsApp BB Aqua",
+                })}
               </a>
             </div>
           </div>
@@ -363,13 +387,15 @@ export default function AquaFooter() {
                 text-cyan-300
               "
             >
-              Explore
+              {t("aqua.footer.explore.title", {
+                defaultValue: "Explore",
+              })}
             </p>
 
             <div className="mt-5 grid grid-cols-2 gap-x-4 gap-y-3 lg:grid-cols-1">
               {quickLinks.map((link) => (
                 <a
-                  key={link.label}
+                  key={link.key}
                   href={link.href}
                   className="
                     text-sm
@@ -378,7 +404,22 @@ export default function AquaFooter() {
                     hover:text-white
                   "
                 >
-                  {link.label}
+                  {t(`aqua.footer.links.${link.key}`, {
+                    defaultValue:
+                      link.key === "home"
+                        ? "Home"
+                        : link.key === "about"
+                          ? "About"
+                          : link.key === "products"
+                            ? "Products"
+                            : link.key === "customBottles"
+                              ? "Custom Bottles"
+                              : link.key === "process"
+                                ? "Process"
+                                : link.key === "gallery"
+                                  ? "Gallery"
+                                  : "Contact",
+                  })}
                 </a>
               ))}
             </div>
@@ -396,7 +437,9 @@ export default function AquaFooter() {
                 text-cyan-300
               "
             >
-              BB Group
+              {t("aqua.footer.group.title", {
+                defaultValue: "BB Group",
+              })}
             </p>
 
             <div className="mt-5 space-y-4">
@@ -419,7 +462,9 @@ export default function AquaFooter() {
                 </p>
 
                 <p className="mt-1 text-xs text-slate-500">
-                  Explore all businesses
+                  {t("aqua.footer.group.exploreBusinesses", {
+                    defaultValue: "Explore all businesses",
+                  })}
                 </p>
               </a>
 
@@ -442,7 +487,10 @@ export default function AquaFooter() {
                 </p>
 
                 <p className="mt-1 text-xs text-slate-500">
-                  Authentic Taste. Royal Experience.
+                  {t("aqua.footer.group.biryaniTagline", {
+                    defaultValue:
+                      "Authentic Taste. Royal Experience.",
+                  })}
                 </p>
               </a>
             </div>
@@ -468,8 +516,11 @@ export default function AquaFooter() {
         >
           <div>
             <p className="text-xs text-slate-500">
-              © {new Date().getFullYear()} BB GROUP OF BUSINESSES.
-              All rights reserved.
+              © {new Date().getFullYear()}{" "}
+              {t("aqua.footer.bottom.copyright", {
+                defaultValue:
+                  "BB GROUP OF BUSINESSES. All rights reserved.",
+              })}
             </p>
 
             <p className="mt-1 text-[10px] text-slate-600">
@@ -499,7 +550,9 @@ export default function AquaFooter() {
               hover:bg-cyan-300/10
               sm:self-auto
             "
-            aria-label="Back to top"
+            aria-label={t("aqua.footer.bottom.backToTop", {
+              defaultValue: "Back to top",
+            })}
           >
             <ArrowUp className="h-4 w-4" />
           </button>

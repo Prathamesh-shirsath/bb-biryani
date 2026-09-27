@@ -1,6 +1,6 @@
+import { useTranslation } from "react-i18next";
 import { motion } from "motion/react";
 import {
-  ArrowUpRight,
   Award,
   Crown,
   Sparkles,
@@ -10,22 +10,33 @@ import {
 const highlights = [
   {
     number: "01",
-    title: "Authentic Taste",
-    text: "A commitment to maintaining the authentic taste of BB.",
+    titleKey: "biryani.owner.highlights.authenticTaste.title",
+    textKey: "biryani.owner.highlights.authenticTaste.text",
+    defaultTitle: "Authentic Taste",
+    defaultText:
+      "A commitment to maintaining the authentic taste of BB.",
   },
   {
     number: "02",
-    title: "Quality First",
-    text: "Carefully selected ingredients and consistent quality.",
+    titleKey: "biryani.owner.highlights.qualityFirst.title",
+    textKey: "biryani.owner.highlights.qualityFirst.text",
+    defaultTitle: "Quality First",
+    defaultText:
+      "Carefully selected ingredients and consistent quality.",
   },
   {
     number: "03",
-    title: "Customer Trust",
-    text: "Building lasting relationships through great food and service.",
+    titleKey: "biryani.owner.highlights.customerTrust.title",
+    textKey: "biryani.owner.highlights.customerTrust.text",
+    defaultTitle: "Customer Trust",
+    defaultText:
+      "Building lasting relationships through great food and service.",
   },
 ];
 
 export default function AboutOwner() {
+  const { t } = useTranslation();
+
   return (
     <section
       id="owner"
@@ -158,7 +169,9 @@ export default function AboutOwner() {
           </div>
 
           <p className="mt-4 bb-eyebrow">
-            The Story Behind BB
+            {t("biryani.owner.eyebrow", {
+              defaultValue: "The Story Behind BB",
+            })}
           </p>
 
           <h2
@@ -175,9 +188,14 @@ export default function AboutOwner() {
               lg:text-6xl
             "
           >
-            Meet The
+            {t("biryani.owner.meetThe", {
+              defaultValue: "Meet The",
+            })}
+
             <span className="block bg-gradient-to-r from-[#FFF0B8] via-[#D6A84F] to-[#A66A16] bg-clip-text text-transparent">
-              Founder
+              {t("biryani.owner.founder", {
+                defaultValue: "Founder",
+              })}
             </span>
           </h2>
 
@@ -194,8 +212,10 @@ export default function AboutOwner() {
               sm:leading-6
             "
           >
-            Behind every plate is a vision, a passion and a
-            commitment to serving something truly memorable.
+            {t("biryani.owner.headerDescription", {
+              defaultValue:
+                "Behind every plate is a vision, a passion and a commitment to serving something truly memorable.",
+            })}
           </p>
         </motion.div>
 
@@ -376,7 +396,9 @@ export default function AboutOwner() {
                 >
                   <img
                     src="/owner/owner.png"
-                    alt="BB Biryani Founder"
+                    alt={t("biryani.owner.imageAlt", {
+                      defaultValue: "BB Biryani Founder",
+                    })}
                     className="
                       h-full
                       w-full
@@ -451,7 +473,9 @@ export default function AboutOwner() {
                     />
 
                     <span className="text-[8px] font-semibold uppercase tracking-[0.18em] text-[#D6A84F] sm:text-[9px]">
-                      Founder & Visionary
+                      {t("biryani.owner.founderBadge", {
+                        defaultValue: "Founder & Visionary",
+                      })}
                     </span>
                   </div>
                 </motion.div>
@@ -474,7 +498,9 @@ export default function AboutOwner() {
                 "
               >
                 <p className="text-[8px] font-semibold uppercase tracking-[0.25em] text-[#D6A84F] sm:text-[10px]">
-                  BB GROUP OF BUSINESSES
+                  {t("biryani.owner.brand", {
+                    defaultValue: "BB GROUP OF BUSINESSES",
+                  })}
                 </p>
 
                 <h3
@@ -496,7 +522,9 @@ export default function AboutOwner() {
                 </h3>
 
                 <p className="mt-2 text-xs font-medium text-[#D6A84F] sm:text-sm">
-                  Founder • BB Group of Business
+                  {t("biryani.owner.role", {
+                    defaultValue: "Founder • BB Group of Business",
+                  })}
                 </p>
 
                 {/* Decorative line */}
@@ -527,10 +555,10 @@ export default function AboutOwner() {
                     sm:leading-7
                   "
                 >
-                  Our journey is driven by a simple belief:
-                  great food is not just about taste — it is
-                  about quality, consistency, hospitality and
-                  the memories people create around a meal.
+                  {t("biryani.owner.paragraphOne", {
+                    defaultValue:
+                      "Our journey is driven by a simple belief: great food is not just about taste — it is about quality, consistency, hospitality and the memories people create around a meal.",
+                  })}
                 </p>
 
                 <p
@@ -544,9 +572,10 @@ export default function AboutOwner() {
                     sm:leading-7
                   "
                 >
-                  BB Biryani represents our passion for
-                  authentic flavours and our vision to create
-                  a memorable food experience for every guest.
+                  {t("biryani.owner.paragraphTwo", {
+                    defaultValue:
+                      "BB Biryani represents our passion for authentic flavours and our vision to create a memorable food experience for every guest.",
+                  })}
                 </p>
 
                 {/* =================================================
@@ -580,7 +609,9 @@ export default function AboutOwner() {
                     </p>
 
                     <p className="mt-1 text-[6px] uppercase tracking-[0.14em] text-white/25 sm:text-[8px]">
-                      Brand
+                      {t("biryani.owner.stats.brand", {
+                        defaultValue: "Brand",
+                      })}
                     </p>
                   </div>
 
@@ -601,7 +632,9 @@ export default function AboutOwner() {
                     </p>
 
                     <p className="mt-1 text-[6px] uppercase tracking-[0.14em] text-white/25 sm:text-[8px]">
-                      Passion
+                      {t("biryani.owner.stats.passion", {
+                        defaultValue: "Passion",
+                      })}
                     </p>
                   </div>
 
@@ -622,14 +655,16 @@ export default function AboutOwner() {
                     </p>
 
                     <p className="mt-1 text-[6px] uppercase tracking-[0.14em] text-white/25 sm:text-[8px]">
-                      Quality
+                      {t("biryani.owner.stats.quality", {
+                        defaultValue: "Quality",
+                      })}
                     </p>
                   </div>
                 </div>
 
                 {/* CTA */}
 
-                {/*<a
+                {/* <a
                   href="#franchise"
                   className="
                     group
@@ -663,7 +698,9 @@ export default function AboutOwner() {
                     lg:hover:bg-[#D6A84F]/10
                   "
                 >
-                  Discover Our Journey
+                  {t("biryani.owner.discoverJourney", {
+                    defaultValue: "Discover Our Journey",
+                  })}
 
                   <ArrowUpRight
                     size={15}
@@ -674,7 +711,7 @@ export default function AboutOwner() {
                       group-hover:-translate-y-1
                     "
                   />
-                </a>*/}
+                </a> */}
               </div>
             </div>
           </div>
@@ -757,11 +794,15 @@ export default function AboutOwner() {
 
                 <div>
                   <h4 className="text-sm font-bold text-white sm:text-base">
-                    {item.title}
+                    {t(item.titleKey, {
+                      defaultValue: item.defaultTitle,
+                    })}
                   </h4>
 
                   <p className="mt-2 text-[10px] leading-5 text-white/30 sm:text-xs sm:leading-6">
-                    {item.text}
+                    {t(item.textKey, {
+                      defaultValue: item.defaultText,
+                    })}
                   </p>
                 </div>
               </div>
@@ -814,8 +855,10 @@ export default function AboutOwner() {
               sm:leading-9
             "
           >
-            "Every great brand begins with a simple
-            passion — to serve something people love."
+            {t("biryani.owner.quote", {
+              defaultValue:
+                '"Every great brand begins with a simple passion — to serve something people love."',
+            })}
           </p>
         </motion.div>
       </div>

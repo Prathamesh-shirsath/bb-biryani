@@ -9,38 +9,61 @@ import {
   Waves,
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const navItems = [
   {
+    key: "home",
     label: "Home",
     id: "aqua-home",
   },
   {
+    key: "about",
     label: "About",
     id: "about",
   },
   {
+    key: "products",
     label: "Products",
     id: "products",
   },
   {
+    key: "customBottles",
     label: "Custom Bottles",
     id: "custom-bottles",
   },
   {
+    key: "process",
     label: "Process",
     id: "process",
   },
   {
+    key: "gallery",
     label: "Gallery",
     id: "gallery",
   },
 ];
 
 export default function AquaNavbar() {
+  const { t, i18n } = useTranslation();
+
   const [isOpen, setIsOpen] = useState(false);
 
   const navigate = useNavigate();
+
+  /* =========================================================
+     LANGUAGE
+  ========================================================= */
+
+  const changeLanguage = (language) => {
+    i18n.changeLanguage(language);
+
+    try {
+      localStorage.setItem("bb-language", language);
+    } catch {
+      // Ignore localStorage errors.
+    }
+  };
 
   /* =========================================================
      BODY SCROLL LOCK
@@ -267,7 +290,9 @@ export default function AquaNavbar() {
                   sm:block
                 "
               >
-                Pure · Fresh · Trusted
+                {t("aqua.navbar.tagline", {
+                  defaultValue: "Pure · Fresh · Trusted",
+                })}
               </p>
             </div>
           </motion.button>
@@ -300,7 +325,9 @@ export default function AquaNavbar() {
                   hover:text-[#0369A1]
                 "
               >
-                {item.label}
+                {t(`aqua.navbar.links.${item.key}`, {
+                  defaultValue: item.label,
+                })}
 
                 {/* Underline */}
 
@@ -326,10 +353,53 @@ export default function AquaNavbar() {
           </div>
 
           {/* =================================================
-              DESKTOP BACK TO BIRYANI BUTTON
+              DESKTOP RIGHT SIDE
           ================================================== */}
 
-          <div className="hidden lg:block">
+          <div className="hidden items-center gap-3 lg:flex">
+            {/* Language Selector */}
+
+            <div
+              className="
+                flex
+                items-center
+                rounded-full
+                border
+                border-sky-900/10
+                bg-sky-50/70
+                p-1
+              "
+              aria-label={t("aqua.navbar.language", {
+                defaultValue: "Language",
+              })}
+            >
+              <button
+                type="button"
+                onClick={() => changeLanguage("en")}
+                className={`rounded-full px-2.5 py-1.5 text-[9px] font-bold transition duration-300 ${
+                  i18n.language === "en"
+                    ? "bg-white text-[#0369A1] shadow-sm"
+                    : "text-[#164E63]/45 hover:text-[#0369A1]"
+                }`}
+              >
+                EN
+              </button>
+
+              <button
+                type="button"
+                onClick={() => changeLanguage("mr")}
+                className={`rounded-full px-2.5 py-1.5 text-[9px] font-bold transition duration-300 ${
+                  i18n.language === "mr"
+                    ? "bg-white text-[#0369A1] shadow-sm"
+                    : "text-[#164E63]/45 hover:text-[#0369A1]"
+                }`}
+              >
+                मराठी
+              </button>
+            </div>
+
+            {/* Back to Biryani */}
+
             <motion.button
               type="button"
               onClick={handleBiryani}
@@ -379,8 +449,6 @@ export default function AquaNavbar() {
                 "
               />
 
-              {/* Arrow */}
-
               <ArrowLeft
                 size={15}
                 className="
@@ -392,13 +460,11 @@ export default function AquaNavbar() {
                 "
               />
 
-              {/* Text */}
-
               <span className="relative z-10">
-                BB Biryani
+                {t("aqua.navbar.biryani", {
+                  defaultValue: "BB Biryani",
+                })}
               </span>
-
-              {/* Droplet */}
 
               <Droplets
                 size={15}
@@ -421,8 +487,12 @@ export default function AquaNavbar() {
             type="button"
             aria-label={
               isOpen
-                ? "Close navigation menu"
-                : "Open navigation menu"
+                ? t("aqua.navbar.closeMenu", {
+                    defaultValue: "Close navigation menu",
+                  })
+                : t("aqua.navbar.openMenu", {
+                    defaultValue: "Open navigation menu",
+                  })
             }
             aria-expanded={isOpen}
             onClick={() => setIsOpen((prev) => !prev)}
@@ -445,10 +515,7 @@ export default function AquaNavbar() {
               lg:hidden
             "
           >
-            <AnimatePresence
-              mode="wait"
-              initial={false}
-            >
+            <AnimatePresence mode="wait" initial={false}>
               {isOpen ? (
                 <motion.span
                   key="close"
@@ -662,7 +729,9 @@ export default function AquaNavbar() {
                       text-sky-700/45
                     "
                   >
-                    Pure · Fresh · Trusted
+                    {t("aqua.navbar.tagline", {
+                      defaultValue: "Pure · Fresh · Trusted",
+                    })}
                   </p>
                 </div>
               </div>
@@ -709,7 +778,14 @@ export default function AquaNavbar() {
                       hover:text-sky-700
                     "
                   >
-                    <span>{item.label}</span>
+                    <span>
+                      {t(
+                        `aqua.navbar.links.${item.key}`,
+                        {
+                          defaultValue: item.label,
+                        }
+                      )}
+                    </span>
 
                     <ArrowRight
                       size={15}
@@ -722,6 +798,48 @@ export default function AquaNavbar() {
                     />
                   </motion.button>
                 ))}
+              </div>
+
+              {/* =================================================
+                  MOBILE LANGUAGE SELECTOR
+              ================================================== */}
+
+              <div className="relative mt-3 flex items-center justify-between rounded-xl border border-sky-900/10 bg-sky-50/60 px-4 py-3">
+                <span className="text-[9px] font-semibold uppercase tracking-[0.18em] text-[#164E63]/45">
+                  {t("aqua.navbar.language", {
+                    defaultValue: "Language",
+                  })}
+                </span>
+
+                <div className="flex items-center rounded-full border border-sky-900/10 bg-white p-1">
+                  <button
+                    type="button"
+                    onClick={() =>
+                      changeLanguage("en")
+                    }
+                    className={`rounded-full px-3 py-1.5 text-[9px] font-bold transition duration-300 ${
+                      i18n.language === "en"
+                        ? "bg-sky-100 text-[#0369A1]"
+                        : "text-[#164E63]/45"
+                    }`}
+                  >
+                    EN
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() =>
+                      changeLanguage("mr")
+                    }
+                    className={`rounded-full px-3 py-1.5 text-[9px] font-bold transition duration-300 ${
+                      i18n.language === "mr"
+                        ? "bg-sky-100 text-[#0369A1]"
+                        : "text-[#164E63]/45"
+                    }`}
+                  >
+                    मराठी
+                  </button>
+                </div>
               </div>
 
               {/* =================================================
@@ -763,7 +881,13 @@ export default function AquaNavbar() {
                 />
 
                 <span className="relative z-10">
-                  CUSTOMIZE YOUR BOTTLE
+                  {t(
+                    "aqua.navbar.customBottle",
+                    {
+                      defaultValue:
+                        "CUSTOMIZE YOUR BOTTLE",
+                    }
+                  )}
                 </span>
 
                 <ArrowRight
@@ -822,7 +946,12 @@ export default function AquaNavbar() {
                   "
                 />
 
-                <span>BACK TO BB BIRYANI</span>
+                <span>
+                  {t("aqua.navbar.backToBiryani", {
+                    defaultValue:
+                      "BACK TO BB BIRYANI",
+                  })}
+                </span>
 
                 <Droplets
                   size={14}

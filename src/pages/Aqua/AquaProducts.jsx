@@ -5,35 +5,35 @@ import {
   Eye,
   Sparkles,
 } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 const products = [
   {
     id: "01",
-    name: "BB Aqua",
-    subtitle: "Branded Water",
-    description:
-      "BB Aqua branded drinking water presented with a clean and professional identity.",
+    nameKey: "aqua.products.items.aqua.name",
+    subtitleKey: "aqua.products.items.aqua.subtitle",
+    descriptionKey: "aqua.products.items.aqua.description",
     image: "/aqua/bottle.png",
   },
   {
     id: "02",
-    name: "Brand Bottle",
-    subtitle: "Custom Bottle Branding",
-    description:
-      "Present your logo and brand identity on bottles created for your business or event.",
+    nameKey: "aqua.products.items.brand.name",
+    subtitleKey: "aqua.products.items.brand.subtitle",
+    descriptionKey: "aqua.products.items.brand.description",
     image: "/aqua/brand.png",
   },
   {
     id: "03",
-    name: "Event Bottle",
-    subtitle: "Event Branding",
-    description:
-      "A professional bottle branding option for weddings, events, functions and special occasions.",
+    nameKey: "aqua.products.items.event.name",
+    subtitleKey: "aqua.products.items.event.subtitle",
+    descriptionKey: "aqua.products.items.event.description",
     image: "/aqua/event.png",
   },
 ];
 
 export default function AquaProducts() {
+  const { t } = useTranslation();
+
   return (
     <section
       id="products"
@@ -159,7 +159,9 @@ export default function AquaProducts() {
                 sm:text-xs
               "
             >
-              BB Aqua Collection
+              {t("aqua.products.eyebrow", {
+                defaultValue: "BB Aqua Collection",
+              })}
             </span>
           </div>
 
@@ -173,9 +175,14 @@ export default function AquaProducts() {
               lg:text-7xl
             "
           >
-            Water.
+            {t("aqua.products.heading.first", {
+              defaultValue: "Water.",
+            })}
+
             <span className="block text-cyan-600">
-              Presented Your Way.
+              {t("aqua.products.heading.second", {
+                defaultValue: "Presented Your Way.",
+              })}
             </span>
           </h2>
 
@@ -191,8 +198,10 @@ export default function AquaProducts() {
               sm:leading-8
             "
           >
-            Explore BB Aqua branded water and bottle branding options
-            designed for businesses, events and special occasions.
+            {t("aqua.products.description", {
+              defaultValue:
+                "Explore BB Aqua branded water and bottle branding options designed for businesses, events and special occasions.",
+            })}
           </p>
         </motion.div>
 
@@ -347,7 +356,14 @@ export default function AquaProducts() {
 
                 <motion.img
                   src={product.image}
-                  alt={product.name}
+                  alt={t(product.nameKey, {
+                    defaultValue:
+                      index === 0
+                        ? "BB Aqua"
+                        : index === 1
+                          ? "Brand Bottle"
+                          : "Event Bottle",
+                  })}
                   animate={{
                     y: [0, -8, 0],
                     rotate: [-1, 1, -1],
@@ -416,7 +432,10 @@ export default function AquaProducts() {
                   "
                 >
                   <Eye className="h-3.5 w-3.5 text-cyan-600" />
-                  Explore
+
+                  {t("aqua.products.explore", {
+                    defaultValue: "Explore",
+                  })}
                 </div>
               </div>
 
@@ -437,7 +456,14 @@ export default function AquaProducts() {
                       text-cyan-600
                     "
                   >
-                    {product.subtitle}
+                    {t(product.subtitleKey, {
+                      defaultValue:
+                        index === 0
+                          ? "Branded Water"
+                          : index === 1
+                            ? "Custom Bottle Branding"
+                            : "Event Branding",
+                    })}
                   </p>
                 </div>
 
@@ -450,7 +476,14 @@ export default function AquaProducts() {
                     text-[#06283D]
                   "
                 >
-                  {product.name}
+                  {t(product.nameKey, {
+                    defaultValue:
+                      index === 0
+                        ? "BB Aqua"
+                        : index === 1
+                          ? "Brand Bottle"
+                          : "Event Bottle",
+                  })}
                 </h3>
 
                 <p
@@ -461,7 +494,14 @@ export default function AquaProducts() {
                     text-slate-500
                   "
                 >
-                  {product.description}
+                  {t(product.descriptionKey, {
+                    defaultValue:
+                      index === 0
+                        ? "BB Aqua branded drinking water presented with a clean and professional identity."
+                        : index === 1
+                          ? "Present your logo and brand identity on bottles created for your business or event."
+                          : "A professional bottle branding option for weddings, events, functions and special occasions.",
+                  })}
                 </p>
 
                 <a
@@ -487,7 +527,10 @@ export default function AquaProducts() {
                     hover:bg-cyan-100
                   "
                 >
-                  Explore Branding
+                  {t("aqua.products.exploreBranding", {
+                    defaultValue: "Explore Branding",
+                  })}
+
                   <ArrowRight className="h-4 w-4" />
                 </a>
               </div>
@@ -530,7 +573,9 @@ export default function AquaProducts() {
           "
         >
           <p className="text-xs font-black uppercase tracking-[0.2em] text-cyan-600">
-            Need Branding?
+            {t("aqua.products.bottomCta.eyebrow", {
+              defaultValue: "Need Branding?",
+            })}
           </p>
 
           <h3
@@ -542,12 +587,16 @@ export default function AquaProducts() {
               sm:text-3xl
             "
           >
-            Put Your Brand On Every Bottle.
+            {t("aqua.products.bottomCta.heading", {
+              defaultValue: "Put Your Brand On Every Bottle.",
+            })}
           </h3>
 
           <p className="mx-auto mt-3 max-w-xl text-sm leading-6 text-slate-500">
-            Share your branding requirement and explore the possibilities
-            with BB Aqua.
+            {t("aqua.products.bottomCta.description", {
+              defaultValue:
+                "Share your branding requirement and explore the possibilities with BB Aqua.",
+            })}
           </p>
 
           <a
@@ -573,7 +622,10 @@ export default function AquaProducts() {
               sm:w-auto
             "
           >
-            Start Bottle Branding
+            {t("aqua.products.bottomCta.button", {
+              defaultValue: "Start Bottle Branding",
+            })}
+
             <ArrowRight className="h-4 w-4 text-cyan-300" />
           </a>
         </motion.div>

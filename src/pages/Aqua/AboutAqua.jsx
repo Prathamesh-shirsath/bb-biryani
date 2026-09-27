@@ -1,4 +1,6 @@
 import { motion } from "motion/react";
+import { useTranslation } from "react-i18next";
+
 import {
   ArrowRight,
   Building2,
@@ -11,30 +13,48 @@ const businessCards = [
   {
     icon: Droplets,
     number: "01",
-    title: "BB Aqua Bottles",
-    description:
-      "Our own BB Aqua branded drinking water bottles, designed around purity, quality and a clean premium identity.",
+    titleKey: "aqua.about.cards.aqua.title",
+    descriptionKey: "aqua.about.cards.aqua.description",
     points: [
-      "BB Aqua branded bottles",
-      "Quality-focused production",
-      "Suitable for regular supply",
+      {
+        key: "brandedBottles",
+        defaultValue: "BB Aqua branded bottles",
+      },
+      {
+        key: "qualityProduction",
+        defaultValue: "Quality-focused production",
+      },
+      {
+        key: "regularSupply",
+        defaultValue: "Suitable for regular supply",
+      },
     ],
   },
   {
     icon: Sparkles,
     number: "02",
-    title: "Customised Bottles",
-    description:
-      "Water bottles customised with your brand identity, logo or event design for businesses, celebrations and special occasions.",
+    titleKey: "aqua.about.cards.custom.title",
+    descriptionKey: "aqua.about.cards.custom.description",
     points: [
-      "Your logo & branding",
-      "Business & event bottles",
-      "Bulk customised orders",
+      {
+        key: "logoBranding",
+        defaultValue: "Your logo & branding",
+      },
+      {
+        key: "businessEvent",
+        defaultValue: "Business & event bottles",
+      },
+      {
+        key: "bulkOrders",
+        defaultValue: "Bulk customised orders",
+      },
     ],
   },
 ];
 
 export default function AquaAbout() {
+  const { t } = useTranslation();
+
   const scrollToCustom = () => {
     document
       .getElementById("custom-bottles")
@@ -163,7 +183,9 @@ export default function AquaAbout() {
                 text-sky-700
               "
             >
-              About BB Aqua
+              {t("aqua.about.eyebrow", {
+                defaultValue: "About BB Aqua",
+              })}
             </span>
           </motion.div>
 
@@ -198,9 +220,14 @@ export default function AquaAbout() {
               lg:text-6xl
             "
           >
-            Water That
+            {t("aqua.about.heading.first", {
+              defaultValue: "Water That",
+            })}
+
             <span className="block text-sky-500">
-              Carries Your Brand.
+              {t("aqua.about.heading.second", {
+                defaultValue: "Carries Your Brand.",
+              })}
             </span>
           </motion.h2>
 
@@ -233,11 +260,10 @@ export default function AquaAbout() {
               sm:leading-8
             "
           >
-            BB Aqua brings together premium drinking
-            water and customised bottle solutions —
-            helping businesses and events serve quality
-            water while putting their own identity on
-            every bottle.
+            {t("aqua.about.description", {
+              defaultValue:
+                "BB Aqua brings together premium drinking water and customised bottle solutions — helping businesses and events serve quality water while putting their own identity on every bottle.",
+            })}
           </motion.p>
         </div>
 
@@ -257,217 +283,232 @@ export default function AquaAbout() {
             lg:mt-16
           "
         >
-          {businessCards.map(
-            (card, index) => {
-              const Icon = card.icon;
+          {businessCards.map((card, index) => {
+            const Icon = card.icon;
 
-              return (
-                <motion.article
-                  key={card.number}
-                  initial={{
-                    opacity: 0,
-                    y: 45,
-                  }}
-                  whileInView={{
-                    opacity: 1,
-                    y: 0,
-                  }}
-                  viewport={{
-                    once: true,
-                    amount: 0.2,
-                  }}
-                  transition={{
-                    duration: 0.7,
-                    delay: index * 0.12,
-                  }}
-                  whileHover={{
-                    y: -6,
-                  }}
+            return (
+              <motion.article
+                key={card.number}
+                initial={{
+                  opacity: 0,
+                  y: 45,
+                }}
+                whileInView={{
+                  opacity: 1,
+                  y: 0,
+                }}
+                viewport={{
+                  once: true,
+                  amount: 0.2,
+                }}
+                transition={{
+                  duration: 0.7,
+                  delay: index * 0.12,
+                }}
+                whileHover={{
+                  y: -6,
+                }}
+                className="
+                  group
+                  relative
+                  overflow-hidden
+                  rounded-[28px]
+                  border
+                  border-sky-900/[0.08]
+                  bg-white
+                  p-6
+                  shadow-[0_18px_60px_rgba(7,89,133,0.07)]
+                  transition-shadow
+                  duration-500
+                  hover:shadow-[0_25px_80px_rgba(7,89,133,0.12)]
+
+                  sm:p-7
+
+                  lg:p-8
+                "
+              >
+                {/* Card glow */}
+
+                <div
                   className="
-                    group
-                    relative
-                    overflow-hidden
-                    rounded-[28px]
-                    border
-                    border-sky-900/[0.08]
-                    bg-white
-                    p-6
-                    shadow-[0_18px_60px_rgba(7,89,133,0.07)]
-                    transition-shadow
+                    pointer-events-none
+                    absolute
+                    -right-20
+                    -top-20
+                    h-44
+                    w-44
+                    rounded-full
+                    bg-sky-100/70
+                    blur-3xl
+                    transition
                     duration-500
-                    hover:shadow-[0_25px_80px_rgba(7,89,133,0.12)]
+                    group-hover:bg-cyan-100
+                  "
+                />
 
-                    sm:p-7
+                {/* Top line */}
 
-                    lg:p-8
+                <div
+                  className="
+                    absolute
+                    left-0
+                    top-0
+                    h-1
+                    w-full
+                    bg-gradient-to-r
+                    from-sky-500
+                    via-cyan-400
+                    to-transparent
+                    opacity-70
+                  "
+                />
+
+                {/* Header */}
+
+                <div
+                  className="
+                    relative
+                    flex
+                    items-start
+                    justify-between
                   "
                 >
-                  {/* Card glow */}
-
                   <div
                     className="
-                      pointer-events-none
-                      absolute
-                      -right-20
-                      -top-20
-                      h-44
-                      w-44
-                      rounded-full
-                      bg-sky-100/70
-                      blur-3xl
-                      transition
-                      duration-500
-                      group-hover:bg-cyan-100
-                    "
-                  />
-
-                  {/* Top line */}
-
-                  <div
-                    className="
-                      absolute
-                      left-0
-                      top-0
-                      h-1
-                      w-full
-                      bg-gradient-to-r
-                      from-sky-500
-                      via-cyan-400
-                      to-transparent
-                      opacity-70
-                    "
-                  />
-
-                  {/* Header */}
-
-                  <div
-                    className="
-                      relative
                       flex
-                      items-start
-                      justify-between
+                      h-14
+                      w-14
+                      items-center
+                      justify-center
+                      rounded-2xl
+                      bg-gradient-to-br
+                      from-sky-50
+                      to-cyan-50
+                      text-sky-600
+                      shadow-inner
                     "
                   >
+                    <Icon size={25} />
+                  </div>
+
+                  <span
+                    className="
+                      text-4xl
+                      font-black
+                      tracking-[-0.06em]
+                      text-sky-100
+                    "
+                  >
+                    {card.number}
+                  </span>
+                </div>
+
+                {/* Content */}
+
+                <div className="relative mt-7">
+                  <h3
+                    className="
+                      text-2xl
+                      font-black
+                      tracking-[-0.03em]
+                      text-[#063B5C]
+
+                      sm:text-3xl
+                    "
+                  >
+                    {t(card.titleKey, {
+                      defaultValue:
+                        card.number === "01"
+                          ? "BB Aqua Bottles"
+                          : "Customised Bottles",
+                    })}
+                  </h3>
+
+                  <p
+                    className="
+                      mt-3
+                      text-sm
+                      leading-7
+                      text-slate-500
+                    "
+                  >
+                    {t(card.descriptionKey, {
+                      defaultValue:
+                        card.number === "01"
+                          ? "Our own BB Aqua branded drinking water bottles, designed around purity, quality and a clean premium identity."
+                          : "Water bottles customised with your brand identity, logo or event design for businesses, celebrations and special occasions.",
+                    })}
+                  </p>
+                </div>
+
+                {/* Points */}
+
+                <div className="relative mt-6 space-y-3">
+                  {card.points.map((point) => (
                     <div
+                      key={point.key}
                       className="
                         flex
-                        h-14
-                        w-14
                         items-center
-                        justify-center
-                        rounded-2xl
-                        bg-gradient-to-br
-                        from-sky-50
-                        to-cyan-50
-                        text-sky-600
-                        shadow-inner
+                        gap-3
+                        text-xs
+                        font-semibold
+                        text-slate-600
                       "
                     >
-                      <Icon size={25} />
-                    </div>
-
-                    <span
-                      className="
-                        text-4xl
-                        font-black
-                        tracking-[-0.06em]
-                        text-sky-100
-                      "
-                    >
-                      {card.number}
-                    </span>
-                  </div>
-
-                  {/* Content */}
-
-                  <div className="relative mt-7">
-                    <h3
-                      className="
-                        text-2xl
-                        font-black
-                        tracking-[-0.03em]
-                        text-[#063B5C]
-
-                        sm:text-3xl
-                      "
-                    >
-                      {card.title}
-                    </h3>
-
-                    <p
-                      className="
-                        mt-3
-                        text-sm
-                        leading-7
-                        text-slate-500
-                      "
-                    >
-                      {card.description}
-                    </p>
-                  </div>
-
-                  {/* Points */}
-
-                  <div className="relative mt-6 space-y-3">
-                    {card.points.map(
-                      (point) => (
-                        <div
-                          key={point}
+                      <span
+                        className="
+                          flex
+                          h-5
+                          w-5
+                          shrink-0
+                          items-center
+                          justify-center
+                          rounded-full
+                          bg-sky-50
+                        "
+                      >
+                        <span
                           className="
-                            flex
-                            items-center
-                            gap-3
-                            text-xs
-                            font-semibold
-                            text-slate-600
+                            h-1.5
+                            w-1.5
+                            rounded-full
+                            bg-sky-500
                           "
-                        >
-                          <span
-                            className="
-                              flex
-                              h-5
-                              w-5
-                              shrink-0
-                              items-center
-                              justify-center
-                              rounded-full
-                              bg-sky-50
-                            "
-                          >
-                            <span
-                              className="
-                                h-1.5
-                                w-1.5
-                                rounded-full
-                                bg-sky-500
-                              "
-                            />
-                          </span>
+                        />
+                      </span>
 
-                          {point}
-                        </div>
-                      )
-                    )}
-                  </div>
+                      {t(
+                        `aqua.about.cards.${
+                          card.number === "01"
+                            ? "aqua"
+                            : "custom"
+                        }.points.${point.key}`,
+                        {
+                          defaultValue: point.defaultValue,
+                        }
+                      )}
+                    </div>
+                  ))}
+                </div>
 
-                  {/* Bottom decoration */}
+                {/* Bottom decoration */}
 
-                  <div
-                    className="
-                      relative
-                      mt-7
-                      h-px
-                      w-full
-                      bg-gradient-to-r
-                      from-sky-100
-                      via-cyan-100
-                      to-transparent
-                    "
-                  />
-                </motion.article>
-              );
-            }
-          )}
+                <div
+                  className="
+                    relative
+                    mt-7
+                    h-px
+                    w-full
+                    bg-gradient-to-r
+                    from-sky-100
+                    via-cyan-100
+                    to-transparent
+                  "
+                />
+              </motion.article>
+            );
+          })}
         </div>
 
         {/* =================================================
@@ -581,7 +622,9 @@ export default function AquaAbout() {
                     tracking-[0.24em]
                   "
                 >
-                  For Businesses & Events
+                  {t("aqua.about.brandMessage.eyebrow", {
+                    defaultValue: "For Businesses & Events",
+                  })}
                 </span>
               </div>
 
@@ -596,10 +639,15 @@ export default function AquaAbout() {
                   sm:text-3xl
                 "
               >
-                Your brand deserves
+                {t("aqua.about.brandMessage.heading.first", {
+                  defaultValue: "Your brand deserves",
+                })}
+
                 <span className="text-cyan-300">
                   {" "}
-                  more visibility.
+                  {t("aqua.about.brandMessage.heading.second", {
+                    defaultValue: "more visibility.",
+                  })}
                 </span>
               </h3>
 
@@ -612,10 +660,10 @@ export default function AquaAbout() {
                   text-white/60
                 "
               >
-                Turn every bottle into a small
-                brand touchpoint with customised
-                water bottles made around your
-                business or event identity.
+                {t("aqua.about.brandMessage.description", {
+                  defaultValue:
+                    "Turn every bottle into a small brand touchpoint with customised water bottles made around your business or event identity.",
+                })}
               </p>
             </div>
 
@@ -649,7 +697,9 @@ export default function AquaAbout() {
                 shadow-[0_15px_35px_rgba(0,0,0,0.15)]
               "
             >
-              Explore Custom Bottles
+              {t("aqua.about.brandMessage.button", {
+                defaultValue: "Explore Custom Bottles",
+              })}
 
               <ArrowRight
                 size={16}

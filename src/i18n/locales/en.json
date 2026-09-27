@@ -1,0 +1,1067 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "products": "Products",
+    "customBottles": "Custom Bottles",
+    "process": "Process",
+    "gallery": "Gallery",
+    "contact": "Contact",
+    "biryani": "BB Biryani"
+  },
+  "common": {
+    "learnMore": "Learn More",
+    "exploreMore": "Explore More",
+    "getStarted": "Get Started",
+    "contactUs": "Contact Us",
+    "viewGallery": "View Gallery",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous"
+  },
+  "home": {
+    "brandName": "BB Group of Businesses",
+    "intro": {
+      "welcome": "Welcome to"
+    },
+    "header": {
+      "portfolio": "Business Portfolio"
+    },
+    "eyebrow": "One Vision · Multiple Businesses",
+    "description": "Explore the businesses, experiences and vision behind the BB brand.",
+    "selectBusiness": "Select a business to continue",
+    "businessCard": {
+      "businessLabel": "BB Group Business",
+      "explore": "Explore",
+      "clickToEnter": "Click to Enter"
+    },
+    "businesses": {
+      "biryani": {
+        "title": "BB BIRYANI",
+        "subtitle": "Authentic Taste. Royal Experience.",
+        "description": "Authentic flavours, rich aromas and a premium dining experience."
+      },
+      "aqua": {
+        "title": "BB AQUA",
+        "subtitle": "Pure. Fresh. Trusted.",
+        "description": "Quality-focused water solutions built around purity and trust."
+      }
+    }
+  },
+  "navbar": {
+    "authenticTaste": "Authentic Taste",
+    "closeMenu": "Close navigation menu",
+    "openMenu": "Open navigation menu",
+    "navigation": "Navigation",
+    "language": "Language",
+    "home": "Home",
+    "menu": "Menu",
+    "about": "About",
+    "franchise": "Franchise",
+    "gallery": "Gallery"
+  },
+  "aqua": {
+    "about": {
+      "eyebrow": "About BB Aqua",
+      "heading": {
+        "first": "Water That",
+        "second": "Carries Your Brand."
+      },
+      "description": "BB Aqua brings together premium drinking water and customised bottle solutions — helping businesses and events serve quality water while putting their own identity on every bottle.",
+      "brandMessage": {
+        "eyebrow": "For Businesses & Events",
+        "heading": {
+          "first": "Your brand deserves",
+          "second": "more visibility."
+        },
+        "description": "Turn every bottle into a small brand touchpoint with customised water bottles made around your business or event identity.",
+        "button": "Explore Custom Bottles"
+      },
+      "cards": {
+        "aqua": {
+          "title": "BB Aqua Bottles",
+          "description": "Our own BB Aqua branded drinking water bottles, designed around purity, quality and a clean premium identity.",
+          "points": {
+            "brandedBottles": "Branded water bottles",
+            "qualityProduction": "Quality-focused production",
+            "regularSupply": "Regular business supply"
+          }
+        },
+        "custom": {
+          "title": "Customised Bottles",
+          "description": "Water bottles customised with your brand identity, logo or event design for businesses, celebrations and special occasions.",
+          "points": {
+            "logoBranding": "Logo and brand identity",
+            "businessEvent": "Business and event branding",
+            "bulkOrders": "Bulk order requirements"
+          }
+        }
+      }
+    },
+    "bottleShowcase": {
+      "eyebrow": "Custom Bottle Branding",
+      "heading": {
+        "first": "From Bottle",
+        "second": "To Brand."
+      },
+      "description": "See how your identity can move from a bottle to a professionally branded presentation.",
+      "stageLabel": "Stage",
+      "journey": {
+        "eyebrow": "Your Brand Journey",
+        "heading": {
+          "first": "See your identity",
+          "second": "become the bottle brand."
+        },
+        "description": "Your bottle starts simple. Your logo and brand identity transform it into a professional branded product."
+      },
+      "previousStage": "Previous stage",
+      "nextStage": "Next Stage",
+      "trustLine": "Professional bottle branding for your business",
+      "bottomCta": {
+        "title": "Your logo. Your brand. Every bottle.",
+        "description": "Create your bottle branding experience.",
+        "button": "Start Bottle Branding"
+      },
+      "stages": {
+        "bottle": {
+          "title": "Bottle",
+          "subtitle": "Start with the bottle",
+          "description": "Start with a clean water bottle ready to carry your brand identity."
+        },
+        "logo": {
+          "title": "Your Logo",
+          "subtitle": "Add your identity",
+          "description": "Your logo and brand identity become part of the bottle presentation."
+        },
+        "design": {
+          "title": "Brand Design",
+          "subtitle": "Create the visual identity",
+          "description": "Prepare the bottle design around your logo, colours and brand identity."
+        },
+        "branded": {
+          "title": "Branded Bottle",
+          "subtitle": "Ready to represent your brand",
+          "description": "The finished bottle becomes a professional extension of your brand."
+        }
+      }
+    },
+    "branding": {
+      "eyebrow": "Brand Experience",
+      "heading": {
+        "first": "Make Every Bottle",
+        "second": "A Brand Experience."
+      },
+      "description": "Your bottle is more than water. With professional bottle branding, your logo and identity can become part of the experience your customers and guests remember.",
+      "bottleAlt": "BB Aqua branded water bottle",
+      "bottleLabel": {
+        "brand": "YOUR BRAND",
+        "branding": "BOTTLE BRANDING"
+      },
+      "floatingBadge": {
+        "title": "Your Logo",
+        "subtitle": "Your Identity"
+      },
+      "content": {
+        "eyebrow": "Your Brand. On Every Bottle.",
+        "heading": {
+          "first": "Turn water into",
+          "second": "brand visibility."
+        },
+        "description": "Share your logo or brand identity with BB Aqua and create a professional bottle presentation for your business, event or organisation.",
+        "button": "Start Bottle Branding"
+      },
+      "useCases": {
+        "eyebrow": "Built For Your Brand",
+        "heading": "Where Bottle Branding Fits",
+        "hotels": {
+          "title": "Hotels",
+          "text": "Create a consistent branded bottle experience for your guests."
+        },
+        "restaurants": {
+          "title": "Restaurants",
+          "text": "Make every table feel connected to your brand identity."
+        },
+        "weddings": {
+          "title": "Weddings",
+          "text": "Add a personalised bottle touch to memorable celebrations."
+        },
+        "events": {
+          "title": "Events",
+          "text": "Carry your event identity across every bottle served."
+        },
+        "corporate": {
+          "title": "Corporate",
+          "text": "Present your brand professionally at meetings and business events."
+        }
+      },
+      "points": {
+        "logo": "Your logo and brand identity",
+        "professional": "Professional bottle branding",
+        "businessEvent": "Business and event branding",
+        "bulk": "Suitable for bulk requirements"
+      }
+    },
+    "bulkOrder": {
+      "whatsapp": {
+        "greeting": "Hello BB Aqua,",
+        "intro": "I would like to enquire about a bulk / bottle branding requirement.",
+        "name": "Name",
+        "business": "Business / Organisation",
+        "phone": "Phone",
+        "email": "Email",
+        "quantity": "Quantity",
+        "requirement": "Requirement",
+        "additionalRequirement": "Additional Requirement",
+        "closing": "Please share the available options and further details.",
+        "title": "WhatsApp Enquiry",
+        "description": "Your enquiry will open directly in WhatsApp."
+      },
+      "eyebrow": "Bulk & Branding Enquiry",
+      "heading": {
+        "first": "Need Bottles For",
+        "second": "Your Business?"
+      },
+      "description": "Tell us about your requirement. Whether you need BB Aqua branded water or custom bottle branding, send your details and continue the conversation on WhatsApp.",
+      "info": {
+        "title": {
+          "first": "Let's build your",
+          "second": "bottle identity."
+        },
+        "description": "Share your basic requirement and our team can continue the discussion about your bottle branding or bulk requirement.",
+        "highlights": {
+          "brandedWater": "Branded water",
+          "customBranding": "Custom bottle branding",
+          "businessEvents": "Business & events",
+          "bulk": "Bulk requirements"
+        }
+      },
+      "form": {
+        "name": {
+          "label": "Your Name",
+          "placeholder": "Enter your name"
+        },
+        "business": {
+          "label": "Business / Organisation",
+          "placeholder": "Business name"
+        },
+        "phone": {
+          "label": "Phone Number",
+          "placeholder": "Your phone number"
+        },
+        "email": {
+          "label": "Email",
+          "placeholder": "your@email.com"
+        },
+        "quantity": {
+          "label": "Approximate Quantity",
+          "placeholder": "Example: 500 bottles"
+        },
+        "requirement": {
+          "label": "Requirement",
+          "placeholder": "Select your requirement"
+        },
+        "additionalRequirement": {
+          "label": "Additional Requirement",
+          "placeholder": "Tell us about your branding, event or bulk requirement..."
+        },
+        "submit": "Send Enquiry on WhatsApp",
+        "success": "Your enquiry is ready in WhatsApp.",
+        "privacy": "By submitting, you will be redirected to WhatsApp to continue the enquiry."
+      },
+      "requirements": {
+        "brandedWater": "BB Aqua Branded Water",
+        "customBranding": "Custom Bottle Branding",
+        "hotelRestaurant": "Hotel / Restaurant",
+        "weddingEvent": "Wedding / Event",
+        "corporate": "Corporate",
+        "bulk": "Bulk Supply",
+        "other": "Other"
+      }
+    },
+    "businessIntro": {
+      "eyebrow": "About BB Aqua",
+      "heading": {
+        "first": "Water That",
+        "second": "Carries Your Brand."
+      },
+      "description": "BB Aqua operates across two connected business areas — our own branded drinking water and professional custom bottle branding for businesses, events and special occasions.",
+      "customBranding": {
+        "eyebrow": "Custom Bottle Branding",
+        "heading": {
+          "first": "Make every bottle",
+          "second": "represent your brand."
+        },
+        "description": "Your logo, your brand identity and your message can become part of the bottle experience your customers see every day.",
+        "button": "Explore Brand Bottles"
+      },
+      "brandingUses": {
+        "title": "Custom Bottle Branding For",
+        "hotels": "Hotels",
+        "restaurants": "Restaurants",
+        "cafes": "Cafes",
+        "resorts": "Resorts",
+        "corporate": "Corporate",
+        "weddings": "Weddings",
+        "events": "Events",
+        "caterers": "Caterers"
+      },
+      "cards": {
+        "water": {
+          "title": "BB Aqua Water",
+          "description": "BB Aqua branded drinking water bottles with a clean, professional presentation for businesses, events and everyday requirements.",
+          "points": {
+            "brandedBottles": "Branded drinking water bottles",
+            "premiumPresentation": "Clean and premium presentation",
+            "businessEventSupply": "Business and event supply"
+          }
+        },
+        "branding": {
+          "title": "Custom Bottle Branding",
+          "description": "Put your business logo, brand name or event identity on water bottles and turn every bottle into a visible part of your brand.",
+          "points": {
+            "logoIdentity": "Logo and brand identity",
+            "hotelRestaurant": "Hotel and restaurant branding",
+            "corporateEvent": "Corporate and event branding"
+          }
+        }
+      }
+    },
+    "contact": {
+      "eyebrow": "Contact BB Aqua",
+      "heading": {
+        "first": "Let's Talk About",
+        "second": "Your Brand."
+      },
+      "description": "Have a bottle branding requirement, bulk enquiry or want to know more about BB Aqua? Get in touch with us.",
+      "info": {
+        "eyebrow": "Get In Touch",
+        "heading": "Connect with BB Aqua.",
+        "description": "For branded water, Custom Bottle Branding or bulk requirements, contact us directly."
+      },
+      "whatsapp": {
+        "title": "WhatsApp Enquiry",
+        "description": "Your enquiry can open directly in WhatsApp."
+      },
+      "connect": {
+        "title": "Let's Connect.",
+        "description": "For location details, business enquiries and visiting information, please contact BB Aqua directly."
+      },
+      "quickResponse": {
+        "title": "Need A Quick Response?",
+        "description": "Send your bottle branding or bulk requirement directly on WhatsApp.",
+        "button": "WhatsApp BB Aqua"
+      },
+      "footer": {
+        "groupName": "BB GROUP OF BUSINESSES",
+        "tagline": "BB Aqua · Pure. Fresh. Trusted."
+      },
+      "items": {
+        "call": {
+          "title": "Call Us"
+        },
+        "whatsapp": {
+          "title": "WhatsApp",
+          "value": "+91 7038925137"
+        },
+        "hours": {
+          "title": "Business Hours",
+          "value": "10 AM - 8 PM"
+        }
+      }
+    },
+    "customBottles": {
+      "eyebrow": "Custom Bottle Branding",
+      "heading": {
+        "first": "YOUR BRAND.",
+        "second": "ON EVERY BOTTLE."
+      },
+      "description": "Turn water bottles into a visible extension of your business. Add your logo, brand identity or event branding and create a professional experience for your customers and guests.",
+      "bottleAlt": "BB Aqua branded water bottle",
+      "brandBadge": "YOUR BRAND",
+      "bottleBrandingBadge": "Bottle Branding",
+      "content": {
+        "eyebrow": "Brand Visibility",
+        "heading": {
+          "first": "Make your bottle",
+          "second": "work for your brand."
+        },
+        "description": "A branded water bottle gives your logo another place to be seen. It can become part of your restaurant table, hotel room, event setup, corporate meeting or special occasion.",
+        "button": "Start Bottle Branding"
+      },
+      "journey": {
+        "eyebrow": "Branding Journey",
+        "heading": "From your identity to every bottle."
+      },
+      "useCases": {
+        "eyebrow": "Branding Applications",
+        "heading": "Built for businesses and occasions.",
+        "items": {
+          "hotels": "Hotels",
+          "restaurants": "Restaurants",
+          "weddings": "Weddings",
+          "events": "Events",
+          "corporate": "Corporate",
+          "resorts": "Resorts"
+        }
+      },
+      "steps": {
+        "brand": {
+          "title": "Your Brand",
+          "text": "Share your logo, business name or event identity."
+        },
+        "design": {
+          "title": "Brand Design",
+          "text": "Your branding is prepared for the bottle presentation."
+        },
+        "production": {
+          "title": "Branding & Production",
+          "text": "The approved branding moves into the production process."
+        },
+        "bottles": {
+          "title": "Branded Bottles",
+          "text": "Your bottles are ready to represent your brand."
+        }
+      },
+      "points": {
+        "logo": "Your logo and business identity",
+        "professional": "Professional bottle branding",
+        "hotelRestaurant": "Hotel and restaurant branding",
+        "corporateEvent": "Corporate and event branding",
+        "bulk": "Bulk branding requirements"
+      }
+    },
+    "footer": {
+      "cta": {
+        "eyebrow": "Custom Bottle Branding",
+        "title": "Your Brand. On Every Bottle.",
+        "description": "Ready to turn your bottle into a part of your brand experience?",
+        "button": "Start Branding"
+      },
+      "brand": {
+        "tagline": "Pure. Fresh. Trusted.",
+        "heading": {
+          "first": "Water That",
+          "second": "Carries Your Brand."
+        },
+        "description": "BB Aqua brings together branded drinking water and Custom Bottle Branding for businesses, events and special occasions."
+      },
+      "contact": {
+        "whatsapp": "WhatsApp BB Aqua"
+      },
+      "explore": {
+        "title": "Explore"
+      },
+      "group": {
+        "title": "BB Group",
+        "exploreBusinesses": "Explore all businesses",
+        "biryaniTagline": "Authentic Taste. Royal Experience."
+      },
+      "bottom": {
+        "copyright": "BB GROUP OF BUSINESSES. All rights reserved.",
+        "backToTop": "Back to top"
+      },
+      "links": {
+        "home": "Home",
+        "about": "About",
+        "products": "Products",
+        "customBottles": "Custom Bottles",
+        "process": "Process",
+        "gallery": "Gallery",
+        "contact": "Contact"
+      }
+    },
+    "gallery": {
+      "eyebrow": "BB Aqua Gallery",
+      "heading": {
+        "first": "See The",
+        "second": "BB Aqua Experience."
+      },
+      "description": "Explore bottles, branding, packaging and finished presentations. Add your own Aqua images to the gallery folder anytime.",
+      "empty": {
+        "title": "Aqua Gallery Coming Soon"
+      },
+      "imageAlt": "BB Aqua gallery ${index + 1}",
+      "exploreImage": "Explore Image",
+      "cta": {
+        "description": "Want your brand to be part of the next BB Aqua showcase?",
+        "button": "Start Bottle Branding"
+      },
+      "lightbox": {
+        "close": "Close gallery",
+        "previous": "Previous image",
+        "imageAlt": "BB Aqua gallery preview",
+        "next": "Next image"
+      }
+    },
+    "hero": {
+      "eyebrow": "BB GROUP OF BUSINESSES",
+      "heading": {
+        "pure": "PURE",
+        "water": "WATER.",
+        "brand": "YOUR BRAND."
+      },
+      "description": "Premium packaged drinking water and custom bottle branding designed for businesses, hotels, restaurants, events and special occasions.",
+      "exploreButton": "EXPLORE BB AQUA",
+      "customBottleButton": "CUSTOM BOTTLE BRANDING",
+      "trust": {
+        "pureWater": "Pure Water",
+        "customBranding": "Custom Branding",
+        "bulkOrders": "Bulk Orders"
+      },
+      "bottleAlt": "BB Aqua Bottle ${\r\n                        activeBottle + 1\r\n                      }",
+      "floatingLabel": "Pure & Trusted",
+      "customBranding": "Custom Branding",
+      "explore": "Explore"
+    },
+    "howItWorks": {
+      "eyebrow": "Our Process",
+      "heading": {
+        "first": "From Your Brand",
+        "second": "To Every Bottle."
+      },
+      "description": "A simple process that takes your brand identity and turns it into a professional bottle branding experience.",
+      "cta": {
+        "title": "Ready to put your brand on every bottle?",
+        "description": "Share your branding requirement and start the conversation.",
+        "button": "Start Bottle Branding"
+      },
+      "steps": {
+        "share": {
+          "title": "Share Your Brand",
+          "description": "Share your logo, business name, event details or bottle branding requirement with us."
+        },
+        "design": {
+          "title": "Design & Approval",
+          "description": "We prepare the branding concept and refine it with you before production."
+        },
+        "production": {
+          "title": "Production",
+          "description": "Once approved, your branded bottle design moves into production."
+        },
+        "delivery": {
+          "title": "Ready for Delivery",
+          "description": "Your branded bottles are prepared and supplied for your business or event."
+        }
+      }
+    },
+    "navbar": {
+      "tagline": "Pure · Fresh · Trusted",
+      "language": "Language",
+      "biryani": "BB Biryani",
+      "closeMenu": "Close navigation menu",
+      "openMenu": "Open navigation menu",
+      "customBottle": "CUSTOMIZE YOUR BOTTLE",
+      "backToBiryani": "BACK TO BB BIRYANI",
+      "links": {
+        "home": "Home",
+        "about": "About",
+        "products": "Products",
+        "customBottles": "Custom Bottles",
+        "process": "Process",
+        "gallery": "Gallery"
+      }
+    },
+    "products": {
+      "eyebrow": "BB Aqua Collection",
+      "heading": {
+        "first": "Water.",
+        "second": "Presented Your Way."
+      },
+      "description": "Explore BB Aqua branded water and bottle branding options designed for businesses, events and special occasions.",
+      "explore": "Explore",
+      "exploreBranding": "Explore Branding",
+      "bottomCta": {
+        "eyebrow": "Need Branding?",
+        "heading": "Put Your Brand On Every Bottle.",
+        "description": "Share your branding requirement and explore the possibilities with BB Aqua.",
+        "button": "Start Bottle Branding"
+      },
+      "items": {
+        "aqua": {
+          "name": "BB Aqua",
+          "subtitle": "Branded Water",
+          "description": "BB Aqua branded drinking water presented with a clean and professional identity."
+        },
+        "brand": {
+          "name": "Brand Bottle",
+          "subtitle": "Custom Bottle Branding",
+          "description": "Present your logo and brand identity on bottles created for your business or event."
+        },
+        "event": {
+          "name": "Event Bottle",
+          "subtitle": "Event Branding",
+          "description": "A professional bottle branding option for weddings, events, functions and special occasions."
+        }
+      }
+    },
+    "whoWeServe": {
+      "eyebrow": "Who We Serve",
+      "heading": {
+        "first": "Your Business.",
+        "second": "Your Bottle."
+      },
+      "description": "From hospitality and restaurants to weddings and corporate events, BB Aqua bottle branding can become part of your customer experience.",
+      "bottom": {
+        "eyebrow": "One Bottle. One Identity.",
+        "heading": {
+          "first": "Wherever your brand is seen,",
+          "second": "your identity follows."
+        }
+      },
+      "audiences": {
+        "hotels": {
+          "title": "Hotels",
+          "description": "Create a professional branded bottle experience for guests and hospitality spaces."
+        },
+        "restaurants": {
+          "title": "Restaurants",
+          "description": "Give every table a consistent and professional branded bottle experience."
+        },
+        "cafes": {
+          "title": "Cafes",
+          "description": "Add your brand identity to bottles served with every customer experience."
+        },
+        "weddings": {
+          "title": "Weddings",
+          "description": "Create personalised bottles for weddings and memorable celebrations."
+        },
+        "events": {
+          "title": "Events",
+          "description": "Extend your event identity to every bottle you serve."
+        },
+        "corporate": {
+          "title": "Corporate",
+          "description": "Present your company identity professionally at meetings and events."
+        },
+        "resorts": {
+          "title": "Resorts",
+          "description": "Create a premium branded bottle experience for resort guests."
+        },
+        "caterers": {
+          "title": "Caterers",
+          "description": "Add branded bottles to catering services, functions and special occasions."
+        }
+      }
+    },
+    "whyUs": {
+      "eyebrow": "Why BB Aqua",
+      "heading": {
+        "first": "More Than",
+        "second": "Just A Bottle."
+      },
+      "description": "BB Aqua combines branded water and bottle branding into a practical solution for businesses, events and organisations.",
+      "cta": {
+        "brand": "BB Aqua",
+        "title": "Water that carries your identity.",
+        "description": "Whether you need BB Aqua branded water or bottle branding for your business, your bottle can become part of the experience.",
+        "button": "Start Your Enquiry"
+      },
+      "strengths": {
+        "quality": {
+          "title": "Quality Focus",
+          "description": "A professional approach to presenting and supplying branded water bottles for business requirements."
+        },
+        "visibility": {
+          "title": "Brand Visibility",
+          "description": "Turn every bottle into another visible touchpoint for your brand."
+        },
+        "customBranding": {
+          "title": "Custom Branding",
+          "description": "Add your logo, colours and identity to create a bottle made for your business."
+        },
+        "bulk": {
+          "title": "Bulk Supply",
+          "description": "Practical solutions for larger business, event and bulk requirements."
+        },
+        "business": {
+          "title": "Business Ready",
+          "description": "Bottle branding designed around real business and event needs."
+        },
+        "support": {
+          "title": "Personal Support",
+          "description": "Connect with our team for branding, quantity and supply requirements."
+        }
+      },
+      "highlights": {
+        "water": {
+          "title": "Branded Water",
+          "text": "Clean, professional drinking water for business and event requirements."
+        },
+        "branding": {
+          "title": "Custom Branding",
+          "text": "Your logo and identity presented directly on the bottle."
+        },
+        "bulk": {
+          "title": "Bulk Requirements",
+          "text": "Support for larger quantities and recurring business needs."
+        },
+        "delivery": {
+          "title": "Supply & Delivery",
+          "text": "Coordinated supply for business, events and special occasions."
+        }
+      }
+    }
+  },
+  "biryani": {
+    "owner": {
+      "eyebrow": "The Story Behind BB",
+      "meetThe": "Meet The",
+      "founder": "Founder",
+      "headerDescription": "Behind every plate is a vision, a passion and a commitment to serving something truly memorable.",
+      "imageAlt": "BB Biryani Founder",
+      "founderBadge": "Founder & Visionary",
+      "brand": "BB GROUP OF BUSINESSES",
+      "role": "Founder • BB Group of Business",
+      "paragraphOne": "Our journey is driven by a simple belief: great food is not just about taste — it is about quality, consistency, hospitality and the memories people create around a meal.",
+      "paragraphTwo": "BB Biryani represents our passion for authentic flavours and our vision to create a memorable food experience for every guest.",
+      "stats": {
+        "brand": "Brand",
+        "passion": "Passion",
+        "quality": "Quality"
+      },
+      "discoverJourney": "Discover Our Journey",
+      "quote": "\"Every great brand begins with a simple passion — to serve something people love.\"",
+      "highlights": {
+        "authenticTaste": {
+          "title": "Authentic Taste",
+          "text": "Rich flavours and traditional preparation that keep the BB Biryani experience authentic."
+        },
+        "qualityFirst": {
+          "title": "Quality First",
+          "text": "We focus on quality ingredients, consistency and a premium dining experience."
+        },
+        "customerTrust": {
+          "title": "Customer Trust",
+          "text": "Every guest and every meal helps us build a stronger BB relationship."
+        }
+      }
+    },
+    "footer": {
+      "description": "Authentic taste. Royal experience. Bringing together quality ingredients, rich flavours and the BB standard of hospitality.",
+      "brandBadge": "Taste • Quality • Trust",
+      "connect": "Connect With Us",
+      "explore": "Explore",
+      "quickLinks": "Quick Links",
+      "businessesLabel": "Our Businesses",
+      "groupName": "BB Group",
+      "businesses": {
+        "biryani": "Food & Hospitality",
+        "aqua": "Water & Manufacturing"
+      },
+      "contactLabel": "Contact",
+      "visitUs": "Visit Us",
+      "getDirections": "Get Directions",
+      "openDaily": "Open daily",
+      "franchise": {
+        "label": "Franchise Opportunities",
+        "title": "Build the next BB destination.",
+        "button": "Enquire Now"
+      },
+      "copyright": "© {{year}} BB Group of Businesses. All rights reserved.",
+      "bottomTagline": "Quality • Taste • Trust",
+      "links": {
+        "home": "Home",
+        "offer": "Today’s Offer",
+        "menu": "Menu",
+        "about": "About Us",
+        "franchise": "Franchise",
+        "gallery": "Gallery",
+        "contact": "Contact"
+      }
+    },
+    "franchise": {
+      "brand": "BB BIRYANI",
+      "network": "BB Network",
+      "eyebrow": "Our Growing Network",
+      "heading": {
+        "our": "Our",
+        "franchise": "Franchise"
+      },
+      "description": "Bringing the BB Biryani experience to new places, one location at a time.",
+      "cta": {
+        "eyebrow": "Become Part Of BB",
+        "growWith": "Grow With",
+        "description": "Interested in bringing BB Biryani to your city? Connect with us and explore franchise opportunities.",
+        "button": "Franchise Enquiry"
+      },
+      "locations": {
+        "main": {
+          "name": "Main Branch",
+          "location": "Supa, Maharashtra, India",
+          "status": "Flagship",
+          "description": "Our flagship BB Biryani destination and the heart of the BB experience."
+        },
+        "branch02": {
+          "name": "Branch 02",
+          "location": "Rahuri, Maharashtra, India",
+          "status": "Expanding",
+          "description": "Expanding the BB Biryani experience to new customers."
+        },
+        "branch03": {
+          "name": "Branch 03",
+          "location": "Ahilyanagar, Maharashtra, India",
+          "status": "Expanding",
+          "description": "Growing the BB network with the same taste and hospitality."
+        }
+      }
+    },
+    "franchiseEnquiry": {
+      "validation": {
+        "nameRequired": "Please enter your name.",
+        "phoneRequired": "Please enter your phone number.",
+        "phoneInvalid": "Please enter a valid phone number.",
+        "cityRequired": "Please enter your city."
+      },
+      "eyebrow": "Franchise Enquiry",
+      "heading": {
+        "start": "Start Your",
+        "journey": "BB Journey."
+      },
+      "description": "Interested in bringing BB Biryani to your city? Fill in your details and connect with our team directly on WhatsApp.",
+      "info": {
+        "title": "Grow With BB",
+        "description": "Tell us a little about yourself and your franchise plans. Our team can connect with you directly through WhatsApp."
+      },
+      "contact": {
+        "direct": "Direct Contact",
+        "address": {
+          "line1": "Near Toll Plaza, Mhasne Phata,",
+          "line2": "Nagar - Pune Highway,",
+          "line3": "New MIDC Chowk, Supe,",
+          "line4": "Maharashtra - 414301"
+        }
+      },
+      "form": {
+        "eyebrow": "Tell Us About You",
+        "title": "Franchise Enquiry",
+        "name": {
+          "label": "Full Name *",
+          "placeholder": "Enter your name"
+        },
+        "phone": {
+          "label": "Phone Number *",
+          "placeholder": "10 digit mobile number"
+        },
+        "email": {
+          "label": "Email",
+          "placeholder": "your@email.com"
+        },
+        "city": {
+          "label": "City / Location *",
+          "placeholder": "Your city"
+        },
+        "message": {
+          "label": "Additional Message",
+          "placeholder": "Tell us about your franchise plans..."
+        },
+        "submit": "Continue on WhatsApp",
+        "privacy": "Your details will be added to a WhatsApp message. You can review the message and send it yourself."
+      },
+      "highlights": {
+        "opportunity": "Franchise Opportunity",
+        "businessModel": "Business Model",
+        "network": "Growing Network",
+        "whatsapp": "Direct WhatsApp"
+      }
+    },
+    "gallery": {
+      "openImage": "Open ${alt}",
+      "imageUnavailable": "Image unavailable",
+      "eyebrow": "OUR MEMORIES",
+      "heading": {
+        "taste": "Taste.",
+        "moments": "Moments."
+      },
+      "empty": {
+        "title": "Gallery is empty",
+        "description": "Add photos inside"
+      },
+      "description": "A glimpse into the BB Biryani experience — delicious food, happy moments and unforgettable memories.",
+      "photoCount": "{{count}} Photos",
+      "lightbox": {
+        "close": "Close gallery",
+        "previous": "Previous image",
+        "next": "Next image"
+      }
+    },
+    "reviews": {
+      "eyebrow": "Google Reviews",
+      "heading": "What Our Customers Say",
+      "description": "Real feedback shared by customers on our Google Maps listing.",
+      "averageRating": "Average Google Rating",
+      "googleRating": "Google Rating",
+      "brand": "BB Biryani",
+      "new": "New",
+      "detailsOnGoogle": "Customer review details available on Google Maps.",
+      "order": "Order",
+      "meal": "Meal",
+      "price": "Price",
+      "details": {
+        "food": "Food",
+        "service": "Service",
+        "atmosphere": "Atmosphere"
+      },
+      "googleReview": "Google Review",
+      "previousReview": "Previous review",
+      "nextReview": "Next review",
+      "showReview": "Show review ${index + 1}",
+      "swipeHint": "Swipe / Tap arrows to explore reviews",
+      "viewAll": "View All Reviews on Google",
+      "googleMapsLabel": "BB Biryani • Google Maps"
+    },
+    "hero": {
+      "brand": "BB GROUP OF BUSINESSES",
+      "tagline": "Authentic Taste. Royal Experience.",
+      "description": "Authentic flavours, aromatic spices and a royal biryani experience crafted for every celebration.",
+      "viewMenu": "VIEW MENU",
+      "location": "Main Branch • Maharashtra",
+      "fresh": "Fresh",
+      "signature": "Signature",
+      "cravings": "Cravings",
+      "todaySpecial": "Today's Special",
+      "royalBiryani": "Royal Biryani",
+      "scroll": "Scroll"
+    },
+    "mainBranch": {
+      "eyebrow": "Find Us",
+      "heading": {
+        "visit": "Visit the",
+        "experience": "BB Experience."
+      },
+      "description": "Step into our world of authentic flavours, warm hospitality and the signature BB Biryani experience.",
+      "brand": "BB Biryani",
+      "branchName": "Main Branch",
+      "homeLabel": "Our Home",
+      "detailsLabel": "Main Branch",
+      "info": {
+        "address": "Address",
+        "hours": "Opening Hours",
+        "contact": "Contact"
+      },
+      "getDirections": "Get Directions",
+      "callBranch": "Call Branch",
+      "bottomNote": "Authentic taste, premium experience and the BB standard — all under one roof.",
+      "name": "Main Branch"
+    },
+    "menu": {
+      "special": "Special",
+      "kitchen": "BB Kitchen",
+      "freshlyPrepared": "Freshly prepared at BB",
+      "eyebrow": "BB BIRYANI",
+      "tasteThe": "Taste The",
+      "difference": "Difference",
+      "description": "A carefully crafted collection of flavours, prepared fresh and served with the BB touch.",
+      "dishes": "dishes",
+      "signature": "BB Signature",
+      "chefsSpecial": "Chef's Special",
+      "featuredDescription": "Prepared with aromatic spices, premium ingredients and the authentic BB touch.",
+      "bottomTagline": "Fresh • Authentic • BB",
+      "items": {
+        "vegDumBiryani": {
+          "name": "Veg Dum Biryani",
+          "marathi": "व्हेज दम बिर्याणी"
+        },
+        "vegRice": {
+          "name": "Veg Rice",
+          "marathi": "व्हेज राईस"
+        },
+        "vegNoodles": {
+          "name": "Veg Noodles",
+          "marathi": "व्हेज नूडल्स"
+        },
+        "vegTripleRice": {
+          "name": "Veg Triple Rice",
+          "marathi": "व्हेज ट्रिपल राईस"
+        },
+        "vegTripleNoodles": {
+          "name": "Veg Triple Noodles",
+          "marathi": "व्हेज ट्रिपल नूडल्स"
+        },
+        "vegSoup": {
+          "name": "Veg Soup",
+          "marathi": "व्हेज सूप"
+        },
+        "vegManchurian": {
+          "name": "Veg Manchurian",
+          "marathi": "व्हेज मंचुरियन"
+        },
+        "soyabeanChilli": {
+          "name": "Soyabean Chilli",
+          "marathi": "सोयाबीन चिली"
+        },
+        "paneerChilli": {
+          "name": "Paneer Chilli",
+          "marathi": "पनीर चिली"
+        },
+        "chickenDumBiryani": {
+          "name": "Chicken Dum Biryani",
+          "marathi": "चिकन दम बिर्याणी"
+        },
+        "chickenRice": {
+          "name": "Chicken Rice",
+          "marathi": "चिकन राईस"
+        },
+        "chickenNoodles": {
+          "name": "Chicken Noodles",
+          "marathi": "चिकन नूडल्स"
+        },
+        "chickenSoup": {
+          "name": "Chicken Soup",
+          "marathi": "चिकन सूप"
+        },
+        "chickenTripleRice": {
+          "name": "Chicken Triple Rice",
+          "marathi": "चिकन ट्रिपल राईस"
+        },
+        "chickenTripleNoodles": {
+          "name": "Chicken Triple Noodles",
+          "marathi": "चिकन ट्रिपल नूडल्स"
+        },
+        "chickenLollipop": {
+          "name": "Chicken Lollipop",
+          "marathi": "चिकन लॉलीपॉप"
+        },
+        "chickenMasalaLollipop": {
+          "name": "Chicken Masala Lollipop",
+          "marathi": "चिकन मसाला लॉलीपॉप"
+        },
+        "chickenChilli": {
+          "name": "Chicken Chilli",
+          "marathi": "चिकन चिली"
+        },
+        "chicken65": {
+          "name": "Chicken 65",
+          "marathi": "चिकन ६५"
+        },
+        "bbFriedChicken": {
+          "name": "BB Fried Chicken",
+          "marathi": "BB फ्राइड चिकन"
+        }
+      },
+      "categories": {
+        "veg": "Veg",
+        "vegMarathi": "शाकाहारी",
+        "nonVeg": "Non-Veg",
+        "nonVegMarathi": "मांसाहारी"
+      },
+      "sizes": {
+        "full": "Full",
+        "halfFull": "Half / Full"
+      }
+    },
+    "offer": {
+      "limitedTime": "Limited Time",
+      "todays": "Today's",
+      "specialOffer": "Special Offer",
+      "description": "Royal flavour, premium ingredients and an offer made specially for today's cravings.",
+      "specialDeal": "Special Deal",
+      "signature": "BB Signature",
+      "royalChicken": "Royal Chicken",
+      "biryani": "Biryani",
+      "foodDescription": "Fragrant basmati rice, tender chicken, aromatic spices and our signature BB masala.",
+      "startingFrom": "Starting from",
+      "exploreMenu": "EXPLORE MENU",
+      "trustLine": "Freshly prepared • Signature BB taste"
+    }
+  }
+}

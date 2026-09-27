@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
+import { useTranslation } from "react-i18next";
+
 import {
   ArrowLeft,
   ArrowRight,
@@ -26,6 +28,8 @@ const galleryImages = Object.entries(galleryFiles).map(
 );
 
 export default function AquaGallery() {
+  const { t } = useTranslation();
+
   const [selectedImage, setSelectedImage] = useState(null);
 
   const showPrevious = () => {
@@ -181,7 +185,9 @@ export default function AquaGallery() {
                 sm:text-xs
               "
             >
-              BB Aqua Gallery
+              {t("aqua.gallery.eyebrow", {
+                defaultValue: "BB Aqua Gallery",
+              })}
             </span>
           </div>
 
@@ -195,9 +201,14 @@ export default function AquaGallery() {
               lg:text-7xl
             "
           >
-            See The
+            {t("aqua.gallery.heading.first", {
+              defaultValue: "See The",
+            })}
+
             <span className="block text-cyan-600">
-              BB Aqua Experience.
+              {t("aqua.gallery.heading.second", {
+                defaultValue: "BB Aqua Experience.",
+              })}
             </span>
           </h2>
 
@@ -213,9 +224,10 @@ export default function AquaGallery() {
               sm:leading-8
             "
           >
-            Explore bottles, branding, packaging and finished
-            presentations. Add your own Aqua images to the gallery folder
-            anytime.
+            {t("aqua.gallery.description", {
+              defaultValue:
+                "Explore bottles, branding, packaging and finished presentations. Add your own Aqua images to the gallery folder anytime.",
+            })}
           </p>
         </motion.div>
 
@@ -271,18 +283,10 @@ export default function AquaGallery() {
             </div>
 
             <h3 className="mt-5 text-xl font-black">
-              Aqua Gallery Coming Soon
+              {t("aqua.gallery.empty.title", {
+                defaultValue: "Aqua Gallery Coming Soon",
+              })}
             </h3>
-{/*}
-            <p className="mt-3 max-w-md text-sm leading-6 text-slate-500">
-              Add your Aqua images inside
-              <span className="font-semibold text-cyan-700">
-                {" "}
-                src/assets/aqua-gallery
-              </span>
-              {" "}
-              and they will automatically appear here.
-            </p>*/}
           </motion.div>
         ) : (
           /* ===================================================
@@ -349,7 +353,9 @@ export default function AquaGallery() {
               >
                 <img
                   src={image.url}
-                  alt={`BB Aqua gallery ${index + 1}`}
+                  alt={t("aqua.gallery.imageAlt", {
+                    defaultValue: `BB Aqua gallery ${index + 1}`,
+                  })}
                   className="
                     h-full
                     w-full
@@ -431,7 +437,9 @@ export default function AquaGallery() {
                   </p>
 
                   <p className="mt-1 text-xs font-bold sm:text-sm">
-                    Explore Image
+                    {t("aqua.gallery.exploreImage", {
+                      defaultValue: "Explore Image",
+                    })}
                   </p>
                 </div>
               </motion.button>
@@ -467,7 +475,10 @@ export default function AquaGallery() {
           "
         >
           <p className="text-sm text-slate-500">
-            Want your brand to be part of the next BB Aqua showcase?
+            {t("aqua.gallery.cta.description", {
+              defaultValue:
+                "Want your brand to be part of the next BB Aqua showcase?",
+            })}
           </p>
 
           <a
@@ -493,7 +504,10 @@ export default function AquaGallery() {
               sm:w-auto
             "
           >
-            Start Bottle Branding
+            {t("aqua.gallery.cta.button", {
+              defaultValue: "Start Bottle Branding",
+            })}
+
             <ArrowRight className="h-4 w-4 text-cyan-300" />
           </a>
         </motion.div>
@@ -550,7 +564,9 @@ export default function AquaGallery() {
                 text-white
                 backdrop-blur-xl
               "
-              aria-label="Close gallery"
+              aria-label={t("aqua.gallery.lightbox.close", {
+                defaultValue: "Close gallery",
+              })}
             >
               <X className="h-5 w-5" />
             </button>
@@ -581,7 +597,9 @@ export default function AquaGallery() {
                   backdrop-blur-xl
                   sm:left-6
                 "
-                aria-label="Previous image"
+                aria-label={t("aqua.gallery.lightbox.previous", {
+                  defaultValue: "Previous image",
+                })}
               >
                 <ArrowLeft className="h-5 w-5" />
               </button>
@@ -619,7 +637,9 @@ export default function AquaGallery() {
             >
               <img
                 src={selectedImage.url}
-                alt="BB Aqua gallery preview"
+                alt={t("aqua.gallery.lightbox.imageAlt", {
+                  defaultValue: "BB Aqua gallery preview",
+                })}
                 className="
                   max-h-[88vh]
                   max-w-[92vw]
@@ -654,7 +674,9 @@ export default function AquaGallery() {
                   backdrop-blur-xl
                   sm:right-6
                 "
-                aria-label="Next image"
+                aria-label={t("aqua.gallery.lightbox.next", {
+                  defaultValue: "Next image",
+                })}
               >
                 <ArrowRight className="h-5 w-5" />
               </button>
