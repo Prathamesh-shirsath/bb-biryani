@@ -72,8 +72,8 @@ export default function AquaBottleShowcase() {
         w-full
         overflow-hidden
         bg-white
-        py-20
-        sm:py-24
+        py-14
+        sm:py-20
         lg:py-32
       "
     >
@@ -82,8 +82,6 @@ export default function AquaBottleShowcase() {
       ====================================================== */}
 
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        {/* Main glow */}
-
         <motion.div
           animate={{
             scale: [1, 1.08, 1],
@@ -98,20 +96,17 @@ export default function AquaBottleShowcase() {
             absolute
             left-1/2
             top-1/2
-            h-[420px]
-            w-[420px]
+            h-[320px]
+            w-[320px]
             -translate-x-1/2
             -translate-y-1/2
             rounded-full
             bg-sky-100/70
             blur-3xl
-
             sm:h-[600px]
             sm:w-[600px]
           "
         />
-
-        {/* Cyan glow */}
 
         <motion.div
           animate={{
@@ -135,8 +130,6 @@ export default function AquaBottleShowcase() {
           "
         />
 
-        {/* Blue glow */}
-
         <motion.div
           animate={{
             x: [0, -50, 0],
@@ -159,14 +152,8 @@ export default function AquaBottleShowcase() {
           "
         />
 
-        {/* Grid */}
-
         <div
-          className="
-            absolute
-            inset-0
-            opacity-[0.035]
-          "
+          className="absolute inset-0 opacity-[0.035]"
           style={{
             backgroundImage:
               "linear-gradient(rgba(2,40,61,0.6) 1px, transparent 1px), linear-gradient(90deg, rgba(2,40,61,0.6) 1px, transparent 1px)",
@@ -181,31 +168,16 @@ export default function AquaBottleShowcase() {
         ====================================================== */}
 
         <motion.div
-          initial={{
-            opacity: 0,
-            y: 35,
-          }}
-          whileInView={{
-            opacity: 1,
-            y: 0,
-          }}
-          viewport={{
-            once: true,
-            amount: 0.2,
-          }}
-          transition={{
-            duration: 0.8,
-          }}
-          className="
-            mx-auto
-            max-w-3xl
-            text-center
-          "
+          initial={{ opacity: 0, y: 35 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.8 }}
+          className="mx-auto max-w-3xl text-center"
         >
           <div
             className="
               mx-auto
-              mb-5
+              mb-4
               flex
               w-fit
               items-center
@@ -214,22 +186,25 @@ export default function AquaBottleShowcase() {
               border
               border-sky-100
               bg-white/80
-              px-4
+              px-3
               py-2
               shadow-sm
               backdrop-blur-xl
+              sm:mb-5
+              sm:px-4
             "
           >
             <Eye className="h-4 w-4 text-sky-500" />
 
             <span
               className="
-                text-[10px]
+                text-[9px]
                 font-bold
                 uppercase
-                tracking-[0.25em]
+                tracking-[0.2em]
                 text-sky-700
                 sm:text-xs
+                sm:tracking-[0.25em]
               "
             >
               {t("aqua.bottleShowcase.eyebrow", {
@@ -240,14 +215,13 @@ export default function AquaBottleShowcase() {
 
           <h2
             className="
-              text-4xl
+              text-[2.55rem]
               font-black
-              leading-[0.95]
-              tracking-[-0.045em]
+              leading-[0.92]
+              tracking-[-0.055em]
               text-[#06283D]
-
+              min-[380px]:text-5xl
               sm:text-5xl
-
               lg:text-7xl
             "
           >
@@ -265,12 +239,14 @@ export default function AquaBottleShowcase() {
           <p
             className="
               mx-auto
-              mt-6
+              mt-5
               max-w-2xl
-              text-sm
-              leading-7
+              px-2
+              text-[13px]
+              leading-6
               text-slate-600
-
+              sm:mt-6
+              sm:px-0
               sm:text-base
               sm:leading-8
             "
@@ -283,16 +259,77 @@ export default function AquaBottleShowcase() {
         </motion.div>
 
         {/* =====================================================
-            MAIN SHOWCASE
+            MOBILE STAGE SELECTOR
         ====================================================== */}
 
         <div
           className="
-            mt-12
+            mt-7
+            flex
+            gap-2
+            overflow-x-auto
+            pb-1
+            sm:hidden
+          "
+          style={{
+            scrollbarWidth: "none",
+            msOverflowStyle: "none",
+          }}
+        >
+          {stages.map((stage, index) => {
+            const isActive = activeStage === index;
+
+            return (
+              <motion.button
+                key={stage.id}
+                type="button"
+                onClick={() => setActiveStage(index)}
+                whileTap={{ scale: 0.96 }}
+                className={`
+                  flex
+                  min-w-[90px]
+                  shrink-0
+                  items-center
+                  justify-center
+                  gap-2
+                  rounded-full
+                  border
+                  px-4
+                  py-2.5
+                  transition-all
+
+                  ${
+                    isActive
+                      ? "border-[#06283D] bg-[#06283D] text-white shadow-lg"
+                      : "border-slate-200 bg-white text-slate-500"
+                  }
+                `}
+              >
+                <span className="text-[10px] font-black">
+                  {stage.number}
+                </span>
+
+                <span className="max-w-[55px] truncate text-[10px] font-bold">
+                  {t(stage.titleKey, {
+                    defaultValue: "Bottle",
+                  })}
+                </span>
+              </motion.button>
+            );
+          })}
+        </div>
+
+        {/* =====================================================
+            MAIN CONTENT
+        ====================================================== */}
+
+        <div
+          className="
+            mt-7
             grid
             grid-cols-1
             gap-8
-
+            sm:mt-12
             lg:mt-20
             lg:grid-cols-[1fr_0.9fr]
             lg:items-center
@@ -300,7 +337,7 @@ export default function AquaBottleShowcase() {
           "
         >
           {/* =================================================
-              BOTTLE VISUAL
+              BOTTLE SHOWCASE
           ================================================== */}
 
           <motion.div
@@ -322,25 +359,30 @@ export default function AquaBottleShowcase() {
             className="
               relative
               flex
-              min-h-[500px]
+              min-h-[430px]
+              flex-col
               items-center
               justify-center
               overflow-hidden
-              rounded-[2rem]
+              rounded-[1.75rem]
               border
               border-sky-100
               bg-gradient-to-br
               from-sky-50
               via-white
               to-cyan-50
-              shadow-[0_30px_90px_rgba(14,165,233,0.10)]
-
+              px-3
+              pb-4
+              pt-5
+              shadow-[0_25px_70px_rgba(14,165,233,0.10)]
+              min-[380px]:min-h-[455px]
               sm:min-h-[580px]
+              sm:rounded-[2rem]
+              sm:px-0
+              sm:py-0
             "
           >
-            {/* =================================================
-                ROTATING OUTER RING
-            ================================================== */}
+            {/* Outer Ring */}
 
             <motion.div
               animate={{
@@ -353,21 +395,20 @@ export default function AquaBottleShowcase() {
               }}
               className="
                 absolute
-                h-[310px]
-                w-[310px]
+                h-[260px]
+                w-[260px]
                 rounded-full
                 border
                 border-dashed
                 border-sky-300/30
-
+                min-[380px]:h-[290px]
+                min-[380px]:w-[290px]
                 sm:h-[430px]
                 sm:w-[430px]
               "
             />
 
-            {/* =================================================
-                PULSE RING
-            ================================================== */}
+            {/* Pulse Ring */}
 
             <motion.div
               animate={{
@@ -381,20 +422,19 @@ export default function AquaBottleShowcase() {
               }}
               className="
                 absolute
-                h-[260px]
-                w-[260px]
+                h-[220px]
+                w-[220px]
                 rounded-full
                 border
                 border-sky-300/30
-
+                min-[380px]:h-[250px]
+                min-[380px]:w-[250px]
                 sm:h-[360px]
                 sm:w-[360px]
               "
             />
 
-            {/* =================================================
-                INNER RING
-            ================================================== */}
+            {/* Inner Ring */}
 
             <motion.div
               animate={{
@@ -407,18 +447,19 @@ export default function AquaBottleShowcase() {
               }}
               className="
                 absolute
-                h-[190px]
-                w-[190px]
+                h-[160px]
+                w-[160px]
                 rounded-full
                 border
                 border-cyan-300/20
-
+                min-[380px]:h-[190px]
+                min-[380px]:w-[190px]
                 sm:h-[280px]
                 sm:w-[280px]
               "
             />
 
-            {/* Main glow */}
+            {/* Main Glow */}
 
             <motion.div
               animate={{
@@ -432,238 +473,409 @@ export default function AquaBottleShowcase() {
               }}
               className="
                 absolute
-                h-64
-                w-64
+                h-52
+                w-52
                 rounded-full
                 bg-sky-300/20
                 blur-3xl
-
                 sm:h-80
                 sm:w-80
               "
             />
 
             {/* =================================================
-                ACTIVE STAGE IMAGE
+                IMAGE
             ================================================== */}
 
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={activeStage}
-                initial={{
-                  opacity: 0,
-                  y: 70,
-                  scale: 0.78,
-                  rotateY: -35,
-                  rotateZ: -5,
-                  filter: "blur(5px)",
-                }}
-                animate={{
-                  opacity: 1,
-                  y: 0,
-                  scale: 1,
-                  rotateY: 0,
-                  rotateZ: 0,
-                  filter: "blur(0px)",
-                }}
-                exit={{
-                  opacity: 0,
-                  y: -50,
-                  scale: 0.82,
-                  rotateY: 35,
-                  rotateZ: 5,
-                  filter: "blur(5px)",
-                }}
-                transition={{
-                  opacity: {
-                    duration: 0.4,
-                  },
-
-                  y: {
-                    duration: 0.9,
-                    type: "spring",
-                    stiffness: 75,
-                    damping: 13,
-                  },
-
-                  scale: {
-                    duration: 0.9,
-                    type: "spring",
-                    stiffness: 70,
-                    damping: 13,
-                  },
-
-                  rotateY: {
-                    duration: 1,
-                    ease: [0.16, 1, 0.3, 1],
-                  },
-
-                  rotateZ: {
-                    duration: 0.9,
-                    ease: [0.16, 1, 0.3, 1],
-                  },
-
-                  filter: {
-                    duration: 0.45,
-                  },
-                }}
-                className="
-                  relative
-                  z-10
-                  flex
-                  h-[330px]
-                  w-[180px]
-                  items-center
-                  justify-center
-
-                  sm:h-[440px]
-                  sm:w-[230px]
-                "
-                style={{
-                  perspective: "1400px",
-                }}
-              >
-                {/* Image glow */}
-
+            <div
+              className="
+                relative
+                z-10
+                flex
+                h-[330px]
+                w-full
+                items-center
+                justify-center
+                min-[380px]:h-[350px]
+                sm:h-[470px]
+                sm:w-[260px]
+              "
+              style={{
+                perspective: "1400px",
+              }}
+            >
+              <AnimatePresence mode="wait">
                 <motion.div
-                  animate={{
-                    scale: [0.9, 1.06, 0.9],
-                    opacity: [0.12, 0.25, 0.12],
-                  }}
-                  transition={{
-                    duration: 3.5,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
-                  className="
-                    pointer-events-none
-                    absolute
-                    inset-5
-                    rounded-full
-                    bg-cyan-300/25
-                    blur-3xl
-                  "
-                />
-
-                {/* Stage image */}
-
-                <motion.img
-                  src={current.image}
-                  alt={`${t(current.titleKey, {
-                    defaultValue: "Bottle",
-                  })} - BB Aqua`}
-                  animate={{
-                    y: [0, -10, 0, 7, 0],
-                    rotateZ: [-1, 1, -1],
-                    rotateY: [0, 2, 0, -2, 0],
-                    scale: [1, 1.012, 1],
-                  }}
-                  transition={{
-                    y: {
-                      duration: 4.5,
-                      repeat: Infinity,
-                      ease: "easeInOut",
-                    },
-
-                    rotateZ: {
-                      duration: 5,
-                      repeat: Infinity,
-                      ease: "easeInOut",
-                    },
-
-                    rotateY: {
-                      duration: 6,
-                      repeat: Infinity,
-                      ease: "easeInOut",
-                    },
-
-                    scale: {
-                      duration: 4,
-                      repeat: Infinity,
-                      ease: "easeInOut",
-                    },
-                  }}
-                  whileHover={{
-                    scale: 1.04,
-                    rotateY: 8,
-                    transition: {
-                      duration: 0.35,
-                    },
-                  }}
-                  className="
-                    relative
-                    z-10
-                    h-full
-                    w-full
-                    object-contain
-                    drop-shadow-[0_30px_40px_rgba(2,40,61,0.28)]
-                  "
-                  draggable={false}
-                />
-
-                {/* =================================================
-                    PREMIUM LIGHT SWEEP
-                ================================================== */}
-
-                <motion.div
-                  key={`shine-${activeStage}`}
+                  key={activeStage}
                   initial={{
-                    x: "-140%",
                     opacity: 0,
+                    y: 40,
+                    scale: 0.82,
+                    rotateY: -25,
+                    rotateZ: -4,
+                    filter: "blur(4px)",
                   }}
                   animate={{
-                    x: "140%",
-                    opacity: [0, 0.5, 0],
+                    opacity: 1,
+                    y: 0,
+                    scale: 1,
+                    rotateY: 0,
+                    rotateZ: 0,
+                    filter: "blur(0px)",
+                  }}
+                  exit={{
+                    opacity: 0,
+                    y: -35,
+                    scale: 0.84,
+                    rotateY: 25,
+                    rotateZ: 4,
+                    filter: "blur(4px)",
                   }}
                   transition={{
-                    duration: 1.5,
-                    delay: 0.25,
-                    ease: "easeInOut",
+                    opacity: {
+                      duration: 0.28,
+                    },
+                    y: {
+                      duration: 0.6,
+                      type: "spring",
+                      stiffness: 90,
+                      damping: 14,
+                    },
+                    scale: {
+                      duration: 0.6,
+                      type: "spring",
+                      stiffness: 80,
+                      damping: 14,
+                    },
+                    rotateY: {
+                      duration: 0.7,
+                      ease: [0.16, 1, 0.3, 1],
+                    },
+                    rotateZ: {
+                      duration: 0.7,
+                      ease: [0.16, 1, 0.3, 1],
+                    },
+                    filter: {
+                      duration: 0.3,
+                    },
                   }}
                   className="
-                    pointer-events-none
                     absolute
-                    left-0
-                    top-[8%]
-                    z-20
-                    h-[72%]
-                    w-[14%]
-                    rotate-[15deg]
-                    rounded-full
-                    bg-white/45
-                    blur-md
+                    flex
+                    h-[315px]
+                    w-[180px]
+                    items-center
+                    justify-center
+                    min-[380px]:h-[335px]
+                    min-[380px]:w-[190px]
+                    sm:h-[440px]
+                    sm:w-[230px]
                   "
-                />
+                >
+                  {/* Image Glow */}
 
-                {/* Reflection */}
+                  <motion.div
+                    animate={{
+                      scale: [0.9, 1.06, 0.9],
+                      opacity: [0.12, 0.25, 0.12],
+                    }}
+                    transition={{
+                      duration: 3.5,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    }}
+                    className="
+                      pointer-events-none
+                      absolute
+                      inset-5
+                      rounded-full
+                      bg-cyan-300/25
+                      blur-3xl
+                    "
+                  />
 
-                <div
-                  className="
-                    pointer-events-none
-                    absolute
-                    left-[18%]
-                    top-[10%]
-                    z-20
-                    h-[45%]
-                    w-[8%]
-                    rotate-[8deg]
-                    rounded-full
-                    bg-white/35
-                    blur-[3px]
-                  "
-                />
-              </motion.div>
-            </AnimatePresence>
+                  {/* Bottle */}
+
+                  <motion.img
+                    src={current.image}
+                    alt={`${t(current.titleKey, {
+                      defaultValue: "Bottle",
+                    })} - BB Aqua`}
+                    animate={{
+                      y: [0, -7, 0, 5, 0],
+                      rotateZ: [-1, 1, -1],
+                      rotateY: [0, 2, 0, -2, 0],
+                      scale: [1, 1.012, 1],
+                    }}
+                    transition={{
+                      y: {
+                        duration: 4.5,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                      },
+                      rotateZ: {
+                        duration: 5,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                      },
+                      rotateY: {
+                        duration: 6,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                      },
+                      scale: {
+                        duration: 4,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                      },
+                    }}
+                    whileHover={{
+                      scale: 1.04,
+                      rotateY: 8,
+                    }}
+                    className="
+                      relative
+                      z-10
+                      h-full
+                      w-full
+                      object-contain
+                      drop-shadow-[0_25px_35px_rgba(2,40,61,0.28)]
+                    "
+                    draggable={false}
+                  />
+
+                  {/* Light Sweep */}
+
+                  <motion.div
+                    key={`shine-${activeStage}`}
+                    initial={{
+                      x: "-140%",
+                      opacity: 0,
+                    }}
+                    animate={{
+                      x: "140%",
+                      opacity: [0, 0.5, 0],
+                    }}
+                    transition={{
+                      duration: 1.25,
+                      delay: 0.2,
+                      ease: "easeInOut",
+                    }}
+                    className="
+                      pointer-events-none
+                      absolute
+                      left-0
+                      top-[8%]
+                      z-20
+                      h-[72%]
+                      w-[14%]
+                      rotate-[15deg]
+                      rounded-full
+                      bg-white/45
+                      blur-md
+                    "
+                  />
+
+                  {/* Reflection */}
+
+                  <div
+                    className="
+                      pointer-events-none
+                      absolute
+                      left-[18%]
+                      top-[10%]
+                      z-20
+                      h-[45%]
+                      w-[8%]
+                      rotate-[8deg]
+                      rounded-full
+                      bg-white/35
+                      blur-[3px]
+                    "
+                  />
+                </motion.div>
+              </AnimatePresence>
+            </div>
 
             {/* =================================================
-                STAGE BADGE
+                IMAGE CONTROLS — MOBILE
             ================================================== */}
+
+            <div
+              className="
+                relative
+                z-40
+                flex
+                w-full
+                items-center
+                gap-2
+                px-1
+                sm:hidden
+              "
+            >
+              <motion.button
+                type="button"
+                onClick={previousStage}
+                whileTap={{
+                  scale: 0.94,
+                }}
+                className="
+                  flex
+                  h-11
+                  w-11
+                  shrink-0
+                  items-center
+                  justify-center
+                  rounded-full
+                  border
+                  border-slate-200
+                  bg-white
+                  text-[#06283D]
+                  shadow-sm
+                "
+                aria-label={t(
+                  "aqua.bottleShowcase.previousStage",
+                  {
+                    defaultValue: "Previous stage",
+                  }
+                )}
+              >
+                <ArrowLeft className="h-4 w-4" />
+              </motion.button>
+
+              <motion.button
+                type="button"
+                onClick={nextStage}
+                whileTap={{
+                  scale: 0.97,
+                }}
+                className="
+                  flex
+                  h-11
+                  flex-1
+                  items-center
+                  justify-center
+                  gap-2
+                  rounded-full
+                  bg-[#06283D]
+                  px-5
+                  text-xs
+                  font-bold
+                  text-white
+                  shadow-[0_10px_30px_rgba(2,40,61,0.18)]
+                "
+              >
+                {t("aqua.bottleShowcase.nextStage", {
+                  defaultValue: "Next Stage",
+                })}
+
+                <ArrowRight className="h-4 w-4 text-cyan-300" />
+              </motion.button>
+            </div>
+
+            {/* =================================================
+                STAGE INDICATOR — MOBILE
+            ================================================== */}
+
+            <div className="relative z-30 mt-3 flex items-center gap-2 sm:hidden">
+              <span className="text-[10px] font-black text-[#06283D]">
+                {current.number}
+              </span>
+
+              <div className="flex gap-1.5">
+                {stages.map((stage, index) => (
+                  <button
+                    key={stage.id}
+                    type="button"
+                    onClick={() => setActiveStage(index)}
+                    aria-label={`Go to stage ${stage.number}`}
+                    className={`
+                      h-1.5
+                      rounded-full
+                      transition-all
+                      duration-300
+
+                      ${
+                        activeStage === index
+                          ? "w-6 bg-sky-500"
+                          : "w-1.5 bg-slate-300"
+                      }
+                    `}
+                  />
+                ))}
+              </div>
+
+              <span className="text-[10px] font-bold text-slate-400">
+                04
+              </span>
+            </div>
+
+            {/* =================================================
+                CURRENT STAGE INFO
+            ================================================== */}
+
+            <motion.div
+              key={`title-${activeStage}`}
+              initial={{
+                opacity: 0,
+                y: 15,
+              }}
+              animate={{
+                opacity: 1,
+                y: 0,
+              }}
+              transition={{
+                duration: 0.4,
+              }}
+              className="
+                relative
+                z-30
+                mt-3
+                w-full
+                rounded-xl
+                border
+                border-white
+                bg-white/85
+                p-3
+                shadow-lg
+                backdrop-blur-xl
+
+                sm:absolute
+                sm:bottom-5
+                sm:left-6
+                sm:right-6
+                sm:mt-0
+                sm:w-auto
+                sm:rounded-2xl
+                sm:p-4
+              "
+            >
+              <div className="flex items-center justify-between gap-3">
+                <div className="min-w-0">
+                  <p className="text-[8px] font-bold uppercase tracking-[0.15em] text-sky-500 sm:text-[9px]">
+                    {t(current.subtitleKey, {
+                      defaultValue: "Start with the bottle",
+                    })}
+                  </p>
+
+                  <h3 className="mt-0.5 text-base font-black text-[#06283D] sm:mt-1 sm:text-lg">
+                    {t(current.titleKey, {
+                      defaultValue: "Bottle",
+                    })}
+                  </h3>
+                </div>
+
+                <Droplets className="h-4 w-4 shrink-0 text-sky-400 sm:h-5 sm:w-5" />
+              </div>
+            </motion.div>
+
+            {/* Desktop stage badge */}
 
             <motion.div
               key={`badge-${activeStage}`}
               initial={{
                 opacity: 0,
-                x: -20,
+                x: -15,
                 scale: 0.9,
               }}
               animate={{
@@ -672,24 +884,29 @@ export default function AquaBottleShowcase() {
                 scale: 1,
               }}
               transition={{
-                duration: 0.5,
+                duration: 0.4,
               }}
               className="
                 absolute
-                left-4
-                top-4
+                left-3
+                top-3
                 z-30
-                rounded-2xl
+                hidden
+                rounded-xl
                 border
                 border-white
-                bg-white/80
-                px-4
-                py-3
+                bg-white/85
+                px-3
+                py-2
                 shadow-lg
                 backdrop-blur-xl
 
                 sm:left-6
                 sm:top-6
+                sm:block
+                sm:rounded-2xl
+                sm:px-4
+                sm:py-3
               "
             >
               <div className="text-[9px] font-bold uppercase tracking-[0.2em] text-sky-500">
@@ -702,64 +919,10 @@ export default function AquaBottleShowcase() {
                 {current.number}
               </div>
             </motion.div>
-
-            {/* =================================================
-                CURRENT STAGE INFO
-            ================================================== */}
-
-            <motion.div
-              key={`title-${activeStage}`}
-              initial={{
-                opacity: 0,
-                y: 20,
-              }}
-              animate={{
-                opacity: 1,
-                y: 0,
-              }}
-              transition={{
-                duration: 0.5,
-              }}
-              className="
-                absolute
-                bottom-5
-                left-5
-                right-5
-                z-30
-                rounded-2xl
-                border
-                border-white
-                bg-white/80
-                p-4
-                shadow-lg
-                backdrop-blur-xl
-
-                sm:left-6
-                sm:right-6
-              "
-            >
-              <div className="flex items-center justify-between gap-3">
-                <div>
-                  <p className="text-[9px] font-bold uppercase tracking-[0.18em] text-sky-500">
-                    {t(current.subtitleKey, {
-                      defaultValue: "Start with the bottle",
-                    })}
-                  </p>
-
-                  <h3 className="mt-1 text-lg font-black text-[#06283D]">
-                    {t(current.titleKey, {
-                      defaultValue: "Bottle",
-                    })}
-                  </h3>
-                </div>
-
-                <Droplets className="h-5 w-5 shrink-0 text-sky-400" />
-              </div>
-            </motion.div>
           </motion.div>
 
           {/* =================================================
-              RIGHT CONTENT
+              RIGHT CONTENT / DESKTOP
           ================================================== */}
 
           <div>
@@ -782,11 +945,13 @@ export default function AquaBottleShowcase() {
             >
               <span
                 className="
-                  text-xs
+                  text-[10px]
                   font-bold
                   uppercase
-                  tracking-[0.22em]
+                  tracking-[0.2em]
                   text-sky-500
+                  sm:text-xs
+                  sm:tracking-[0.22em]
                 "
               >
                 {t("aqua.bottleShowcase.journey.eyebrow", {
@@ -796,13 +961,14 @@ export default function AquaBottleShowcase() {
 
               <h3
                 className="
-                  mt-4
-                  text-3xl
+                  mt-3
+                  text-2xl
                   font-black
                   leading-tight
                   tracking-[-0.035em]
                   text-[#06283D]
-
+                  min-[380px]:text-3xl
+                  sm:mt-4
                   sm:text-4xl
                 "
               >
@@ -817,7 +983,7 @@ export default function AquaBottleShowcase() {
                 </span>
               </h3>
 
-              <p className="mt-5 text-sm leading-7 text-slate-600 sm:text-base sm:leading-8">
+              <p className="mt-4 text-[13px] leading-6 text-slate-600 sm:mt-5 sm:text-base sm:leading-8">
                 {t("aqua.bottleShowcase.journey.description", {
                   defaultValue:
                     "Your bottle starts simple. Your logo and brand identity transform it into a professional branded product.",
@@ -826,10 +992,10 @@ export default function AquaBottleShowcase() {
             </motion.div>
 
             {/* =================================================
-                STAGE BUTTONS
+                DESKTOP STAGE BUTTONS
             ================================================== */}
 
-            <div className="mt-8 space-y-3">
+            <div className="mt-8 hidden space-y-3 sm:block">
               {stages.map((stage, index) => {
                 const isActive = activeStage === index;
 
@@ -877,7 +1043,6 @@ export default function AquaBottleShowcase() {
                         rounded-xl
                         text-xs
                         font-black
-                        transition-all
 
                         ${
                           isActive
@@ -926,25 +1091,19 @@ export default function AquaBottleShowcase() {
                       </p>
                     </div>
 
-                    <motion.div
-                      animate={{
-                        x: isActive ? 4 : 0,
-                      }}
-                    >
-                      <ArrowRight
-                        className={`
-                          h-4
-                          w-4
-                          shrink-0
+                    <ArrowRight
+                      className={`
+                        h-4
+                        w-4
+                        shrink-0
 
-                          ${
-                            isActive
-                              ? "text-sky-500"
-                              : "text-slate-300"
-                          }
-                        `}
-                      />
-                    </motion.div>
+                        ${
+                          isActive
+                            ? "text-sky-500"
+                            : "text-slate-300"
+                        }
+                      `}
+                    />
                   </motion.button>
                 );
               })}
@@ -978,13 +1137,14 @@ export default function AquaBottleShowcase() {
                   border
                   border-sky-100
                   bg-sky-50/60
-                  p-5
+                  p-4
+                  sm:p-5
                 "
               >
                 <div className="flex gap-3">
                   <Sparkles className="mt-0.5 h-4 w-4 shrink-0 text-sky-500" />
 
-                  <p className="text-sm leading-6 text-slate-600">
+                  <p className="text-[13px] leading-6 text-slate-600 sm:text-sm">
                     {t(current.descriptionKey, {
                       defaultValue:
                         "Start with a clean water bottle ready to carry your brand identity.",
@@ -994,11 +1154,9 @@ export default function AquaBottleShowcase() {
               </motion.div>
             </AnimatePresence>
 
-            {/* =================================================
-                NAVIGATION
-            ================================================== */}
+            {/* Desktop Navigation */}
 
-            <div className="mt-6 flex gap-3">
+            <div className="mt-6 hidden gap-3 sm:flex">
               <motion.button
                 type="button"
                 onClick={previousStage}
@@ -1070,8 +1228,8 @@ export default function AquaBottleShowcase() {
 
             {/* Trust */}
 
-            <div className="mt-6 flex items-center gap-2 text-xs text-slate-400">
-              <Check className="h-4 w-4 text-sky-500" />
+            <div className="mt-5 flex items-start gap-2 text-xs leading-5 text-slate-400 sm:mt-6 sm:items-center">
+              <Check className="mt-0.5 h-4 w-4 shrink-0 text-sky-500 sm:mt-0" />
 
               <span>
                 {t("aqua.bottleShowcase.trustLine", {
@@ -1103,23 +1261,26 @@ export default function AquaBottleShowcase() {
             duration: 0.7,
           }}
           className="
-            mt-12
+            mt-8
             flex
             flex-col
-            items-center
+            items-stretch
             justify-between
             gap-4
             rounded-3xl
             border
             border-sky-100
             bg-white/70
-            px-5
-            py-5
+            px-4
+            py-4
             shadow-sm
             backdrop-blur-xl
 
+            sm:mt-12
             sm:flex-row
+            sm:items-center
             sm:px-7
+            sm:py-5
           "
         >
           <div className="flex items-center gap-3">
@@ -1128,6 +1289,7 @@ export default function AquaBottleShowcase() {
                 flex
                 h-10
                 w-10
+                shrink-0
                 items-center
                 justify-center
                 rounded-xl
@@ -1137,7 +1299,7 @@ export default function AquaBottleShowcase() {
               <Layers3 className="h-5 w-5 text-sky-500" />
             </div>
 
-            <div>
+            <div className="min-w-0">
               <p className="text-sm font-bold text-[#06283D]">
                 {t("aqua.bottleShowcase.bottomCta.title", {
                   defaultValue:
@@ -1170,7 +1332,6 @@ export default function AquaBottleShowcase() {
               font-bold
               text-white
               shadow-[0_10px_30px_rgba(14,165,233,0.20)]
-
               sm:w-auto
             "
           >
