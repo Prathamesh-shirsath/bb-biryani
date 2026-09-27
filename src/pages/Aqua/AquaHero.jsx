@@ -1,4 +1,6 @@
-import { motion } from "motion/react";
+import { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "motion/react";
+
 import {
   ArrowDown,
   ArrowRight,
@@ -7,6 +9,49 @@ import {
 } from "lucide-react";
 
 export default function AquaHero() {
+  // =====================================================
+  // BOTTLE IMAGE PATHS
+  // =====================================================
+
+  const bottles = [
+    "/aqua/bottle.png",
+    "/aqua/bottle_2.png",
+    "/aqua/brand.png",
+    "/aqua/bottle_3.png",
+    
+
+    // Add more bottles here
+    // "/aqua/bottle-6.png",
+    // "/aqua/bottle-7.png",
+    // "/aqua/bottle-8.png",
+  ];
+
+  // =====================================================
+  // ACTIVE BOTTLE
+  // =====================================================
+
+  const [activeBottle, setActiveBottle] = useState(0);
+
+  // =====================================================
+  // CHANGE BOTTLE EVERY 2 SECONDS
+  // =====================================================
+
+  useEffect(() => {
+    if (bottles.length <= 1) return;
+
+    const interval = setInterval(() => {
+      setActiveBottle((current) => {
+        return (current + 1) % bottles.length;
+      });
+    }, 3500);
+
+    return () => clearInterval(interval);
+  }, [bottles.length]);
+
+  // =====================================================
+  // SMOOTH SCROLL
+  // =====================================================
+
   const scrollToSection = (id) => {
     document.getElementById(id)?.scrollIntoView({
       behavior: "smooth",
@@ -135,7 +180,11 @@ export default function AquaHero() {
             }}
             animate={{
               y: [0, -18, 0],
-              x: [0, index % 2 === 0 ? 6 : -6, 0],
+              x: [
+                0,
+                index % 2 === 0 ? 6 : -6,
+                0,
+              ],
               opacity: [0.25, 0.65, 0.25],
               scale: [1, 1.15, 1],
             }}
@@ -275,6 +324,7 @@ export default function AquaHero() {
               "
             >
               PURE
+
               <span className="block text-sky-500">
                 WATER.
               </span>
@@ -315,7 +365,7 @@ export default function AquaHero() {
               "
             >
               Premium packaged drinking water and
-              customised water bottles designed for
+              custom bottle branding designed for
               businesses, hotels, restaurants, events
               and special occasions.
             </motion.p>
@@ -431,7 +481,9 @@ export default function AquaHero() {
                   className="text-cyan-500"
                 />
 
-                <span>CUSTOMIZE YOUR BOTTLE</span>
+                <span>
+                  CUSTOM BOTTLE BRANDING
+                </span>
               </motion.button>
             </motion.div>
 
@@ -481,7 +533,7 @@ export default function AquaHero() {
           </div>
 
           {/* =================================================
-              RIGHT BOTTLE
+              RIGHT BOTTLE SHOWCASE
           ================================================== */}
 
           <div
@@ -502,7 +554,9 @@ export default function AquaHero() {
               lg:max-w-[520px]
             "
           >
-            {/* Large Water Orb */}
+            {/* =================================================
+                LARGE WATER ORB
+            ================================================== */}
 
             <motion.div
               animate={{
@@ -515,6 +569,7 @@ export default function AquaHero() {
                 ease: "easeInOut",
               }}
               className="
+                pointer-events-none
                 absolute
                 h-[270px]
                 w-[270px]
@@ -533,126 +588,324 @@ export default function AquaHero() {
               "
             />
 
-            {/* Ripple rings */}
+            {/* =================================================
+                RIPPLE RINGS
+            ================================================== */}
 
-            {[0, 1, 2].map(
-              (ring) => (
+            {[0, 1, 2].map((ring) => (
+              <motion.div
+                key={ring}
+                animate={{
+                  scale: [0.85, 1.15],
+                  opacity: [0.35, 0],
+                }}
+                transition={{
+                  duration: 3.5,
+                  repeat: Infinity,
+                  delay: ring * 1.1,
+                  ease: "easeOut",
+                }}
+                className="
+                  pointer-events-none
+                  absolute
+                  h-[220px]
+                  w-[220px]
+                  rounded-full
+                  border
+                  border-sky-300/25
+
+                  sm:h-[280px]
+                  sm:w-[280px]
+
+                  lg:h-[360px]
+                  lg:w-[360px]
+                "
+              />
+            ))}
+
+            {/* =================================================
+                ACTIVE BOTTLE
+            ================================================== */}
+
+            <div
+              className="
+                absolute
+                left-1/2
+                top-1/2
+                h-[360px]
+                w-[220px]
+                -translate-x-1/2
+                -translate-y-1/2
+
+                sm:h-[450px]
+                sm:w-[280px]
+
+                lg:h-[560px]
+                lg:w-[350px]
+              "
+              style={{
+                perspective: "1400px",
+              }}
+            >
+              <AnimatePresence mode="wait">
                 <motion.div
-                  key={ring}
+                  key={activeBottle}
+                  initial={{
+                    opacity: 0,
+                    y: 70,
+                    scale: 0.72,
+                    rotateY: -35,
+                    rotateZ: -6,
+                    filter: "blur(5px)",
+                  }}
                   animate={{
-                    scale: [0.85, 1.15],
-                    opacity: [0.35, 0],
+                    opacity: 1,
+                    y: 0,
+                    scale: 1,
+                    rotateY: 0,
+                    rotateZ: 0,
+                    filter: "blur(0px)",
+                  }}
+                  exit={{
+                    opacity: 0,
+                    y: -55,
+                    scale: 0.82,
+                    rotateY: 35,
+                    rotateZ: 6,
+                    filter: "blur(5px)",
                   }}
                   transition={{
-                    duration: 3.5,
-                    repeat: Infinity,
-                    delay: ring * 1.1,
-                    ease: "easeOut",
+                    opacity: {
+                      duration: 0.4,
+                    },
+
+                    y: {
+                      duration: 0.8,
+                      type: "spring",
+                      stiffness: 75,
+                      damping: 14,
+                    },
+
+                    scale: {
+                      duration: 0.85,
+                      type: "spring",
+                      stiffness: 70,
+                      damping: 13,
+                    },
+
+                    rotateY: {
+                      duration: 0.9,
+                      ease: [0.16, 1, 0.3, 1],
+                    },
+
+                    rotateZ: {
+                      duration: 0.9,
+                      ease: [0.16, 1, 0.3, 1],
+                    },
+
+                    filter: {
+                      duration: 0.45,
+                    },
                   }}
                   className="
                     absolute
-                    h-[220px]
-                    w-[220px]
-                    rounded-full
-                    border
-                    border-sky-300/25
-
-                    sm:h-[280px]
-                    sm:w-[280px]
-
-                    lg:h-[360px]
-                    lg:w-[360px]
+                    inset-0
+                    flex
+                    items-center
+                    justify-center
                   "
-                />
-              )
-            )}
+                >
+                  {/* Bottle glow */}
+
+                  <motion.div
+                    animate={{
+                      scale: [0.9, 1.08, 0.9],
+                      opacity: [0.18, 0.32, 0.18],
+                    }}
+                    transition={{
+                      duration: 3.5,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    }}
+                    className="
+                      pointer-events-none
+                      absolute
+                      inset-8
+                      rounded-full
+                      bg-cyan-300/25
+                      blur-3xl
+                    "
+                  />
+
+                  {/* Bottle */}
+
+                  <motion.img
+                    src={bottles[activeBottle]}
+                    alt={`BB Aqua Bottle ${
+                      activeBottle + 1
+                    }`}
+                    animate={{
+                      y: [0, -12, 0, 8, 0],
+                      rotateZ: [
+                        -1,
+                        1.2,
+                        -1,
+                        1,
+                        -1,
+                      ],
+                      rotateY: [
+                        0,
+                        2,
+                        0,
+                        -2,
+                        0,
+                      ],
+                      scale: [
+                        1,
+                        1.015,
+                        1,
+                      ],
+                    }}
+                    transition={{
+                      y: {
+                        duration: 4.5,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                      },
+
+                      rotateZ: {
+                        duration: 5,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                      },
+
+                      rotateY: {
+                        duration: 6,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                      },
+
+                      scale: {
+                        duration: 4,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                      },
+                    }}
+                    whileHover={{
+                      scale: 1.04,
+                      rotateY: 8,
+                      transition: {
+                        duration: 0.35,
+                      },
+                    }}
+                    className="
+                      relative
+                      z-10
+                      h-full
+                      w-full
+                      object-contain
+                      drop-shadow-[0_35px_50px_rgba(3,105,161,0.24)]
+                    "
+                    draggable={false}
+                  />
+
+                  {/* Premium light sweep */}
+
+                  <motion.div
+                    initial={{
+                      x: "-140%",
+                      opacity: 0,
+                    }}
+                    animate={{
+                      x: "140%",
+                      opacity: [0, 0.45, 0],
+                    }}
+                    transition={{
+                      duration: 1.4,
+                      delay: 0.35,
+                      ease: "easeInOut",
+                    }}
+                    className="
+                      pointer-events-none
+                      absolute
+                      left-0
+                      top-[8%]
+                      z-20
+                      h-[72%]
+                      w-[13%]
+                      rotate-[15deg]
+                      rounded-full
+                      bg-white/45
+                      blur-md
+                    "
+                  />
+
+                  {/* Reflection */}
+
+                  <div
+                    className="
+                      pointer-events-none
+                      absolute
+                      left-[22%]
+                      top-[12%]
+                      z-20
+                      h-[45%]
+                      w-[9%]
+                      rotate-[8deg]
+                      rounded-full
+                      bg-white/30
+                      blur-[3px]
+                    "
+                  />
+                </motion.div>
+              </AnimatePresence>
+            </div>
 
             {/* =================================================
-                BOTTLE IMAGE
+                BOTTLE COUNTER
             ================================================== */}
 
             <motion.div
               initial={{
                 opacity: 0,
-                y: 60,
-                rotateY: -20,
-                scale: 0.85,
+                y: 15,
               }}
               animate={{
                 opacity: 1,
                 y: 0,
-                rotateY: 0,
-                scale: 1,
               }}
               transition={{
-                duration: 1.2,
-                delay: 0.3,
-                ease: [0.16, 1, 0.3, 1],
+                delay: 1,
+                duration: 0.7,
               }}
               className="
-                relative
-                z-10
-                h-[360px]
-                w-[220px]
-                sm:h-[450px]
-                sm:w-[280px]
-                lg:h-[560px]
-                lg:w-[350px]
+                absolute
+                bottom-[16%]
+                left-1/2
+                z-[70]
+                -translate-x-1/2
+                rounded-full
+                border
+                border-white/70
+                bg-white/70
+                px-3
+                py-1.5
+                text-[8px]
+                font-bold
+                tracking-[0.2em]
+                text-sky-700
+                shadow-[0_10px_25px_rgba(7,89,133,0.08)]
+                backdrop-blur-xl
               "
             >
-              {/* Bottle glow */}
-
-              <div
-                className="
-                  absolute
-                  inset-8
-                  rounded-full
-                  bg-cyan-300/20
-                  blur-3xl
-                "
-              />
-
-              {/* Bottle */}
-
-              <motion.img
-                src="/aqua/bottle.png"
-                alt="BB Aqua Water Bottle"
-                animate={{
-                  y: [0, -12, 0],
-                  rotateZ: [-1, 1, -1],
-                }}
-                transition={{
-                  duration: 5,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-                className="
-                  relative
-                  z-10
-                  h-full
-                  w-full
-                  object-contain
-                  drop-shadow-[0_35px_45px_rgba(3,105,161,0.20)]
-                "
-              />
-
-              {/* Reflection */}
-
-              <div
-                className="
-                  pointer-events-none
-                  absolute
-                  left-[22%]
-                  top-[12%]
-                  z-20
-                  h-[45%]
-                  w-[9%]
-                  rotate-[8deg]
-                  rounded-full
-                  bg-white/40
-                  blur-[3px]
-                "
-              />
+              {String(activeBottle + 1).padStart(2, "0")}
+              <span className="mx-1 text-sky-300">
+                /
+              </span>
+              {String(bottles.length).padStart(
+                2,
+                "0"
+              )}
             </motion.div>
 
             {/* =================================================
@@ -669,14 +922,14 @@ export default function AquaHero() {
                 x: 0,
               }}
               transition={{
-                delay: 1,
+                delay: 1.1,
                 duration: 0.7,
               }}
               className="
                 absolute
                 right-0
                 top-[18%]
-                z-20
+                z-[80]
                 hidden
                 rounded-2xl
                 border
@@ -708,7 +961,9 @@ export default function AquaHero() {
               </div>
             </motion.div>
 
-            {/* Custom bottle badge */}
+            {/* =================================================
+                CUSTOM BRANDING BADGE
+            ================================================== */}
 
             <motion.button
               type="button"
@@ -724,20 +979,21 @@ export default function AquaHero() {
                 y: 0,
               }}
               transition={{
-                delay: 1.1,
+                delay: 1.2,
                 duration: 0.7,
               }}
               whileHover={{
-                scale: 1.04,
+                scale: 1.05,
+                y: -3,
               }}
               whileTap={{
-                scale: 0.97,
+                scale: 0.96,
               }}
               className="
                 absolute
                 bottom-[7%]
                 left-1/2
-                z-30
+                z-[90]
                 flex
                 -translate-x-1/2
                 items-center

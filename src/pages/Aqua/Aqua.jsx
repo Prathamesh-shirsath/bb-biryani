@@ -14,6 +14,7 @@ import AquaGallery from "./AquaGallery";
 import AquaBulkOrder from "./AquaBulkOrder";
 import AquaContact from "./AquaContact";
 import AquaFooter from "./AquaFooter";
+import FloatingSocials from "../../components/FloatingSocials";
 
 export default function Aqua() {
   useEffect(() => {
@@ -34,6 +35,9 @@ export default function Aqua() {
         text-[#06283D]
       "
     >
+
+
+      <FloatingSocials />
       {/* 01. NAVBAR */}
       <AquaNavbar />
 
@@ -78,3 +82,4 @@ export default function Aqua() {
     </main>
   );
 }
+

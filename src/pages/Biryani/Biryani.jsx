@@ -10,6 +10,8 @@ import Gallery from "./Gallery";
 import FranchiseEnquiry from "./FranchiseEnquiry";
 import MainBranch from "./MainBranch";
 import Footer from "./Footer";
+import GoogleReviews from "./GoogleReviews";
+import FloatingSocials from "../../components/FloatingSocials";
 
 import { initBiryaniScrollAnimations } from "../../animations/gsapAnimations";
 
@@ -41,7 +43,7 @@ export default function Biryani() {
       {/* =====================================================
           NAVBAR
       ====================================================== */}
-
+<FloatingSocials />
       <Navbar />
 
       {/* =====================================================
@@ -95,6 +97,8 @@ export default function Biryani() {
       {/* =====================================================
           09 — FOOTER
       ====================================================== */}
+      <GoogleReviews />
+
 
       <Footer />
     </main>

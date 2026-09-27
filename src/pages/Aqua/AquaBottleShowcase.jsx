@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
+
 import {
   ArrowLeft,
   ArrowRight,
@@ -18,6 +19,7 @@ const stages = [
     subtitle: "Start with the bottle",
     description:
       "Start with a clean water bottle ready to carry your brand identity.",
+    image: "/aqua/raw.png",
   },
   {
     id: 1,
@@ -26,6 +28,7 @@ const stages = [
     subtitle: "Add your identity",
     description:
       "Your business logo, brand name or event identity becomes the visual focus.",
+    image: "/aqua/bottle.png",
   },
   {
     id: 2,
@@ -34,6 +37,7 @@ const stages = [
     subtitle: "Build your presentation",
     description:
       "Your branding is arranged into a professional bottle presentation.",
+    image: "/aqua/sticker.png",
   },
   {
     id: 3,
@@ -42,6 +46,7 @@ const stages = [
     subtitle: "Ready to represent you",
     description:
       "The finished branded bottle becomes part of your customer or guest experience.",
+    image: "/aqua/brand.png",
   },
 ];
 
@@ -51,12 +56,16 @@ export default function AquaBottleShowcase() {
   const current = stages[activeStage];
 
   const nextStage = () => {
-    setActiveStage((prev) => (prev + 1) % stages.length);
+    setActiveStage(
+      (prev) => (prev + 1) % stages.length
+    );
   };
 
   const previousStage = () => {
     setActiveStage(
-      (prev) => (prev - 1 + stages.length) % stages.length
+      (prev) =>
+        (prev - 1 + stages.length) %
+        stages.length
     );
   };
 
@@ -73,10 +82,23 @@ export default function AquaBottleShowcase() {
         lg:py-32
       "
     >
-      {/* Background */}
+      {/* =====================================================
+          BACKGROUND
+      ====================================================== */}
 
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div
+        {/* Main glow */}
+
+        <motion.div
+          animate={{
+            scale: [1, 1.08, 1],
+            opacity: [0.45, 0.25, 0.45],
+          }}
+          transition={{
+            duration: 7,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
           className="
             absolute
             left-1/2
@@ -88,10 +110,13 @@ export default function AquaBottleShowcase() {
             rounded-full
             bg-sky-100/70
             blur-3xl
+
             sm:h-[600px]
             sm:w-[600px]
           "
         />
+
+        {/* Cyan glow */}
 
         <motion.div
           animate={{
@@ -115,6 +140,8 @@ export default function AquaBottleShowcase() {
           "
         />
 
+        {/* Blue glow */}
+
         <motion.div
           animate={{
             x: [0, -50, 0],
@@ -137,8 +164,14 @@ export default function AquaBottleShowcase() {
           "
         />
 
+        {/* Grid */}
+
         <div
-          className="absolute inset-0 opacity-[0.035]"
+          className="
+            absolute
+            inset-0
+            opacity-[0.035]
+          "
           style={{
             backgroundImage:
               "linear-gradient(rgba(2,40,61,0.6) 1px, transparent 1px), linear-gradient(90deg, rgba(2,40,61,0.6) 1px, transparent 1px)",
@@ -148,7 +181,9 @@ export default function AquaBottleShowcase() {
       </div>
 
       <div className="bb-container relative z-10">
-        {/* Header */}
+        {/* =====================================================
+            HEADER
+        ====================================================== */}
 
         <motion.div
           initial={{
@@ -166,7 +201,11 @@ export default function AquaBottleShowcase() {
           transition={{
             duration: 0.8,
           }}
-          className="mx-auto max-w-3xl text-center"
+          className="
+            mx-auto
+            max-w-3xl
+            text-center
+          "
         >
           <div
             className="
@@ -209,11 +248,14 @@ export default function AquaBottleShowcase() {
               leading-[0.95]
               tracking-[-0.045em]
               text-[#06283D]
+
               sm:text-5xl
+
               lg:text-7xl
             "
           >
             From Bottle
+
             <span className="block text-sky-500">
               To Brand.
             </span>
@@ -227,16 +269,20 @@ export default function AquaBottleShowcase() {
               text-sm
               leading-7
               text-slate-600
+
               sm:text-base
               sm:leading-8
             "
           >
-            See how your identity can move from a logo to a professionally
-            branded bottle.
+            See how your identity can move from a
+            bottle to a professionally branded
+            presentation.
           </p>
         </motion.div>
 
-        {/* Showcase */}
+        {/* =====================================================
+            MAIN SHOWCASE
+        ====================================================== */}
 
         <div
           className="
@@ -244,13 +290,16 @@ export default function AquaBottleShowcase() {
             grid
             grid-cols-1
             gap-8
+
             lg:mt-20
             lg:grid-cols-[1fr_0.9fr]
             lg:items-center
             lg:gap-16
           "
         >
-          {/* Bottle Visual */}
+          {/* =================================================
+              BOTTLE VISUAL
+          ================================================== */}
 
           <motion.div
             initial={{
@@ -283,13 +332,45 @@ export default function AquaBottleShowcase() {
               via-white
               to-cyan-50
               shadow-[0_30px_90px_rgba(14,165,233,0.10)]
+
               sm:min-h-[580px]
             "
           >
+            {/* =================================================
+                ROTATING OUTER RING
+            ================================================== */}
+
+            <motion.div
+              animate={{
+                rotate: 360,
+              }}
+              transition={{
+                duration: 24,
+                repeat: Infinity,
+                ease: "linear",
+              }}
+              className="
+                absolute
+                h-[310px]
+                w-[310px]
+                rounded-full
+                border
+                border-dashed
+                border-sky-300/30
+
+                sm:h-[430px]
+                sm:w-[430px]
+              "
+            />
+
+            {/* =================================================
+                PULSE RING
+            ================================================== */}
+
             <motion.div
               animate={{
                 scale: [1, 1.15, 1],
-                opacity: [0.35, 0.15, 0.35],
+                opacity: [0.35, 0.1, 0.35],
               }}
               transition={{
                 duration: 5,
@@ -303,10 +384,15 @@ export default function AquaBottleShowcase() {
                 rounded-full
                 border
                 border-sky-300/30
+
                 sm:h-[360px]
                 sm:w-[360px]
               "
             />
+
+            {/* =================================================
+                INNER RING
+            ================================================== */}
 
             <motion.div
               animate={{
@@ -324,12 +410,24 @@ export default function AquaBottleShowcase() {
                 rounded-full
                 border
                 border-cyan-300/20
+
                 sm:h-[280px]
                 sm:w-[280px]
               "
             />
 
-            <div
+            {/* Main glow */}
+
+            <motion.div
+              animate={{
+                scale: [0.9, 1.08, 0.9],
+                opacity: [0.18, 0.32, 0.18],
+              }}
+              transition={{
+                duration: 4,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
               className="
                 absolute
                 h-64
@@ -337,160 +435,246 @@ export default function AquaBottleShowcase() {
                 rounded-full
                 bg-sky-300/20
                 blur-3xl
+
                 sm:h-80
                 sm:w-80
               "
             />
+
+            {/* =================================================
+                ACTIVE STAGE IMAGE
+            ================================================== */}
 
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeStage}
                 initial={{
                   opacity: 0,
-                  y: 30,
-                  rotateY: -25,
-                  scale: 0.9,
+                  y: 70,
+                  scale: 0.78,
+                  rotateY: -35,
+                  rotateZ: -5,
+                  filter: "blur(5px)",
                 }}
                 animate={{
                   opacity: 1,
                   y: 0,
-                  rotateY: 0,
                   scale: 1,
+                  rotateY: 0,
+                  rotateZ: 0,
+                  filter: "blur(0px)",
                 }}
                 exit={{
                   opacity: 0,
-                  y: -25,
-                  rotateY: 25,
-                  scale: 0.92,
+                  y: -50,
+                  scale: 0.82,
+                  rotateY: 35,
+                  rotateZ: 5,
+                  filter: "blur(5px)",
                 }}
                 transition={{
-                  duration: 0.65,
-                  ease: "easeOut",
+                  opacity: {
+                    duration: 0.4,
+                  },
+
+                  y: {
+                    duration: 0.9,
+                    type: "spring",
+                    stiffness: 75,
+                    damping: 13,
+                  },
+
+                  scale: {
+                    duration: 0.9,
+                    type: "spring",
+                    stiffness: 70,
+                    damping: 13,
+                  },
+
+                  rotateY: {
+                    duration: 1,
+                    ease: [0.16, 1, 0.3, 1],
+                  },
+
+                  rotateZ: {
+                    duration: 0.9,
+                    ease: [0.16, 1, 0.3, 1],
+                  },
+
+                  filter: {
+                    duration: 0.45,
+                  },
                 }}
                 className="
                   relative
                   z-10
+                  flex
                   h-[330px]
-                  w-[150px]
-                  sm:h-[430px]
-                  sm:w-[195px]
+                  w-[180px]
+                  items-center
+                  justify-center
+
+                  sm:h-[440px]
+                  sm:w-[230px]
                 "
+                style={{
+                  perspective: "1400px",
+                }}
               >
-                <motion.img
+                {/* Image glow */}
+
+                <motion.div
                   animate={{
-                    y: [0, -10, 0],
-                    rotate: [-1, 1, -1],
+                    scale: [0.9, 1.06, 0.9],
+                    opacity: [0.12, 0.25, 0.12],
                   }}
                   transition={{
-                    duration: 4,
+                    duration: 3.5,
                     repeat: Infinity,
                     ease: "easeInOut",
                   }}
-                  src="/aqua/bottle.png"
-                  alt="BB Aqua branded bottle"
                   className="
-                    h-full
-                    w-full
-                    object-contain
-                    drop-shadow-[0_30px_35px_rgba(2,40,61,0.30)]
+                    pointer-events-none
+                    absolute
+                    inset-5
+                    rounded-full
+                    bg-cyan-300/25
+                    blur-3xl
                   "
                 />
 
-                {/* Branding label */}
+                {/* Stage image */}
 
-                {activeStage > 0 && (
-                  <motion.div
-                    initial={{
-                      opacity: 0,
-                      scale: 0.8,
-                    }}
-                    animate={{
-                      opacity: 1,
-                      scale: 1,
-                    }}
-                    transition={{
-                      delay: 0.25,
-                      duration: 0.5,
-                    }}
-                    className="
-                      absolute
-                      left-1/2
-                      top-[43%]
-                      z-20
-                      w-[82%]
-                      -translate-x-1/2
-                      overflow-hidden
-                      rounded-lg
-                      border
-                      border-white/60
-                      bg-white/90
-                      px-2
-                      py-2
-                      text-center
-                      shadow-lg
-                      backdrop-blur-md
-                    "
-                  >
-                    <div className="text-[7px] font-black tracking-[0.18em] text-[#06283D]">
-                      YOUR BRAND
-                    </div>
+                <motion.img
+                  src={current.image}
+                  alt={`${current.title} - BB Aqua`}
+                  animate={{
+                    y: [0, -10, 0, 7, 0],
+                    rotateZ: [-1, 1, -1],
+                    rotateY: [0, 2, 0, -2, 0],
+                    scale: [1, 1.012, 1],
+                  }}
+                  transition={{
+                    y: {
+                      duration: 4.5,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    },
 
-                    <div className="mt-1 text-[5px] font-bold uppercase tracking-wider text-sky-500">
-                      BOTTLE BRANDING
-                    </div>
-                  </motion.div>
-                )}
+                    rotateZ: {
+                      duration: 5,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    },
 
-                {activeStage >= 1 && (
-                  <motion.div
-                    initial={{
-                      opacity: 0,
-                      scale: 0,
-                    }}
-                    animate={{
-                      opacity: 1,
-                      scale: 1,
-                    }}
-                    transition={{
-                      delay: 0.4,
-                      type: "spring",
-                      stiffness: 180,
-                    }}
-                    className="
-                      absolute
-                      left-1/2
-                      top-[48%]
-                      z-30
-                      -translate-x-1/2
-                      text-[7px]
-                      font-black
-                      tracking-widest
-                      text-[#06283D]
-                    "
-                  >
-                    LOGO
-                  </motion.div>
-                )}
+                    rotateY: {
+                      duration: 6,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    },
+
+                    scale: {
+                      duration: 4,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    },
+                  }}
+                  whileHover={{
+                    scale: 1.04,
+                    rotateY: 8,
+                    transition: {
+                      duration: 0.35,
+                    },
+                  }}
+                  className="
+                    relative
+                    z-10
+                    h-full
+                    w-full
+                    object-contain
+                    drop-shadow-[0_30px_40px_rgba(2,40,61,0.28)]
+                  "
+                  draggable={false}
+                />
+
+                {/* =================================================
+                    PREMIUM LIGHT SWEEP
+                ================================================== */}
+
+                <motion.div
+                  key={`shine-${activeStage}`}
+                  initial={{
+                    x: "-140%",
+                    opacity: 0,
+                  }}
+                  animate={{
+                    x: "140%",
+                    opacity: [0, 0.5, 0],
+                  }}
+                  transition={{
+                    duration: 1.5,
+                    delay: 0.25,
+                    ease: "easeInOut",
+                  }}
+                  className="
+                    pointer-events-none
+                    absolute
+                    left-0
+                    top-[8%]
+                    z-20
+                    h-[72%]
+                    w-[14%]
+                    rotate-[15deg]
+                    rounded-full
+                    bg-white/45
+                    blur-md
+                  "
+                />
+
+                {/* Reflection */}
+
+                <div
+                  className="
+                    pointer-events-none
+                    absolute
+                    left-[18%]
+                    top-[10%]
+                    z-20
+                    h-[45%]
+                    w-[8%]
+                    rotate-[8deg]
+                    rounded-full
+                    bg-white/35
+                    blur-[3px]
+                  "
+                />
               </motion.div>
             </AnimatePresence>
 
-            {/* Stage */}
+            {/* =================================================
+                STAGE BADGE
+            ================================================== */}
 
             <motion.div
               key={`badge-${activeStage}`}
               initial={{
                 opacity: 0,
-                y: 10,
+                x: -20,
+                scale: 0.9,
               }}
               animate={{
                 opacity: 1,
-                y: 0,
+                x: 0,
+                scale: 1,
+              }}
+              transition={{
+                duration: 0.5,
               }}
               className="
                 absolute
                 left-4
                 top-4
-                z-20
+                z-30
                 rounded-2xl
                 border
                 border-white
@@ -499,6 +683,7 @@ export default function AquaBottleShowcase() {
                 py-3
                 shadow-lg
                 backdrop-blur-xl
+
                 sm:left-6
                 sm:top-6
               "
@@ -512,24 +697,29 @@ export default function AquaBottleShowcase() {
               </div>
             </motion.div>
 
-            {/* Current stage */}
+            {/* =================================================
+                CURRENT STAGE INFO
+            ================================================== */}
 
             <motion.div
               key={`title-${activeStage}`}
               initial={{
                 opacity: 0,
-                y: 15,
+                y: 20,
               }}
               animate={{
                 opacity: 1,
                 y: 0,
+              }}
+              transition={{
+                duration: 0.5,
               }}
               className="
                 absolute
                 bottom-5
                 left-5
                 right-5
-                z-20
+                z-30
                 rounded-2xl
                 border
                 border-white
@@ -537,6 +727,7 @@ export default function AquaBottleShowcase() {
                 p-4
                 shadow-lg
                 backdrop-blur-xl
+
                 sm:left-6
                 sm:right-6
               "
@@ -557,7 +748,9 @@ export default function AquaBottleShowcase() {
             </motion.div>
           </motion.div>
 
-          {/* Content */}
+          {/* =================================================
+              RIGHT CONTENT
+          ================================================== */}
 
           <div>
             <motion.div
@@ -597,32 +790,43 @@ export default function AquaBottleShowcase() {
                   leading-tight
                   tracking-[-0.035em]
                   text-[#06283D]
+
                   sm:text-4xl
                 "
               >
                 See your identity
+
                 <span className="block text-sky-500">
                   become the bottle brand.
                 </span>
               </h3>
 
               <p className="mt-5 text-sm leading-7 text-slate-600 sm:text-base sm:leading-8">
-                Your bottle starts simple. Your logo and brand identity
-                transform it into a professional branded product.
+                Your bottle starts simple. Your logo
+                and brand identity transform it into a
+                professional branded product.
               </p>
             </motion.div>
 
-            {/* Steps */}
+            {/* =================================================
+                STAGE BUTTONS
+            ================================================== */}
 
             <div className="mt-8 space-y-3">
               {stages.map((stage, index) => {
-                const isActive = activeStage === index;
+                const isActive =
+                  activeStage === index;
 
                 return (
                   <motion.button
                     key={stage.id}
                     type="button"
-                    onClick={() => setActiveStage(index)}
+                    onClick={() =>
+                      setActiveStage(index)
+                    }
+                    whileHover={{
+                      x: 5,
+                    }}
                     whileTap={{
                       scale: 0.98,
                     }}
@@ -637,6 +841,7 @@ export default function AquaBottleShowcase() {
                       text-left
                       transition-all
                       duration-300
+
                       ${
                         isActive
                           ? "border-sky-200 bg-sky-50 shadow-[0_12px_35px_rgba(14,165,233,0.10)]"
@@ -644,7 +849,12 @@ export default function AquaBottleShowcase() {
                       }
                     `}
                   >
-                    <span
+                    <motion.span
+                      animate={{
+                        scale: isActive
+                          ? 1.05
+                          : 1,
+                      }}
                       className={`
                         flex
                         h-11
@@ -656,6 +866,7 @@ export default function AquaBottleShowcase() {
                         text-xs
                         font-black
                         transition-all
+
                         ${
                           isActive
                             ? "bg-[#06283D] text-cyan-300"
@@ -664,13 +875,14 @@ export default function AquaBottleShowcase() {
                       `}
                     >
                       {stage.number}
-                    </span>
+                    </motion.span>
 
                     <div className="min-w-0 flex-1">
                       <h4
                         className={`
                           text-sm
                           font-bold
+
                           ${
                             isActive
                               ? "text-[#06283D]"
@@ -686,6 +898,7 @@ export default function AquaBottleShowcase() {
                           mt-1
                           text-xs
                           leading-5
+
                           ${
                             isActive
                               ? "text-slate-600"
@@ -697,32 +910,42 @@ export default function AquaBottleShowcase() {
                       </p>
                     </div>
 
-                    <ArrowRight
-                      className={`
-                        h-4
-                        w-4
-                        shrink-0
-                        transition-transform
-                        ${
-                          isActive
-                            ? "translate-x-1 text-sky-500"
-                            : "text-slate-300"
-                        }
-                      `}
-                    />
+                    <motion.div
+                      animate={{
+                        x: isActive
+                          ? 4
+                          : 0,
+                      }}
+                    >
+                      <ArrowRight
+                        className={`
+                          h-4
+                          w-4
+                          shrink-0
+
+                          ${
+                            isActive
+                              ? "text-sky-500"
+                              : "text-slate-300"
+                          }
+                        `}
+                      />
+                    </motion.div>
                   </motion.button>
                 );
               })}
             </div>
 
-            {/* Description */}
+            {/* =================================================
+                DESCRIPTION
+            ================================================== */}
 
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeStage}
                 initial={{
                   opacity: 0,
-                  y: 8,
+                  y: 10,
                 }}
                 animate={{
                   opacity: 1,
@@ -730,10 +953,10 @@ export default function AquaBottleShowcase() {
                 }}
                 exit={{
                   opacity: 0,
-                  y: -8,
+                  y: -10,
                 }}
                 transition={{
-                  duration: 0.3,
+                  duration: 0.35,
                 }}
                 className="
                   mt-5
@@ -754,12 +977,20 @@ export default function AquaBottleShowcase() {
               </motion.div>
             </AnimatePresence>
 
-            {/* Navigation */}
+            {/* =================================================
+                NAVIGATION
+            ================================================== */}
 
             <div className="mt-6 flex gap-3">
-              <button
+              <motion.button
                 type="button"
                 onClick={previousStage}
+                whileHover={{
+                  scale: 1.05,
+                }}
+                whileTap={{
+                  scale: 0.94,
+                }}
                 className="
                   flex
                   h-12
@@ -779,11 +1010,18 @@ export default function AquaBottleShowcase() {
                 aria-label="Previous stage"
               >
                 <ArrowLeft className="h-4 w-4" />
-              </button>
+              </motion.button>
 
-              <button
+              <motion.button
                 type="button"
                 onClick={nextStage}
+                whileHover={{
+                  scale: 1.02,
+                  y: -2,
+                }}
+                whileTap={{
+                  scale: 0.97,
+                }}
                 className="
                   flex
                   h-12
@@ -801,18 +1039,27 @@ export default function AquaBottleShowcase() {
                 "
               >
                 Next Stage
+
                 <ArrowRight className="h-4 w-4 text-cyan-300" />
-              </button>
+              </motion.button>
             </div>
+
+            {/* Trust */}
 
             <div className="mt-6 flex items-center gap-2 text-xs text-slate-400">
               <Check className="h-4 w-4 text-sky-500" />
-              <span>Professional bottle branding for your business</span>
+
+              <span>
+                Professional bottle branding for your
+                business
+              </span>
             </div>
           </div>
         </div>
 
-        {/* Bottom CTA */}
+        {/* =====================================================
+            BOTTOM CTA
+        ====================================================== */}
 
         <motion.div
           initial={{
@@ -844,6 +1091,7 @@ export default function AquaBottleShowcase() {
             py-5
             shadow-sm
             backdrop-blur-xl
+
             sm:flex-row
             sm:px-7
           "
@@ -890,10 +1138,12 @@ export default function AquaBottleShowcase() {
               font-bold
               text-white
               shadow-[0_10px_30px_rgba(14,165,233,0.20)]
+
               sm:w-auto
             "
           >
             Start Bottle Branding
+
             <ArrowRight className="h-4 w-4" />
           </a>
         </motion.div>

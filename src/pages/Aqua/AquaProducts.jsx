@@ -21,7 +21,7 @@ const products = [
     subtitle: "Custom Bottle Branding",
     description:
       "Present your logo and brand identity on bottles created for your business or event.",
-    image: "/aqua/bottle.png",
+    image: "/aqua/brand.png",
   },
   {
     id: "03",
@@ -29,7 +29,7 @@ const products = [
     subtitle: "Event Branding",
     description:
       "A professional bottle branding option for weddings, events, functions and special occasions.",
-    image: "/aqua/bottle.png",
+    image: "/aqua/event.png",
   },
 ];
 

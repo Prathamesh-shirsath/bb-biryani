@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import {
+  ArrowLeft,
   ArrowRight,
   Droplets,
   Menu,
@@ -75,15 +76,13 @@ export default function AquaNavbar() {
   };
 
   /* =========================================================
-     GO TO BOTTLE ENQUIRY
+     GO TO CUSTOM BOTTLE ENQUIRY
   ========================================================= */
 
   const handleCustomBottle = () => {
     setIsOpen(false);
 
-    const element = document.getElementById(
-      "enquiry"
-    );
+    const element = document.getElementById("enquiry");
 
     if (!element) return;
 
@@ -99,6 +98,7 @@ export default function AquaNavbar() {
 
   const handleBiryani = () => {
     setIsOpen(false);
+
     navigate("/biryani");
   };
 
@@ -161,9 +161,7 @@ export default function AquaNavbar() {
 
           <motion.button
             type="button"
-            onClick={() =>
-              scrollToSection("aqua-home")
-            }
+            onClick={() => scrollToSection("aqua-home")}
             whileTap={{
               scale: 0.95,
             }}
@@ -212,7 +210,7 @@ export default function AquaNavbar() {
                 sm:w-11
               "
             >
-              {/* Water glow */}
+              {/* Water Glow */}
 
               <div
                 className="
@@ -283,9 +281,7 @@ export default function AquaNavbar() {
               <motion.button
                 key={item.id}
                 type="button"
-                onClick={() =>
-                  scrollToSection(item.id)
-                }
+                onClick={() => scrollToSection(item.id)}
                 whileTap={{
                   scale: 0.96,
                 }}
@@ -330,13 +326,13 @@ export default function AquaNavbar() {
           </div>
 
           {/* =================================================
-              DESKTOP CUSTOM BOTTLE BUTTON
+              DESKTOP BACK TO BIRYANI BUTTON
           ================================================== */}
 
           <div className="hidden lg:block">
             <motion.button
               type="button"
-              onClick={handleCustomBottle}
+              onClick={handleBiryani}
               whileHover={{
                 scale: 1.04,
               }}
@@ -383,6 +379,27 @@ export default function AquaNavbar() {
                 "
               />
 
+              {/* Arrow */}
+
+              <ArrowLeft
+                size={15}
+                className="
+                  relative
+                  z-10
+                  transition
+                  duration-300
+                  group-hover:-translate-x-1
+                "
+              />
+
+              {/* Text */}
+
+              <span className="relative z-10">
+                BB Biryani
+              </span>
+
+              {/* Droplet */}
+
               <Droplets
                 size={15}
                 className="
@@ -391,21 +408,6 @@ export default function AquaNavbar() {
                   transition
                   duration-300
                   group-hover:scale-110
-                "
-              />
-
-              <span className="relative z-10">
-                CUSTOMIZE BOTTLE
-              </span>
-
-              <ArrowRight
-                size={14}
-                className="
-                  relative
-                  z-10
-                  transition
-                  duration-300
-                  group-hover:translate-x-1
                 "
               />
             </motion.button>
@@ -423,9 +425,7 @@ export default function AquaNavbar() {
                 : "Open navigation menu"
             }
             aria-expanded={isOpen}
-            onClick={() =>
-              setIsOpen((prev) => !prev)
-            }
+            onClick={() => setIsOpen((prev) => !prev)}
             whileTap={{
               scale: 0.9,
             }}
@@ -519,9 +519,7 @@ export default function AquaNavbar() {
               transition={{
                 duration: 0.25,
               }}
-              onClick={() =>
-                setIsOpen(false)
-              }
+              onClick={() => setIsOpen(false)}
               className="
                 fixed
                 inset-0
@@ -672,65 +670,58 @@ export default function AquaNavbar() {
               {/* Navigation Links */}
 
               <div className="relative flex flex-col gap-1">
-                {navItems.map(
-                  (item, index) => (
-                    <motion.button
-                      key={item.id}
-                      type="button"
-                      initial={{
-                        opacity: 0,
-                        x: -15,
-                      }}
-                      animate={{
-                        opacity: 1,
-                        x: 0,
-                      }}
-                      transition={{
-                        delay:
-                          index * 0.04,
-                      }}
-                      whileTap={{
-                        scale: 0.98,
-                      }}
-                      onClick={() =>
-                        scrollToSection(
-                          item.id
-                        )
-                      }
-                      className="
-                        group
-                        flex
-                        min-h-[48px]
-                        w-full
-                        items-center
-                        justify-between
-                        rounded-xl
-                        px-4
-                        text-left
-                        text-sm
-                        font-semibold
-                        text-[#164E63]/65
-                        transition
-                        hover:bg-sky-50
-                        hover:text-sky-700
-                      "
-                    >
-                      <span>
-                        {item.label}
-                      </span>
+                {navItems.map((item, index) => (
+                  <motion.button
+                    key={item.id}
+                    type="button"
+                    initial={{
+                      opacity: 0,
+                      x: -15,
+                    }}
+                    animate={{
+                      opacity: 1,
+                      x: 0,
+                    }}
+                    transition={{
+                      delay: index * 0.04,
+                    }}
+                    whileTap={{
+                      scale: 0.98,
+                    }}
+                    onClick={() =>
+                      scrollToSection(item.id)
+                    }
+                    className="
+                      group
+                      flex
+                      min-h-[48px]
+                      w-full
+                      items-center
+                      justify-between
+                      rounded-xl
+                      px-4
+                      text-left
+                      text-sm
+                      font-semibold
+                      text-[#164E63]/65
+                      transition
+                      hover:bg-sky-50
+                      hover:text-sky-700
+                    "
+                  >
+                    <span>{item.label}</span>
 
-                      <ArrowRight
-                        size={15}
-                        className="
-                          text-sky-400
-                          transition
-                          duration-300
-                          group-hover:translate-x-1
-                        "
-                      />
-                    </motion.button>
-                  )
-                )}
+                    <ArrowRight
+                      size={15}
+                      className="
+                        text-sky-400
+                        transition
+                        duration-300
+                        group-hover:translate-x-1
+                      "
+                    />
+                  </motion.button>
+                ))}
               </div>
 
               {/* =================================================
@@ -788,34 +779,60 @@ export default function AquaNavbar() {
               </motion.button>
 
               {/* =================================================
-                  BACK TO BIRYANI
+                  MOBILE BACK TO BIRYANI
               ================================================== */}
 
-              <button
+              <motion.button
                 type="button"
                 onClick={handleBiryani}
+                whileTap={{
+                  scale: 0.97,
+                }}
                 className="
+                  group
+                  relative
                   mt-3
                   flex
-                  min-h-[44px]
+                  min-h-[48px]
                   w-full
                   items-center
                   justify-center
                   gap-2
+                  overflow-hidden
                   rounded-full
                   border
                   border-sky-900/10
                   bg-slate-50
                   text-xs
                   font-semibold
-                  text-[#164E63]/60
+                  text-[#164E63]/70
                   transition
+                  duration-300
+                  hover:border-sky-300
                   hover:bg-sky-50
-                  hover:text-sky-700
+                  hover:text-[#0369A1]
                 "
               >
-                ← BB Biryani
-              </button>
+                <ArrowLeft
+                  size={15}
+                  className="
+                    transition
+                    duration-300
+                    group-hover:-translate-x-1
+                  "
+                />
+
+                <span>BACK TO BB BIRYANI</span>
+
+                <Droplets
+                  size={14}
+                  className="
+                    transition
+                    duration-300
+                    group-hover:scale-110
+                  "
+                />
+              </motion.button>
             </motion.div>
           </>
         )}
