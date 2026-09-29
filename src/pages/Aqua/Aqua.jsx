@@ -14,7 +14,7 @@ import AquaGallery from "./AquaGallery";
 import AquaBulkOrder from "./AquaBulkOrder";
 import AquaContact from "./AquaContact";
 import AquaFooter from "./AquaFooter";
-import FloatingSocials from "../../components/FloatingSocials";
+import FloatingSocials from "./FloatingSocials";
 import AquaSampleBottles from "./AquaSampleBottles";
 
 export default function Aqua() {
