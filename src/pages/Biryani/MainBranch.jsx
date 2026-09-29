@@ -1,5 +1,7 @@
 import { useEffect, useRef } from "react";
 import { motion, useInView } from "motion/react";
+import { useTranslation } from "react-i18next";
+
 import {
   MapPin,
   Navigation,
@@ -8,7 +10,6 @@ import {
   ArrowUpRight,
   Sparkles,
 } from "lucide-react";
-import { useTranslation } from "react-i18next";
 
 const branchInfo = {
   name: "BB Biryani — Main Branch",
@@ -22,8 +23,9 @@ const branchInfo = {
 
   phone: "+91 7038925137",
 
-  mapsUrl:
-    "https://maps.app.goo.gl/FTH86eQyambV3wVC6",
+  mapsUrl: "https://maps.app.goo.gl/FTH86eQyambV3wVC6",
+
+  image: "/biryani/main-branch.jpeg",
 };
 
 const fadeUp = {
@@ -35,6 +37,7 @@ const fadeUp = {
   visible: {
     opacity: 1,
     y: 0,
+
     transition: {
       duration: 0.75,
       ease: [0.22, 1, 0.36, 1],
@@ -45,8 +48,6 @@ const fadeUp = {
 function AnimatedPin() {
   return (
     <div className="relative flex h-24 w-24 items-center justify-center">
-      {/* Outer pulse */}
-
       <motion.div
         className="absolute inset-0 rounded-full border border-[#D6A84F]/20"
         animate={{
@@ -74,11 +75,7 @@ function AnimatedPin() {
         }}
       />
 
-      {/* Glow */}
-
       <div className="absolute h-14 w-14 rounded-full bg-[#D6A84F]/10 blur-xl" />
-
-      {/* Pin */}
 
       <motion.div
         animate={{
@@ -89,7 +86,21 @@ function AnimatedPin() {
           repeat: Infinity,
           ease: "easeInOut",
         }}
-        className="relative z-10 flex h-14 w-14 items-center justify-center rounded-full border border-[#F5D58A]/50 bg-[#17100A]/90 shadow-[0_15px_50px_rgba(214,168,79,0.25)] backdrop-blur-xl"
+        className="
+          relative
+          z-10
+          flex
+          h-14
+          w-14
+          items-center
+          justify-center
+          rounded-full
+          border
+          border-[#F5D58A]/50
+          bg-[#17100A]/90
+          shadow-[0_15px_50px_rgba(214,168,79,0.25)]
+          backdrop-blur-xl
+        "
       >
         <MapPin
           size={27}
@@ -101,32 +112,63 @@ function AnimatedPin() {
   );
 }
 
-function InfoCard({
-  icon: Icon,
-  label,
-  value,
-  delay = 0,
-}) {
+function InfoCard({ icon: Icon, label, value, delay = 0 }) {
   return (
     <motion.div
       variants={fadeUp}
       initial="hidden"
       whileInView="visible"
-      viewport={{
-        once: true,
-        amount: 0.2,
-      }}
-      transition={{
-        delay,
-      }}
-      className="group relative overflow-hidden rounded-2xl border border-white/[0.07] bg-white/[0.025] p-4 backdrop-blur-xl transition duration-500 hover:border-[#D6A84F]/25 hover:bg-white/[0.045]"
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ delay }}
+      className="
+        group
+        relative
+        overflow-hidden
+        rounded-2xl
+        border
+        border-white/[0.07]
+        bg-white/[0.025]
+        p-4
+        backdrop-blur-xl
+        transition
+        duration-500
+        hover:border-[#D6A84F]/25
+        hover:bg-white/[0.045]
+      "
     >
-      {/* Hover glow */}
-
-      <div className="pointer-events-none absolute -right-8 -top-8 h-20 w-20 rounded-full bg-[#D6A84F]/10 blur-2xl opacity-0 transition duration-500 group-hover:opacity-100" />
+      <div
+        className="
+          pointer-events-none
+          absolute
+          -right-8
+          -top-8
+          h-20
+          w-20
+          rounded-full
+          bg-[#D6A84F]/10
+          blur-2xl
+          opacity-0
+          transition
+          duration-500
+          group-hover:opacity-100
+        "
+      />
 
       <div className="relative flex items-start gap-3">
-        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-[#D6A84F]/20 bg-[#D6A84F]/[0.07]">
+        <div
+          className="
+            flex
+            h-10
+            w-10
+            shrink-0
+            items-center
+            justify-center
+            rounded-xl
+            border
+            border-[#D6A84F]/20
+            bg-[#D6A84F]/[0.07]
+          "
+        >
           <Icon
             size={18}
             strokeWidth={1.7}
@@ -173,15 +215,9 @@ export default function MainBranch() {
       ====================================================== */}
 
       <div className="pointer-events-none absolute inset-0">
-        {/* Gold glow */}
-
         <div className="absolute left-1/2 top-[15%] h-72 w-72 -translate-x-1/2 rounded-full bg-[#D6A84F]/[0.07] blur-[100px] sm:h-96 sm:w-96" />
 
-        {/* Red/brown glow */}
-
         <div className="absolute -bottom-20 -right-20 h-72 w-72 rounded-full bg-[#8B2E16]/10 blur-[100px]" />
-
-        {/* Grid */}
 
         <div
           className="absolute inset-0 opacity-[0.025]"
@@ -207,10 +243,7 @@ export default function MainBranch() {
           className="mx-auto max-w-2xl text-center"
         >
           <div className="inline-flex items-center gap-2 rounded-full border border-[#D6A84F]/15 bg-[#D6A84F]/[0.05] px-3 py-1.5">
-            <MapPin
-              size={12}
-              className="text-[#D6A84F]"
-            />
+            <MapPin size={12} className="text-[#D6A84F]" />
 
             <span className="text-[9px] font-semibold uppercase tracking-[0.25em] text-[#D6A84F]">
               {t("biryani.mainBranch.eyebrow", {
@@ -261,111 +294,169 @@ export default function MainBranch() {
             delay: 0.15,
             ease: [0.22, 1, 0.36, 1],
           }}
-          className="mx-auto mt-12 max-w-6xl overflow-hidden rounded-[28px] border border-white/[0.08] bg-[#100B07]/80 shadow-[0_30px_100px_rgba(0,0,0,0.45)] backdrop-blur-2xl sm:rounded-[36px]"
+          className="
+            mx-auto
+            mt-12
+            max-w-6xl
+            overflow-hidden
+            rounded-[28px]
+            border
+            border-white/[0.08]
+            bg-[#100B07]/80
+            shadow-[0_30px_100px_rgba(0,0,0,0.45)]
+            backdrop-blur-2xl
+
+            sm:rounded-[36px]
+          "
         >
-          <div className="grid lg:grid-cols-[0.95fr_1.05fr]">
+          <div className="grid lg:grid-cols-[1.05fr_0.95fr]">
             {/* =================================================
-                LEFT — VISUAL LOCATION PANEL
+                LEFT — MAIN BRANCH PHOTO
             ================================================== */}
 
-            <div className="relative flex min-h-[330px] items-center justify-center overflow-hidden border-b border-white/[0.07] bg-[#0D0906] p-8 sm:min-h-[400px] sm:p-12 lg:min-h-[520px] lg:border-b-0 lg:border-r">
-              {/* Decorative circles */}
+            <motion.div
+              initial={{
+                opacity: 0,
+                scale: 1.04,
+              }}
+              animate={
+                isInView
+                  ? {
+                      opacity: 1,
+                      scale: 1,
+                    }
+                  : {}
+              }
+              transition={{
+                duration: 1.1,
+                delay: 0.25,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+              className="
+                group
+                relative
+                min-h-[300px]
+                overflow-hidden
+                border-b
+                border-white/[0.07]
+                bg-[#0D0906]
 
-              <motion.div
-                animate={{
-                  rotate: 360,
+                sm:min-h-[420px]
+
+                lg:min-h-[600px]
+                lg:border-b-0
+                lg:border-r
+              "
+            >
+              {/* Main Branch Image */}
+
+              <motion.img
+                src={branchInfo.image}
+                alt={t("biryani.mainBranch.imageAlt", {
+                  defaultValue: "BB Biryani Main Branch",
+                })}
+                whileHover={{
+                  scale: 1.035,
                 }}
                 transition={{
-                  duration: 30,
-                  repeat: Infinity,
-                  ease: "linear",
+                  duration: 0.8,
+                  ease: [0.22, 1, 0.36, 1],
                 }}
-                className="absolute h-64 w-64 rounded-full border border-dashed border-[#D6A84F]/10 sm:h-80 sm:w-80"
+                className="
+                  absolute
+                  inset-0
+                  h-full
+                  w-full
+                  object-cover
+                  object-center
+                "
+                draggable={false}
               />
 
-              <motion.div
-                animate={{
-                  rotate: -360,
-                }}
-                transition={{
-                  duration: 40,
-                  repeat: Infinity,
-                  ease: "linear",
-                }}
-                className="absolute h-48 w-48 rounded-full border border-[#D6A84F]/10 sm:h-60 sm:w-60"
+              {/* Dark premium overlay */}
+
+              <div
+                className="
+                  absolute
+                  inset-0
+                  bg-gradient-to-t
+                  from-black/75
+                  via-black/15
+                  to-black/5
+                "
               />
 
-              {/* Map-style lines */}
+              {/* Gold glow */}
 
-              <div className="pointer-events-none absolute inset-0 opacity-20">
-                <div className="absolute left-[10%] top-[28%] h-px w-[80%] rotate-[18deg] bg-[#D6A84F]/30" />
+              <div className="pointer-events-none absolute -bottom-20 -left-20 h-64 w-64 rounded-full bg-[#D6A84F]/10 blur-[90px]" />
 
-                <div className="absolute left-[5%] top-[58%] h-px w-[90%] -rotate-[14deg] bg-[#D6A84F]/20" />
+              {/* Top badge */}
 
-                <div className="absolute left-[30%] top-[5%] h-[90%] w-px rotate-[20deg] bg-[#D6A84F]/15" />
+              <div
+                className="
+                  absolute
+                  left-5
+                  top-5
+                  z-20
+                  flex
+                  items-center
+                  gap-2
+                  rounded-full
+                  border
+                  border-white/15
+                  bg-black/45
+                  px-3
+                  py-2
+                  backdrop-blur-xl
 
-                <div className="absolute left-[65%] top-[5%] h-[90%] w-px -rotate-[25deg] bg-[#D6A84F]/10" />
-              </div>
-
-              {/* Location */}
-
-              <div className="relative z-10 text-center">
-                <AnimatedPin />
-
-                <motion.div
-                  initial={{
-                    opacity: 0,
-                    y: 15,
-                  }}
-                  animate={
-                    isInView
-                      ? {
-                          opacity: 1,
-                          y: 0,
-                        }
-                      : {}
-                  }
-                  transition={{
-                    delay: 0.55,
-                    duration: 0.6,
-                  }}
-                >
-                  <p className="mt-3 text-[9px] font-semibold uppercase tracking-[0.3em] text-[#D6A84F]/70">
-                    {t("biryani.mainBranch.brand", {
-                      defaultValue: "BB Biryani",
-                    })}
-                  </p>
-
-                  <h3 className="mt-2 font-serif text-xl font-bold text-white sm:text-2xl">
-                    {t(
-                      "biryani.mainBranch.branchName",
-                      {
-                        defaultValue: "Main Branch",
-                      }
-                    )}
-                  </h3>
-
-                  <p className="mt-1 text-xs text-white/30">
-                    {branchInfo.city}
-                  </p>
-                </motion.div>
-              </div>
-
-              {/* Corner label */}
-
-              <div className="absolute left-5 top-5 flex items-center gap-2 rounded-full border border-white/[0.07] bg-black/20 px-3 py-1.5 backdrop-blur-md">
+                  sm:left-6
+                  sm:top-6
+                "
+              >
                 <Sparkles
-                  size={11}
+                  size={12}
                   className="text-[#D6A84F]"
                 />
 
-                <span className="text-[8px] font-semibold uppercase tracking-[0.2em] text-white/35">
+                <span className="text-[8px] font-semibold uppercase tracking-[0.2em] text-white/75">
                   {t("biryani.mainBranch.homeLabel", {
                     defaultValue: "Our Home",
                   })}
                 </span>
               </div>
-            </div>
+
+              {/* Photo bottom information */}
+
+              <div
+                className="
+                  absolute
+                  bottom-5
+                  left-5
+                  right-5
+                  z-20
+
+                  sm:bottom-6
+                  sm:left-6
+                  sm:right-6
+                "
+              >
+                <p className="text-[9px] font-semibold uppercase tracking-[0.3em] text-[#F5D58A]">
+                  {t("biryani.mainBranch.brand", {
+                    defaultValue: "BB Biryani",
+                  })}
+                </p>
+
+                <h3 className="mt-1 font-serif text-2xl font-black text-white sm:text-3xl">
+                  {t("biryani.mainBranch.branchName", {
+                    defaultValue: "Main Branch",
+                  })}
+                </h3>
+
+                <p className="mt-1 text-xs text-white/60">
+                  {branchInfo.city}
+                </p>
+              </div>
+            </motion.div>
 
             {/* =================================================
                 RIGHT — DETAILS
@@ -375,22 +466,13 @@ export default function MainBranch() {
               <div className="flex items-start justify-between gap-4">
                 <div>
                   <p className="text-[9px] font-semibold uppercase tracking-[0.25em] text-[#D6A84F]">
-                    {t(
-                      "biryani.mainBranch.detailsLabel",
-                      {
-                        defaultValue: "Main Branch",
-                      }
-                    )}
+                    {t("biryani.mainBranch.detailsLabel", {
+                      defaultValue: "Main Branch",
+                    })}
                   </p>
 
                   <h3 className="mt-3 font-serif text-2xl font-bold leading-tight text-white sm:text-3xl">
-                    {t(
-                      "biryani.mainBranch.name",
-                      {
-                        defaultValue:
-                          branchInfo.name,
-                      }
-                    )}
+                    {branchInfo.name}
                   </h3>
                 </div>
 
@@ -405,37 +487,27 @@ export default function MainBranch() {
               <div className="mt-7 grid gap-3">
                 <InfoCard
                   icon={MapPin}
-                  label={t(
-                    "biryani.mainBranch.info.address",
-                    {
-                      defaultValue: "Address",
-                    }
-                  )}
+                  label={t("biryani.mainBranch.info.address", {
+                    defaultValue: "Address",
+                  })}
                   value={branchInfo.address}
                   delay={0.1}
                 />
 
                 <InfoCard
                   icon={Clock3}
-                  label={t(
-                    "biryani.mainBranch.info.hours",
-                    {
-                      defaultValue:
-                        "Opening Hours",
-                    }
-                  )}
+                  label={t("biryani.mainBranch.info.hours", {
+                    defaultValue: "Opening Hours",
+                  })}
                   value={branchInfo.timings}
                   delay={0.2}
                 />
 
                 <InfoCard
                   icon={Phone}
-                  label={t(
-                    "biryani.mainBranch.info.contact",
-                    {
-                      defaultValue: "Contact",
-                    }
-                  )}
+                  label={t("biryani.mainBranch.info.contact", {
+                    defaultValue: "Contact",
+                  })}
                   value={branchInfo.phone}
                   delay={0.3}
                 />
@@ -454,7 +526,24 @@ export default function MainBranch() {
                   whileTap={{
                     scale: 0.97,
                   }}
-                  className="group relative flex min-h-[52px] items-center justify-center gap-2 overflow-hidden rounded-full bg-[#D6A84F] px-5 py-3 text-sm font-bold text-black shadow-[0_15px_45px_rgba(214,168,79,0.16)]"
+                  className="
+                    group
+                    relative
+                    flex
+                    min-h-[52px]
+                    items-center
+                    justify-center
+                    gap-2
+                    overflow-hidden
+                    rounded-full
+                    bg-[#D6A84F]
+                    px-5
+                    py-3
+                    text-sm
+                    font-bold
+                    text-black
+                    shadow-[0_15px_45px_rgba(214,168,79,0.16)]
+                  "
                 >
                   <span className="absolute inset-0 -translate-x-full bg-white/30 transition-transform duration-700 group-hover:translate-x-full" />
 
@@ -464,52 +553,69 @@ export default function MainBranch() {
                   />
 
                   <span className="relative z-10">
-                    {t(
-                      "biryani.mainBranch.getDirections",
-                      {
-                        defaultValue:
-                          "Get Directions",
-                      }
-                    )}
+                    {t("biryani.mainBranch.getDirections", {
+                      defaultValue: "Get Directions",
+                    })}
                   </span>
 
                   <ArrowUpRight
                     size={15}
-                    className="relative z-10 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                    className="
+                      relative
+                      z-10
+                      transition-transform
+                      duration-300
+                      group-hover:-translate-y-0.5
+                      group-hover:translate-x-0.5
+                    "
                   />
                 </motion.a>
 
                 <motion.a
-                  href={`tel:${branchInfo.phone.replace(
-                    /\s/g,
-                    ""
-                  )}`}
+                  href={`tel:${branchInfo.phone.replace(/\s/g, "")}`}
                   whileHover={{
                     scale: 1.02,
                   }}
                   whileTap={{
                     scale: 0.97,
                   }}
-                  className="flex min-h-[52px] items-center justify-center gap-2 rounded-full border border-white/10 bg-white/[0.025] px-5 py-3 text-sm font-semibold text-white/80 transition duration-300 hover:border-[#D6A84F]/30 hover:bg-white/[0.05] hover:text-white"
+                  className="
+                    flex
+                    min-h-[52px]
+                    items-center
+                    justify-center
+                    gap-2
+                    rounded-full
+                    border
+                    border-white/10
+                    bg-white/[0.025]
+                    px-5
+                    py-3
+                    text-sm
+                    font-semibold
+                    text-white/80
+                    transition
+                    duration-300
+                    hover:border-[#D6A84F]/30
+                    hover:bg-white/[0.05]
+                    hover:text-white
+                  "
                 >
                   <Phone
                     size={16}
                     className="text-[#D6A84F]"
                   />
 
-                  {t(
-                    "biryani.mainBranch.callBranch",
-                    {
-                      defaultValue: "Call Branch",
-                    }
-                  )}
+                  {t("biryani.mainBranch.callBranch", {
+                    defaultValue: "Call Branch",
+                  })}
                 </motion.a>
               </div>
 
               {/* Bottom note */}
 
               <div className="mt-7 flex items-center gap-3 border-t border-white/[0.06] pt-6">
-                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#D6A84F]/10">
+                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#D6A84F]/10">
                   <Sparkles
                     size={13}
                     className="text-[#D6A84F]"
@@ -517,13 +623,10 @@ export default function MainBranch() {
                 </div>
 
                 <p className="text-[11px] leading-5 text-white/30">
-                  {t(
-                    "biryani.mainBranch.bottomNote",
-                    {
-                      defaultValue:
-                        "Authentic taste, premium experience and the BB standard — all under one roof.",
-                    }
-                  )}
+                  {t("biryani.mainBranch.bottomNote", {
+                    defaultValue:
+                      "Authentic taste, premium experience and the BB standard — all under one roof.",
+                  })}
                 </p>
               </div>
             </div>

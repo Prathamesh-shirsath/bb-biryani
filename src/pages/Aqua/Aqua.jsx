@@ -15,6 +15,7 @@ import AquaBulkOrder from "./AquaBulkOrder";
 import AquaContact from "./AquaContact";
 import AquaFooter from "./AquaFooter";
 import FloatingSocials from "../../components/FloatingSocials";
+import AquaSampleBottles from "./AquaSampleBottles";
 
 export default function Aqua() {
   useEffect(() => {
@@ -43,6 +44,8 @@ export default function Aqua() {
 
       {/* 02. HERO */}
       <AquaHero />
+
+      <AquaSampleBottles />
 
       {/* 03. BUSINESS INTRO */}
       <AquaBusinessIntro />

@@ -9,6 +9,8 @@ import {
 } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
+
+
 const quickLinks = [
   {
     key: "home",
@@ -31,11 +33,6 @@ const quickLinks = [
     href: "#about",
   },
   {
-    key: "franchise",
-    label: "Franchise",
-    href: "#franchise",
-  },
-  {
     key: "gallery",
     label: "Gallery",
     href: "#gallery",
@@ -55,8 +52,7 @@ const branchInfo = {
 
   timings: "10 AM - 11 PM",
 
-  mapsUrl:
-    "https://maps.app.goo.gl/ZNXzQ9i834E33THb7",
+  mapsUrl: "https://maps.app.goo.gl/ZNXzQ9i834E33THb7",
 
   email: "bantishethbiryaniwale@gmail.com",
 
@@ -66,10 +62,6 @@ const branchInfo = {
   youtube:
     "https://youtube.com/@bantishethbiryaniwale?si=IFpozO6f3tszIEK4",
 };
-
-/* ============================================================
-   INSTAGRAM ICON
-============================================================ */
 
 function InstagramIcon({ size = 18 }) {
   return (
@@ -99,19 +91,10 @@ function InstagramIcon({ size = 18 }) {
         strokeWidth="1.8"
       />
 
-      <circle
-        cx="17.5"
-        cy="6.5"
-        r="1"
-        fill="currentColor"
-      />
+      <circle cx="17.5" cy="6.5" r="1" fill="currentColor" />
     </svg>
   );
 }
-
-/* ============================================================
-   YOUTUBE ICON
-============================================================ */
 
 function YouTubeIcon({ size = 18 }) {
   return (
@@ -130,10 +113,22 @@ function YouTubeIcon({ size = 18 }) {
         strokeLinejoin="round"
       />
 
-      <path
-        d="M10 9L15 12L10 15V9Z"
-        fill="currentColor"
-      />
+      <path d="M10 9L15 12L10 15V9Z" fill="currentColor" />
+    </svg>
+  );
+}
+
+function LinkedInIcon({ size = 18 }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V8.98h3.42v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.62 0 4.29 2.38 4.29 5.48v6.28ZM5.32 7.42a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM3.54 20.45H7.1V8.98H3.54v11.47Z" />
     </svg>
   );
 }
@@ -228,15 +223,12 @@ export default function Footer() {
 
                 <span className="text-[9px] font-semibold uppercase tracking-[0.2em] text-[#D6A84F]/70">
                   {t("biryani.footer.brandBadge", {
-                    defaultValue:
-                      "Taste • Quality • Trust",
+                    defaultValue: "Taste • Quality • Trust",
                   })}
                 </span>
               </div>
 
-              {/* =================================================
-                  SOCIAL MEDIA
-              ================================================== */}
+              {/* Social Media */}
 
               <div className="mt-8">
                 <p className="text-[9px] font-semibold uppercase tracking-[0.25em] text-white/25">
@@ -334,12 +326,9 @@ export default function Footer() {
                     className="group flex items-center gap-1 text-xs text-white/35 transition duration-300 hover:text-white"
                   >
                     <span>
-                      {t(
-                        `biryani.footer.links.${link.key}`,
-                        {
-                          defaultValue: link.label,
-                        }
-                      )}
+                      {t(`biryani.footer.links.${link.key}`, {
+                        defaultValue: link.label,
+                      })}
                     </span>
 
                     <ArrowUpRight
@@ -393,8 +382,7 @@ export default function Footer() {
 
                     <p className="mt-0.5 text-[9px] uppercase tracking-[0.15em] text-white/25">
                       {t("biryani.footer.businesses.biryani", {
-                        defaultValue:
-                          "Food & Hospitality",
+                        defaultValue: "Food & Hospitality",
                       })}
                     </p>
                   </div>
@@ -418,8 +406,7 @@ export default function Footer() {
 
                     <p className="mt-0.5 text-[9px] uppercase tracking-[0.15em] text-white/25">
                       {t("biryani.footer.businesses.aqua", {
-                        defaultValue:
-                          "Water & Manufacturing",
+                        defaultValue: "Water & Manufacturing",
                       })}
                     </p>
                   </div>
@@ -433,7 +420,7 @@ export default function Footer() {
             </motion.div>
 
             {/* =================================================
-                CONTACT + MAP
+                CONTACT + BRANCH PHOTO
             ================================================== */}
 
             <motion.div
@@ -461,67 +448,40 @@ export default function Footer() {
               </h3>
 
               {/* =================================================
-                  MAP CARD
+                  BRANCH PHOTO + MAP CARD
               ================================================== */}
 
               <a
                 href={branchInfo.mapsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative mt-5 block overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.035] p-4 transition duration-500 hover:border-[#D6A84F]/30 hover:bg-white/[0.05]"
+                className="group relative mt-5 block overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.035] p-3 transition duration-500 hover:border-[#D6A84F]/30 hover:bg-white/[0.05]"
               >
-                <div className="relative h-32 overflow-hidden rounded-xl border border-white/[0.06] bg-[#11100d]">
-                  <div
-                    className="absolute inset-0 opacity-30"
-                    style={{
-                      backgroundImage: `
-                        linear-gradient(30deg, transparent 45%, rgba(214,168,79,0.18) 46%, rgba(214,168,79,0.18) 47%, transparent 48%),
-                        linear-gradient(120deg, transparent 45%, rgba(255,255,255,0.08) 46%, rgba(255,255,255,0.08) 47%, transparent 48%),
-                        linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px),
-                        linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px)
-                      `,
-                      backgroundSize:
-                        "90px 90px, 120px 120px, 28px 28px, 28px 28px",
-                    }}
+                {/* Branch Image */}
+
+                <div className="relative h-36 overflow-hidden rounded-xl border border-white/[0.06] bg-[#11100d]">
+                  <img
+                    src="/biryani/main-branch.jpeg"
+                    alt="BB Biryani Main Branch"
+                    className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
                   />
 
-                  <div className="absolute left-1/2 top-1/2 h-20 w-20 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#D6A84F]/10 blur-2xl" />
+                  {/* Dark premium overlay */}
 
-                  {/* Location Pin */}
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/65 via-black/10 to-transparent" />
 
-                  <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-                    <motion.div
-                      animate={{
-                        scale: [1, 1.08, 1],
-                      }}
-                      transition={{
-                        duration: 2,
-                        repeat: Infinity,
-                        ease: "easeInOut",
-                      }}
-                      className="relative"
-                    >
-                      <div className="grid h-11 w-11 place-items-center rounded-full bg-[#D6A84F] shadow-[0_0_30px_rgba(214,168,79,0.4)]">
-                        <MapPin
-                          size={21}
-                          className="text-[#171006]"
-                          fill="currentColor"
-                        />
-                      </div>
-                    </motion.div>
+                  {/* Branch Badge */}
+
+                  <div className="absolute left-3 top-3 rounded-full border border-white/15 bg-black/55 px-3 py-1.5 backdrop-blur-md">
+                    <span className="text-[8px] font-bold uppercase tracking-[0.18em] text-[#D6A84F]">
+                      Main Branch
+                    </span>
                   </div>
 
-                  {/* Map Label */}
+                  {/* External Icon */}
 
-                  <div className="absolute bottom-2 left-2 right-2 flex items-center justify-between rounded-lg border border-white/10 bg-black/60 px-3 py-2 backdrop-blur-md">
-                    <span className="text-[9px] font-medium text-white/60">
-                      BB Biryani
-                    </span>
-
-                    <ExternalLink
-                      size={12}
-                      className="text-[#D6A84F]"
-                    />
+                  <div className="absolute bottom-3 right-3 grid h-8 w-8 place-items-center rounded-full border border-white/15 bg-black/50 text-[#D6A84F] backdrop-blur-md">
+                    <ExternalLink size={13} />
                   </div>
                 </div>
 
@@ -540,10 +500,10 @@ export default function Footer() {
 
                 {/* Directions */}
 
-                <div className="mt-4 flex items-center justify-between border-t border-white/[0.06] pt-3">
-                  <span className="text-[9px] font-semibold uppercase tracking-[0.16em] text-[#D6A84F]/70">
+                <div className="mt-4 flex items-center justify-between rounded-xl border border-[#D6A84F]/15 bg-[#D6A84F]/[0.04] px-3 py-3">
+                  <span className="text-[9px] font-semibold uppercase tracking-[0.16em] text-[#D6A84F]/80">
                     {t("biryani.footer.getDirections", {
-                      defaultValue: "Get Directions",
+                      defaultValue: "Get Directions on Google Maps",
                     })}
                   </span>
 
@@ -560,10 +520,7 @@ export default function Footer() {
                 href="tel:+917038925137"
                 className="mt-4 flex items-center gap-3 text-xs text-white/40 transition duration-300 hover:text-white"
               >
-                <Phone
-                  size={15}
-                  className="text-[#D6A84F]"
-                />
+                <Phone size={15} className="text-[#D6A84F]" />
 
                 {branchInfo.phone}
               </a>
@@ -574,10 +531,7 @@ export default function Footer() {
                 href={`mailto:${branchInfo.email}`}
                 className="mt-3 flex items-center gap-3 break-all text-xs text-white/40 transition duration-300 hover:text-white"
               >
-                <Mail
-                  size={15}
-                  className="shrink-0 text-[#D6A84F]"
-                />
+                <Mail size={15} className="shrink-0 text-[#D6A84F]" />
 
                 {branchInfo.email}
               </a>
@@ -585,10 +539,7 @@ export default function Footer() {
               {/* Timing */}
 
               <div className="mt-3 flex items-center gap-3 text-xs text-white/40">
-                <Sparkles
-                  size={15}
-                  className="shrink-0 text-[#D6A84F]"
-                />
+                <Sparkles size={15} className="shrink-0 text-[#D6A84F]" />
 
                 <span>
                   {t("biryani.footer.openDaily", {
@@ -602,88 +553,54 @@ export default function Footer() {
         </div>
 
         {/* =====================================================
-            FRANCHISE CTA
-        ====================================================== */}
-
-        <motion.div
-          initial={{
-            opacity: 0,
-            scale: 0.98,
-          }}
-          whileInView={{
-            opacity: 1,
-            scale: 1,
-          }}
-          viewport={{
-            once: true,
-            amount: 0.2,
-          }}
-          transition={{
-            duration: 0.8,
-          }}
-          className="relative overflow-hidden rounded-2xl border border-[#D6A84F]/15 bg-gradient-to-r from-[#D6A84F]/[0.07] via-white/[0.025] to-[#8B2E16]/[0.06] p-5 sm:p-7"
-        >
-          <div className="pointer-events-none absolute -right-20 -top-20 h-40 w-40 rounded-full bg-[#D6A84F]/10 blur-3xl" />
-
-          <div className="relative flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
-            <div>
-              <p className="text-[9px] font-semibold uppercase tracking-[0.25em] text-[#D6A84F]">
-                {t("biryani.footer.franchise.label", {
-                  defaultValue: "Franchise Opportunities",
-                })}
-              </p>
-
-              <h3 className="mt-2 font-serif text-xl font-bold text-white sm:text-2xl">
-                {t("biryani.footer.franchise.title", {
-                  defaultValue:
-                    "Build the next BB destination.",
-                })}
-              </h3>
-            </div>
-
-            <motion.a
-              href="#enquiry"
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.97 }}
-              className="flex min-h-[48px] items-center justify-center gap-2 rounded-full bg-[#D6A84F] px-6 py-3 text-xs font-bold text-black shadow-[0_15px_40px_rgba(214,168,79,0.12)]"
-            >
-              {t("biryani.footer.franchise.button", {
-                defaultValue: "Enquire Now",
-              })}
-
-              <ArrowUpRight size={15} />
-            </motion.a>
-          </div>
-        </motion.div>
-
-        {/* =====================================================
             BOTTOM BAR
         ====================================================== */}
 
-        <div className="flex flex-col gap-5 py-7 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-[9px] uppercase tracking-[0.16em] text-white/20">
-            {t("biryani.footer.copyright", {
-              defaultValue:
-                "© {{year}} BB Group of Businesses. All rights reserved.",
-              year: currentYear,
-            })}
-          </p>
+        <div className="border-t border-white/[0.07] py-7">
+          <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
+            {/* Copyright */}
 
-          <div className="flex flex-wrap items-center gap-3 text-[9px] uppercase tracking-[0.16em] text-white/20">
-            <span>BB Biryani</span>
-
-            <span className="h-1 w-1 rounded-full bg-[#D6A84F]/40" />
-
-            <span>BB Aqua</span>
-
-            <span className="h-1 w-1 rounded-full bg-[#D6A84F]/40" />
-
-            <span>
-              {t("biryani.footer.bottomTagline", {
+            <p className="text-[9px] uppercase tracking-[0.16em] text-white/20">
+              {t("biryani.footer.copyright", {
                 defaultValue:
-                  "Quality • Taste • Trust",
+                  "© {{year}} BB Group of Businesses. All rights reserved.",
+                year: currentYear,
               })}
-            </span>
+            </p>
+
+            {/* Made By */}
+
+            <div className="flex items-center justify-center gap-2 text-xs text-white/45">
+              <span>Made by</span>
+
+              <span
+                className="text-base"
+                aria-hidden="true"
+              >
+                ❤️
+              </span>
+
+              <a
+                href="https://www.linkedin.com/in/prathamesh-shirsath"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Prathamesh Shirsath LinkedIn Profile"
+                className="group inline-flex items-center gap-2 font-semibold text-[#D6A84F] transition duration-300 hover:text-white"
+              >
+                <span className="grid h-6 w-6 place-items-center rounded-md bg-[#0A66C2] text-white shadow-[0_5px_15px_rgba(10,102,194,0.25)] transition duration-300 group-hover:scale-110">
+                  <LinkedInIcon size={14} />
+                </span>
+
+                <span className="underline-offset-4 group-hover:underline">
+                  Prathamesh Shirsath
+                </span>
+
+                <ArrowUpRight
+                  size={13}
+                  className="transition duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                />
+              </a>
+            </div>
           </div>
         </div>
       </div>

@@ -24,7 +24,6 @@ const menuCategories = {
         marathiKey: "biryani.menu.items.vegDumBiryani.marathi",
         defaultName: "Veg Dum Biryani",
         defaultMarathi: "व्हेज दम बिर्याणी",
-        price: "₹120",
         sizeKey: "biryani.menu.sizes.full",
         defaultSize: "Full",
         image: "/biryani/veg.png",
@@ -36,7 +35,6 @@ const menuCategories = {
         marathiKey: "biryani.menu.items.vegRice.marathi",
         defaultName: "Veg Rice",
         defaultMarathi: "व्हेज राईस",
-        price: "₹80 / ₹140",
         sizeKey: "biryani.menu.sizes.halfFull",
         defaultSize: "Half / Full",
         image: "/biryani/rice.png",
@@ -47,7 +45,6 @@ const menuCategories = {
         marathiKey: "biryani.menu.items.vegNoodles.marathi",
         defaultName: "Veg Noodles",
         defaultMarathi: "व्हेज नूडल्स",
-        price: "₹80 / ₹140",
         sizeKey: "biryani.menu.sizes.halfFull",
         defaultSize: "Half / Full",
         image: "/biryani/noodles.png",
@@ -58,7 +55,6 @@ const menuCategories = {
         marathiKey: "biryani.menu.items.vegTripleRice.marathi",
         defaultName: "Veg Triple Rice",
         defaultMarathi: "व्हेज ट्रिपल राईस",
-        price: "₹130 / ₹230",
         sizeKey: "biryani.menu.sizes.halfFull",
         defaultSize: "Half / Full",
         image: "/biryani/triple_rice.png",
@@ -69,7 +65,6 @@ const menuCategories = {
         marathiKey: "biryani.menu.items.vegTripleNoodles.marathi",
         defaultName: "Veg Triple Noodles",
         defaultMarathi: "व्हेज ट्रिपल नूडल्स",
-        price: "₹130 / ₹230",
         sizeKey: "biryani.menu.sizes.halfFull",
         defaultSize: "Half / Full",
         image: "/biryani/triple_noodles.png",
@@ -80,7 +75,6 @@ const menuCategories = {
         marathiKey: "biryani.menu.items.vegSoup.marathi",
         defaultName: "Veg Soup",
         defaultMarathi: "व्हेज सूप",
-        price: "₹70",
         sizeKey: "biryani.menu.sizes.full",
         defaultSize: "Full",
         image: "/biryani/soup.png",
@@ -91,7 +85,6 @@ const menuCategories = {
         marathiKey: "biryani.menu.items.vegManchurian.marathi",
         defaultName: "Veg Manchurian",
         defaultMarathi: "व्हेज मंचुरियन",
-        price: "₹100 / ₹180",
         sizeKey: "biryani.menu.sizes.halfFull",
         defaultSize: "Half / Full",
         image: "/biryani/munchuriyan.png",
@@ -102,7 +95,6 @@ const menuCategories = {
         marathiKey: "biryani.menu.items.soyabeanChilli.marathi",
         defaultName: "Soyabean Chilli",
         defaultMarathi: "सोयाबीन चिली",
-        price: "₹100 / ₹180",
         sizeKey: "biryani.menu.sizes.halfFull",
         defaultSize: "Half / Full",
         image: "/biryani/soyabean_chili.png",
@@ -113,7 +105,6 @@ const menuCategories = {
         marathiKey: "biryani.menu.items.paneerChilli.marathi",
         defaultName: "Paneer Chilli",
         defaultMarathi: "पनीर चिली",
-        price: "₹120 / ₹220",
         sizeKey: "biryani.menu.sizes.halfFull",
         defaultSize: "Half / Full",
         image: "/biryani/paneer_chilli.png",
@@ -135,7 +126,6 @@ const menuCategories = {
         marathiKey: "biryani.menu.items.chickenDumBiryani.marathi",
         defaultName: "Chicken Dum Biryani",
         defaultMarathi: "चिकन दम बिर्याणी",
-        price: "₹130",
         sizeKey: "biryani.menu.sizes.full",
         defaultSize: "Full",
         image: "/biryani/chicken.png",
@@ -147,7 +137,6 @@ const menuCategories = {
         marathiKey: "biryani.menu.items.chickenRice.marathi",
         defaultName: "Chicken Rice",
         defaultMarathi: "चिकन राईस",
-        price: "₹80 / ₹140",
         sizeKey: "biryani.menu.sizes.halfFull",
         defaultSize: "Half / Full",
         image: "/biryani/chicken.png",
@@ -158,7 +147,6 @@ const menuCategories = {
         marathiKey: "biryani.menu.items.chickenNoodles.marathi",
         defaultName: "Chicken Noodles",
         defaultMarathi: "चिकन नूडल्स",
-        price: "₹80 / ₹140",
         sizeKey: "biryani.menu.sizes.halfFull",
         defaultSize: "Half / Full",
         image: "/biryani/chicken_noodles.png",
@@ -169,7 +157,6 @@ const menuCategories = {
         marathiKey: "biryani.menu.items.chickenSoup.marathi",
         defaultName: "Chicken Soup",
         defaultMarathi: "चिकन सूप",
-        price: "₹80",
         sizeKey: "biryani.menu.sizes.full",
         defaultSize: "Full",
         image: "/biryani/chicken_soup.png",
@@ -180,7 +167,6 @@ const menuCategories = {
         marathiKey: "biryani.menu.items.chickenTripleRice.marathi",
         defaultName: "Chicken Triple Rice",
         defaultMarathi: "चिकन ट्रिपल राईस",
-        price: "₹130 / ₹230",
         sizeKey: "biryani.menu.sizes.halfFull",
         defaultSize: "Half / Full",
         image: "/biryani/chicken_triple_rice.png",
@@ -191,7 +177,6 @@ const menuCategories = {
         marathiKey: "biryani.menu.items.chickenTripleNoodles.marathi",
         defaultName: "Chicken Triple Noodles",
         defaultMarathi: "चिकन ट्रिपल नूडल्स",
-        price: "₹130 / ₹230",
         sizeKey: "biryani.menu.sizes.halfFull",
         defaultSize: "Half / Full",
         image: "/biryani/chicken_triple_noodles.png",
@@ -202,7 +187,6 @@ const menuCategories = {
         marathiKey: "biryani.menu.items.chickenLollipop.marathi",
         defaultName: "Chicken Lollipop",
         defaultMarathi: "चिकन लॉलीपॉप",
-        price: "₹100 / ₹180",
         sizeKey: "biryani.menu.sizes.halfFull",
         defaultSize: "Half / Full",
         image: "/biryani/lollipop.png",
@@ -213,7 +197,6 @@ const menuCategories = {
         marathiKey: "biryani.menu.items.chickenMasalaLollipop.marathi",
         defaultName: "Chicken Masala Lollipop",
         defaultMarathi: "चिकन मसाला लॉलीपॉप",
-        price: "₹130 / ₹230",
         sizeKey: "biryani.menu.sizes.halfFull",
         defaultSize: "Half / Full",
         image: "/biryani/masala_lollipop.png",
@@ -224,7 +207,6 @@ const menuCategories = {
         marathiKey: "biryani.menu.items.chickenChilli.marathi",
         defaultName: "Chicken Chilli",
         defaultMarathi: "चिकन चिली",
-        price: "₹130 / ₹230",
         sizeKey: "biryani.menu.sizes.halfFull",
         defaultSize: "Half / Full",
         image: "/biryani/chicken_chilli.png",
@@ -235,7 +217,6 @@ const menuCategories = {
         marathiKey: "biryani.menu.items.chicken65.marathi",
         defaultName: "Chicken 65",
         defaultMarathi: "चिकन 65",
-        price: "₹100 / ₹180",
         sizeKey: "biryani.menu.sizes.halfFull",
         defaultSize: "Half / Full",
         image: "/biryani/chicken65.png",
@@ -246,7 +227,6 @@ const menuCategories = {
         marathiKey: "biryani.menu.items.bbFriedChicken.marathi",
         defaultName: "BB Fried Chicken",
         defaultMarathi: "BB फ्राईड चिकन",
-        price: "₹100 / ₹180",
         sizeKey: "biryani.menu.sizes.halfFull",
         defaultSize: "Half / Full",
         image: "/biryani/fried_chicken.png",
@@ -598,6 +578,13 @@ function MenuCard({ item, index }) {
               defaultValue: "BB Kitchen",
             })}
           </p>
+          <motion.div
+            initial={{ width: 0, opacity: 0 }}
+            whileInView={{ width: "34px", opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 0.15 }}
+            className="mt-2 h-px bg-gradient-to-r from-[#D6A84F] to-transparent"
+          />
 
           <h3
             className="
@@ -624,16 +611,6 @@ function MenuCard({ item, index }) {
               <p className="text-[7px] uppercase tracking-wider text-white/20 sm:text-[8px]">
                 {itemSize}
               </p>
-
-              <motion.p
-                animate={{
-                  scale: active ? 1.06 : 1,
-                  color: active ? "#F5D58A" : "#D6A84F",
-                }}
-                className="mt-0.5 text-base font-black sm:text-xl"
-              >
-                {item.price}
-              </motion.p>
             </div>
 
             <motion.div
@@ -1155,10 +1132,6 @@ export default function Menu() {
                     <div>
                       <p className="text-[8px] uppercase tracking-widest text-white/20">
                         {featuredSize}
-                      </p>
-
-                      <p className="mt-1 text-3xl font-black text-[#D6A84F] sm:text-4xl">
-                        {featured.price}
                       </p>
                     </div>
 

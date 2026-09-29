@@ -278,7 +278,7 @@ export default function TodayOffer() {
 
                 <motion.img
                   src="/biryani/chicken.png"
-                  alt="BB Chicken Biryani"
+                  alt="BB Signature Biryani"
                   loading="lazy"
                   className="
                     relative
@@ -365,7 +365,7 @@ export default function TodayOffer() {
               </div>
 
               {/* =================================================
-                  OFFER DETAILS
+                  SPECIAL MENU
               ================================================== */}
 
               <div
@@ -380,7 +380,8 @@ export default function TodayOffer() {
 
                   sm:p-8
 
-                  lg:p-12
+                  lg:p-10
+                  xl:p-12
                 "
               >
                 <div className="flex items-center gap-2">
@@ -407,39 +408,66 @@ export default function TodayOffer() {
                   </span>
                 </div>
 
-                <h3
-                  className="
-                    mt-3
-                    font-serif
-                    text-[1.75rem]
-                    font-black
-                    leading-[0.95]
-                    tracking-[-0.035em]
-                    text-white
+                <div className="mt-3 flex items-end justify-between gap-4 sm:mt-4">
+                  <div>
+                    <h3
+                      className="
+                        font-serif
+                        text-[1.75rem]
+                        font-black
+                        leading-[0.95]
+                        tracking-[-0.035em]
+                        text-white
 
-                    min-[360px]:text-[2rem]
+                        min-[360px]:text-[2rem]
 
-                    sm:mt-4
-                    sm:text-4xl
+                        sm:text-4xl
 
-                    lg:text-5xl
-                  "
-                >
-                  {t("biryani.offer.royalChicken", {
-                    defaultValue: "Royal Chicken",
-                  })}
+                        lg:text-5xl
+                      "
+                    >
+                      {t("biryani.offer.specialMenu", {
+                        defaultValue: "Special",
+                      })}
 
-                  <span className="block text-[#D6A84F]">
-                    {t("biryani.offer.biryani", {
-                      defaultValue: "Biryani",
-                    })}
-                  </span>
-                </h3>
+                      <span className="block text-[#D6A84F]">
+                        {t("biryani.offer.signatureDishes", {
+                          defaultValue: "Signature Dishes",
+                        })}
+                      </span>
+                    </h3>
+                  </div>
+
+                  <motion.div
+                    animate={{ rotate: [0, 8, 0] }}
+                    transition={{
+                      duration: 3,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    }}
+                    className="
+                      hidden
+                      h-11
+                      w-11
+                      shrink-0
+                      items-center
+                      justify-center
+                      rounded-full
+                      border
+                      border-[#D6A84F]/20
+                      bg-[#D6A84F]/10
+                      text-[#D6A84F]
+                      sm:flex
+                    "
+                  >
+                    <Sparkles size={17} />
+                  </motion.div>
+                </div>
 
                 <p
                   className="
                     mt-3
-                    max-w-[330px]
+                    max-w-[430px]
                     text-[12px]
                     leading-5
                     text-white/40
@@ -449,61 +477,113 @@ export default function TodayOffer() {
                     sm:leading-6
                   "
                 >
-                  {t("biryani.offer.foodDescription", {
+                  {t("biryani.offer.specialDescription", {
                     defaultValue:
-                      "Fragrant basmati rice, tender chicken, aromatic spices and our signature BB masala.",
+                      "Explore the BB signature collection — crafted for true biryani lovers.",
                   })}
                 </p>
 
-                {/* Price */}
+                {/* Six signature dishes */}
 
-                <div className="mt-5 flex items-end gap-3 sm:mt-6">
-                  <div>
-                    <p className="text-[8px] uppercase tracking-[0.18em] text-white/25 sm:text-[9px]">
-                      {t("biryani.offer.startingFrom", {
-                        defaultValue: "Starting from",
-                      })}
-                    </p>
+                <div
+                  className="
+                    mt-5
+                    grid
+                    grid-cols-2
+                    gap-2.5
 
-                    <p
+                    sm:mt-6
+                    sm:grid-cols-2
+                    sm:gap-3
+                  "
+                >
+                  {[
+                    {
+                      name: "Chicken Dum Biryani",
+                      key: "chickenDum",
+                      image: "/biryani/chicken.png",
+                    },
+                    {
+                      name: "Chicken Tandoori Biryani",
+                      key: "chickenTandoori",
+                      image: "/biryani/chicken.png",
+                    },
+                    {
+                      name: "Chicken Hyderabadi Dum Biryani",
+                      key: "chickenHyderabadi",
+                      image: "/biryani/chicken.png",
+                    },
+                    {
+                      name: "Veg Dum Biryani",
+                      key: "vegDum",
+                      image: "/biryani/veg.png",
+                    },
+                    {
+                      name: "Mutton Dum Biryani",
+                      key: "muttonDum",
+                      image: "/biryani/mutton.png",
+                    },
+                    {
+                      name: "BBFC Fried Chicken",
+                      key: "bbfcFriedChicken",
+                      image: "/biryani/fried_chicken.png",
+                    },
+                  ].map((dish, index) => (
+                    <motion.div
+                      key={dish.key}
+                      initial={{ opacity: 0, y: 12 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{
+                        duration: 0.45,
+                        delay: index * 0.06,
+                      }}
+                      whileHover={{ y: -4 }}
                       className="
-                        mt-1
-                        text-3xl
-                        font-black
-                        tracking-tight
-                        text-[#D6A84F]
-
-                        sm:text-4xl
+                        group
+                        relative
+                        overflow-hidden
+                        rounded-2xl
+                        border
+                        border-white/[0.07]
+                        bg-white/[0.025]
+                        px-3
+                        py-3
+                        backdrop-blur-xl
+                        transition-colors
+                        duration-300
+                        hover:border-[#D6A84F]/30
+                        hover:bg-[#D6A84F]/[0.045]
                       "
                     >
-                      ₹130
-                    </p>
-                  </div>
+                      <div className="absolute -right-5 -top-5 h-14 w-14 rounded-full bg-[#D97706]/10 blur-xl transition duration-500 group-hover:bg-[#D97706]/20" />
 
-                  <span
-                    className="
-                      mb-1
-                      rounded-full
-                      border
-                      border-red-400/20
-                      bg-red-500/10
-                      px-2.5
-                      py-1
-                      text-[8px]
-                      font-bold
-                      uppercase
-                      tracking-wider
-                      text-red-300
+                      <div className="relative flex items-center gap-2.5">
+                        <div className="grid h-10 w-10 shrink-0 place-items-center overflow-hidden rounded-xl border border-[#D6A84F]/10 bg-[#140C07]">
+                          <motion.img
+                            src={dish.image}
+                            alt={dish.name}
+                            loading="lazy"
+                            className="h-full w-full object-contain drop-shadow-[0_7px_10px_rgba(0,0,0,0.65)]"
+                            whileHover={{ scale: 1.12, rotate: 2 }}
+                            transition={{ duration: 0.3 }}
+                          />
+                        </div>
 
-                      sm:mb-1.5
-                      sm:px-3
-                      sm:text-[9px]
-                    "
-                  >
-                    {t("biryani.offer.limitedTime", {
-                      defaultValue: "Limited Time",
-                    })}
-                  </span>
+                        <div className="min-w-0">
+                          <p className="text-[6px] font-bold uppercase tracking-[0.18em] text-[#D6A84F]/55 sm:text-[7px]">
+                            BB SPECIAL
+                          </p>
+
+                          <p className="mt-0.5 line-clamp-2 text-[10px] font-bold leading-[1.15] text-white/90 sm:text-[11px]">
+                            {t(`biryani.offer.specialItems.${dish.key}`, {
+                              defaultValue: dish.name,
+                            })}
+                          </p>
+                        </div>
+                      </div>
+                    </motion.div>
+                  ))}
                 </div>
 
                 {/* CTA */}

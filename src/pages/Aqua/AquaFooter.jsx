@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 
 import {
   ArrowUp,
+  ArrowUpRight,
   Droplets,
   ExternalLink,
   MessageCircle,
@@ -39,6 +40,21 @@ const quickLinks = [
     href: "#contact",
   },
 ];
+
+function LinkedInIcon({ size = 14 }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      <path d="M6.94 8.5H3.56V20h3.38V8.5ZM5.25 3A2 2 0 1 0 5.25 7.01 2 2 0 0 0 5.25 3ZM20.44 13.41c0-3.46-1.85-5.07-4.32-5.07-1.99 0-2.88 1.1-3.38 1.87V8.5H9.36V20h3.38v-5.7c0-1.5.28-2.96 2.15-2.96 1.85 0 1.87 1.72 1.87 3.05V20h3.38v-6.59Z" />
+    </svg>
+  );
+}
 
 export default function AquaFooter() {
   const { t } = useTranslation();
@@ -514,6 +530,8 @@ export default function AquaFooter() {
             sm:justify-between
           "
         >
+          {/* Copyright */}
+
           <div>
             <p className="text-xs text-slate-500">
               © {new Date().getFullYear()}{" "}
@@ -527,6 +545,71 @@ export default function AquaFooter() {
               BB Aqua · BB Biryani
             </p>
           </div>
+
+          {/* Made By */}
+
+          <div className="flex items-center justify-center gap-2 text-xs text-slate-400">
+            <span>Made by</span>
+
+            <span
+              className="text-base"
+              aria-hidden="true"
+            >
+              ❤️
+            </span>
+
+            <a
+              href="https://www.linkedin.com/in/prathamesh-shirsath"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Prathamesh Shirsath LinkedIn Profile"
+              className="
+                group
+                inline-flex
+                items-center
+                gap-2
+                font-semibold
+                text-cyan-300
+                transition
+                duration-300
+                hover:text-white
+              "
+            >
+              <span
+                className="
+                  grid
+                  h-6
+                  w-6
+                  place-items-center
+                  rounded-md
+                  bg-[#0A66C2]
+                  text-white
+                  shadow-[0_5px_15px_rgba(10,102,194,0.25)]
+                  transition
+                  duration-300
+                  group-hover:scale-110
+                "
+              >
+                <LinkedInIcon size={14} />
+              </span>
+
+              <span className="underline-offset-4 group-hover:underline">
+                Prathamesh Shirsath
+              </span>
+
+              <ArrowUpRight
+                size={13}
+                className="
+                  transition
+                  duration-300
+                  group-hover:-translate-y-0.5
+                  group-hover:translate-x-0.5
+                "
+              />
+            </a>
+          </div>
+
+          {/* Back To Top */}
 
           <button
             type="button"
