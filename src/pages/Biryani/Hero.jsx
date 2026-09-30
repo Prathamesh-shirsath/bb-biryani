@@ -246,28 +246,28 @@ export default function Hero() {
               }}
               transition={{
                 duration: 0.9,
-                delay: 0.1,
+                delay: 0.5,
                 ease: [0.16, 1, 0.3, 1],
               }}
               className="
                 font-serif
-                text-[3.35rem]
+                text-[2.8rem]
                 font-black
                 leading-[0.82]
                 tracking-[-0.06em]
 
-                min-[360px]:text-[3.65rem]
+                min-[360px]:text-[2.5rem]
 
-                min-[390px]:text-[4rem]
+                min-[390px]:text-[2.90rem]
 
-                sm:text-6xl
+                sm:text-4xl
 
                 md:text-7xl
 
-                lg:text-[7rem]
+                lg:text-[5rem]
               "
             >
-              BB
+        BANTISHETH
 
               <span
                 className="
@@ -280,7 +280,7 @@ export default function Hero() {
                   text-transparent
                 "
               >
-                BIRYANI
+                BIRYANIWALE
               </span>
             </motion.h1>
           </div>

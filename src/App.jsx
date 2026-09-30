@@ -553,7 +553,7 @@ function BusinessCard({
                   }`}
                 >
                   {t("home.businessCard.businessLabel", {
-                    defaultValue: "BB Group Business",
+                    defaultValue: "Bantisheth Biryaniwale",
                   })}
                 </p>
 
@@ -824,7 +824,7 @@ function BrandIntro({ visible }) {
 
             <p className="mt-2 font-serif text-lg font-bold text-[#211A11]">
               {t("home.brandName", {
-                defaultValue: "BB Group of Businesses",
+                defaultValue: "Bantisheth Biryaniwale",
               })}
             </p>
 
@@ -1064,7 +1064,7 @@ function Home() {
 
               <p className="font-serif text-[11px] font-bold text-[#201A12] sm:text-base">
                 {t("home.brandName", {
-                  defaultValue: "BB Group of Businesses",
+                  defaultValue: "Bantisheth Biryaniwale",
                 })}
               </p>
             </div>
@@ -1155,9 +1155,9 @@ function Home() {
           </div>
 
           <h1 className="mt-3 font-serif text-[2rem] font-black leading-[0.86] tracking-[-0.065em] text-[#201A12] min-[360px]:text-[2.25rem] sm:mt-4 sm:text-6xl md:text-7xl lg:text-8xl">
-            BB GROUP
+            Bantisheth
             <span className="block bg-gradient-to-r from-[#815816] via-[#D6A84F] to-[#815816] bg-clip-text text-transparent">
-              OF BUSINESSES
+              Biryaniwale
             </span>
           </h1>
 

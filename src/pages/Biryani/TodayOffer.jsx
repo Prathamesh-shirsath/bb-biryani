@@ -277,7 +277,7 @@ export default function TodayOffer() {
                 />
 
                 <motion.img
-                  src="/biryani/chicken.png"
+                  src="/biryani/fc.png"
                   alt="BB Signature Biryani"
                   loading="lazy"
                   className="
